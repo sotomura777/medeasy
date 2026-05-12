@@ -1,0 +1,36 @@
+{
+  "id": "cefaleia",
+  "titulo": "Cefaleias",
+  "icone": "🧠",
+  "tags": [
+    {
+      "texto": "Neurologia",
+      "cor": "purple"
+    },
+    {
+      "texto": "Excluir causa secundária grave",
+      "cor": "red"
+    },
+    {
+      "texto": "Enxaqueca / Tensão / Cluster",
+      "cor": "amber"
+    }
+  ],
+  "tabs": [
+    {
+      "id": "diag",
+      "label": "Diagnóstico / Sinais de alarme",
+      "html": "<div class=\"alert alert-red\"><span class=\"alert-icon\">🚨</span><div class=\"alert-text\"><b>Sinais de alarme (RED FLAGS) — investigar urgentemente antes de tratar sintomaticamente.</b></div></div>\n      <div class=\"slbl\">Red flags — TC-CE ou PL obrigatório</div>\n      <div class=\"nf-grid\">\n        <div class=\"nf-item\"><strong>🚨 Thunderclap headache</strong>Dor máxima no início ou em segundos → HSA até prova em contrário → TC-CE + PL (xantocromia)</div>\n        <div class=\"nf-item\"><strong>🚨 Início com esforço, tosse, Valsalva, coito</strong>Cefaleia de esforço → HSA, malformação AV, HIC</div>\n        <div class=\"nf-item\"><strong>🚨 Febre + rigidez nuca + cefaleia</strong>Meningite → PL urgente (após TC se papiledema/focal)</div>\n        <div class=\"nf-item\"><strong>🚨 Défice neurológico focal novo</strong>AVC, hemorragia intracraniana, tumor → TC-CE urgente</div>\n        <div class=\"nf-item\"><strong>🚨 Papiledema</strong>HIC → TC-CE urgente</div>\n        <div class=\"nf-item\"><strong>🚨 Cefaleia progressiva nova em &gt;50 anos</strong>Artéria temporal → VS, PCR → arterite células gigantes</div>\n        <div class=\"nf-item\"><strong>🚨 Imunodeprimido</strong>Meningite criptocócica, toxoplasmose, linfoma SNC</div>\n        <div class=\"nf-item\"><strong>🚨 Pós-parto</strong>Trombose venosa cerebral, PRES, microangiopatia</div>\n      </div>\n      <div class=\"slbl\" style=\"margin-top:12px\">Quando pedir TC-CE</div>\n      <div class=\"nf-grid\">\n        <div class=\"nf-item\"><strong>Indicações TC urgente</strong>Cefaleia de novo &gt;50 anos · Thunderclap · Agravamento progressivo · Alteração consciência · Sinais focais · Papiledema · Febre + meningismo · Imunodeprimido</div>\n      </div>"
+    },
+    {
+      "id": "alg",
+      "label": "Algoritmo — Tratamento",
+      "html": "<div class=\"linha-block\">\n        <div class=\"linha-head\"><span class=\"linha-pill lp-1\">Enxaqueca — crise aguda</span></div>\n        <div class=\"cards-grid\">\n          <div class=\"drug-card star\"><div class=\"star-label\">1.ª linha — enxaqueca ligeira-moderada</div>\n            <div class=\"drug-row\"><div><div class=\"drug-name\">AINEs ± Antiemético</div><div class=\"drug-mol\">Ibuprofeno · Naproxeno · Paracetamol + Metoclopramida</div></div></div>\n            <div class=\"drug-body\"><b>Ibuprofeno 400–600 mg PO</b> ou <b>Naproxeno sódico 550 mg PO</b> o mais cedo possível. + <b>Metoclopramida 10 mg PO/IV</b> (antiemétiCo + melhora absorção oral). Paracetamol 1g PO alternativa.</div>\n          </div>\n          <div class=\"drug-card star\"><div class=\"star-label\">1.ª linha — enxaqueca moderada-grave ou sem resposta a AINEs</div>\n            <div class=\"drug-row\"><div><div class=\"drug-name\">Triptanos</div><div class=\"drug-mol\">Sumatriptano (Imigran®) · Rizatriptano (Maxalt®) · Eletriptano (Relpax®)</div></div></div>\n            <div class=\"drug-body\"><b>Sumatriptano 50–100 mg PO</b> (ou 6 mg SC se vómitos — mais rápido). Tomar no início da crise (não só com aura). Pode repetir após 2h (máx 200 mg/dia). <b>Contraindicado:</b> cardiopatia isquémica, HTA não controlada, história de AVC.</div>\n          </div>\n          <div class=\"drug-card\"><div class=\"drug-row\"><div><div class=\"drug-name\">Urgência — sem resposta oral</div><div class=\"drug-mol\">Metoclopramida IV · Ketorolac IV · Valproato IV</div></div></div>\n            <div class=\"drug-body\"><b>Metoclopramida 10 mg IV + Cetorolac 30 mg IV</b> na urgência. Ou <b>Valproato 300–500 mg IV em 15 min.</b> <b>Evitar opioides</b> (cefaleia de rebote).</div>\n          </div>\n        </div>\n      </div>\n      <div class=\"rule\"></div>\n      <div class=\"linha-block\">\n        <div class=\"linha-head\"><span class=\"linha-pill lp-2\">Cefaleia tensional — crise aguda</span></div>\n        <div class=\"cards-grid\">\n          <div class=\"drug-card star\"><div class=\"star-label\">1.ª linha</div>\n            <div class=\"drug-row\"><div><div class=\"drug-name\">Paracetamol ou AINEs</div><div class=\"drug-mol\">Paracetamol 1g · Ibuprofeno 400 mg · Naproxeno 550 mg</div></div></div>\n            <div class=\"drug-body\"><b>Paracetamol 1g PO</b> ou <b>Ibuprofeno 400 mg PO.</b> Evitar uso frequente (&gt;10–15 dias/mês) → cefaleia de abuso de analgésicos (rebound). Técnicas de relaxamento e biofeedback como complemento.</div>\n          </div>\n        </div>\n      </div>\n      <div class=\"rule\"></div>\n      <div class=\"linha-block\">\n        <div class=\"linha-head\"><span class=\"linha-pill lp-lp\" style=\"background:var(--red-bg);color:var(--red-text);border-color:var(--red-border)\">Cefaleia em salvas (cluster) — urgência</span></div>\n        <div class=\"cards-grid\">\n          <div class=\"drug-card star\"><div class=\"star-label\">Único tratamento eficaz — crise cluster</div>\n            <div class=\"drug-row\"><div><div class=\"drug-name\">O2 100% + Sumatriptano SC</div><div class=\"drug-mol\">O2 a alto débito · Imigran® 6 mg SC</div></div></div>\n            <div class=\"drug-body\"><b>O2 100% a 12–15 L/min por máscara × 15–20 min</b> — melhora 70%. + <b>Sumatriptano 6 mg SC</b> (ação em 15 min). AINEs e paracetamol são ineficazes no cluster.</div>\n          </div>\n        </div>\n      </div>"
+    },
+    {
+      "id": "alarme",
+      "label": "Sinais de alarme",
+      "html": "<div class=\"alarm-list\">\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>Thunderclap headache → HSA → TC-CE urgente → se TC normal: PL 12h após início (xantocromia)</span></div>\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>Artéria temporal dolorosa + cefaleia nova &gt;50 anos + VS elevada → arterite células gigantes → prednisolona 60 mg/dia imediato (não esperar biopsia)</span></div>\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>Cefaleia + febre + rigidez de nuca → PL urgente (se TC normal) → antibiótico empírico se suspeita de meningite bacteriana sem atrasar</span></div>\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>Cefaleia progressiva em imunodeprimido → TC-CE + PL → criptococo (tinta da China) + toxoplasmose</span></div>\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>&gt;15 dias/mês de analgésicos → cefaleia de abuso → retirada gradual (pode piorar inicialmente)</span></div>\n      </div>"
+    }
+  ]
+}

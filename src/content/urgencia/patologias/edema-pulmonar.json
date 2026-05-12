@@ -1,0 +1,36 @@
+{
+  "id": "edema-pulmonar",
+  "titulo": "Edema Pulmonar Agudo (EPA)",
+  "icone": "🫧",
+  "tags": [
+    {
+      "texto": "Cardiologia",
+      "cor": "red"
+    },
+    {
+      "texto": "Urgência",
+      "cor": "red"
+    },
+    {
+      "texto": "VNI + Nitratos + Diurético",
+      "cor": "amber"
+    }
+  ],
+  "tabs": [
+    {
+      "id": "diag",
+      "label": "Diagnóstico",
+      "html": "<div class=\"slbl\">Apresentação clínica</div>\n      <div class=\"nf-grid\">\n        <div class=\"nf-item\"><strong>Sintomas típicos</strong>Dispneia súbita intensa · ortopneia · dispneia paroxística noturna · tosse com expectoração rosada espumosa · ansiedade extrema</div>\n        <div class=\"nf-item\"><strong>Exame objetivo</strong>Taquipneia · saturações baixas · crepitações bilaterais bases pulmonares · estertores · S3 · JVP elevada · edemas membros inferiores</div>\n      </div>\n      <div class=\"slbl\" style=\"margin-top:12px\">Perfis hemodinâmicos — guiam o tratamento</div>\n      <div class=\"nf-grid\">\n        <div class=\"nf-item\"><strong>Perfil B — \"Quente e húmido\" (60–80%)</strong>Congesto + boa perfusão. PAS geralmente &gt;90. → Diurético + nitratos</div>\n        <div class=\"nf-item\"><strong>Perfil C — \"Frio e húmido\" (25–35%)</strong>Congesto + baixo débito. Pior prognóstico. → Diurético + inotrópico</div>\n        <div class=\"nf-item\"><strong>Perfil L — \"Frio e seco\" (5–10%)</strong>Sem congestão + baixo débito. → Prova de volume ± inotrópico</div>\n      </div>\n      <div class=\"slbl\" style=\"margin-top:12px\">Exames complementares urgentes</div>\n      <div class=\"nf-grid\">\n        <div class=\"nf-item\"><strong>Imediatos</strong>Rx tórax · ECG · Gasimetria arterial · BNP/NT-proBNP · Troponina · Hemograma + bioquímica</div>\n        <div class=\"nf-item\"><strong>BNP &gt;100 pg/mL</strong>ou NT-proBNP &gt;300 pg/mL — sugestivo de IC descompensada</div>\n      </div>"
+    },
+    {
+      "id": "alg",
+      "label": "Algoritmo",
+      "html": "<div class=\"linha-block\">\n        <div class=\"linha-head\"><span class=\"linha-pill lp-lp\" style=\"background:var(--red-bg);color:var(--red-text);border-color:var(--red-border)\">Medidas imediatas — todos os doentes</span></div>\n        <div class=\"cards-grid\">\n          <div class=\"drug-card star\"><div class=\"star-label\">Prioridade 1 — posição + O2 + VNI</div>\n            <div class=\"drug-row\"><div><div class=\"drug-name\">Sentar + O2 + VNI (CPAP)</div></div></div>\n            <div class=\"drug-body\">Sentar o doente (pernas pendentes). O2 alto débito (máscara) SpO2 &gt;95%. VNI (CPAP) se dispneia grave: EPAP 5–12 cmH2O. Reduz intubação e mortalidade. Iniciar sem atrasar se polipneico com músculos acessórios.</div>\n          </div>\n          <div class=\"drug-card star\"><div class=\"star-label\">Prioridade 2 — vasodilatação (perfil B, PAS &gt;90)</div>\n            <div class=\"drug-row\"><div><div class=\"drug-name\">Nitroglicerina IV ou SL</div><div class=\"drug-mol\">NTG Perlinganit® · NTG SL comprimidos</div></div></div>\n            <div class=\"drug-body\"><b>NTG 0,5–1 mg SL</b> imediato. Depois <b>Dinitrato isossorbida</b> bólus 2 mg IV + perfusão 1 mg/h titulação para PAS &gt;100 mmHg. Reduz pré e pós-carga. Contraindicado no EAM inferior e inibidores PDE5.</div>\n          </div>\n          <div class=\"drug-card star\"><div class=\"star-label\">Prioridade 3 — diurético (se congestão)</div>\n            <div class=\"drug-row\"><div><div class=\"drug-name\">Furosemida IV</div><div class=\"drug-mol\">Lasix® · Furosemida Labesfal® IV</div></div></div>\n            <div class=\"drug-body\"><b>40–80 mg IV bólus</b> (se virgem de diurético). Se já medicado com furosemida: dose IV = dose oral habitual. Monitorizar diurese (objectivo 200–300 mL/h nas primeiras 2h). Risco de hipocaliemia.</div>\n          </div>\n        </div>\n      </div>\n      <div class=\"rule\"></div>\n      <div class=\"linha-block\">\n        <div class=\"linha-head\"><span class=\"linha-pill lp-2\">Perfil C — \"Frio e húmido\" · Baixo débito + congestão</span></div>\n        <div class=\"cards-grid\">\n          <div class=\"drug-card star\"><div class=\"star-label\">Inotrópico — se PAS ≥90 mmHg</div>\n            <div class=\"drug-row\"><div><div class=\"drug-name\">Dobutamina IV</div><div class=\"drug-mol\">Dobutamina Labesfal® · Dobutrex®</div></div></div>\n            <div class=\"drug-body\"><b>2–20 µg/kg/min IV</b> — titular para melhoria débito cardíaco sem taquicardia excessiva. Risco de arritmias. Não usar como 1.ª linha em EPA sem baixo débito confirmado.</div>\n          </div>\n          <div class=\"drug-card\"><div class=\"drug-row\"><div><div class=\"drug-name\">Levossimendano</div><div class=\"drug-mol\">Simdax® 2,5 mg/mL perfusão IV</div></div></div>\n            <div class=\"drug-body\"><b>0,1–0,2 µg/kg/min IV × 24h</b> (sem carga se hipotensão). Sensibilizador cálcio — inotrópico + vasodilatador. Útil em IC avançada sob β-bloqueante. Efeito prolonga-se até 7–9 dias.</div>\n          </div>\n        </div>\n      </div>\n      <div class=\"alert alert-amber\" style=\"margin-top:10px\"><span class=\"alert-icon\">⚠️</span><div class=\"alert-text\"><b>Não atrasar EOT</b> se: pH &lt;7,20 · FR &gt;40 · SpO2 &lt;85% com VNI · Exaustão progressiva · Alteração de consciência. <b>Morfina:</b> evitar de rotina no EPA — associada a maior mortalidade (deprime FR + náusea).</div></div>"
+    },
+    {
+      "id": "alarme",
+      "label": "Sinais de alarme",
+      "html": "<div class=\"alarm-list\">\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>EPA súbito em doente sem IC conhecida → excluir EAM, regurgitação mitral aguda, dissecção aórtica → ECG + troponina + ecocardiograma urgente</span></div>\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>PAS &lt;90 + EPA + frio periférico = choque cardiogénico → vasopressores + inotrópicos + UCI + considerar suporte mecânico (IABP)</span></div>\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>EPA refractário a furosemida IV → adicionar torasemida IV ou espironolactona + considerar ultrafiltração</span></div>\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>EPA em grávida/pós-parto → excluir miocardiopatia periparto → Cardiologia urgente</span></div>\n      </div>"
+    }
+  ]
+}

@@ -1,0 +1,487 @@
+[
+  {
+    "sigla": "PO",
+    "significado": "Per os — via oral (comprimido, cápsula, xarope)",
+    "seccao": "Vias de administração"
+  },
+  {
+    "sigla": "IV",
+    "significado": "Intravenoso — administrado numa veia",
+    "seccao": "Vias de administração"
+  },
+  {
+    "sigla": "IM",
+    "significado": "Intramuscular — injecção no músculo",
+    "seccao": "Vias de administração"
+  },
+  {
+    "sigla": "SC",
+    "significado": "Subcutâneo — injecção sob a pele",
+    "seccao": "Vias de administração"
+  },
+  {
+    "sigla": "SL",
+    "significado": "Sublingual — debaixo da língua",
+    "seccao": "Vias de administração"
+  },
+  {
+    "sigla": "Inal.",
+    "significado": "Inalado — por inalação (aerossol, nebulização)",
+    "seccao": "Vias de administração"
+  },
+  {
+    "sigla": "Tóp.",
+    "significado": "Tópico — aplicação local na pele ou mucosas",
+    "seccao": "Vias de administração"
+  },
+  {
+    "sigla": "DU",
+    "significado": "Dose única — tomar uma só vez",
+    "seccao": "Posologia e frequência"
+  },
+  {
+    "sigla": "1×/dia",
+    "significado": "Uma vez por dia (a cada 24h)",
+    "seccao": "Posologia e frequência"
+  },
+  {
+    "sigla": "2×/dia (cada 12h)",
+    "significado": "Duas vezes por dia (a cada 12h)",
+    "seccao": "Posologia e frequência"
+  },
+  {
+    "sigla": "3×/dia (cada 8h)",
+    "significado": "Três vezes por dia (a cada 8h)",
+    "seccao": "Posologia e frequência"
+  },
+  {
+    "sigla": "4×/dia (cada 6h)",
+    "significado": "Quatro vezes por dia (a cada 6h)",
+    "seccao": "Posologia e frequência"
+  },
+  {
+    "sigla": "SOS",
+    "significado": "Em caso de necessidade (pro re nata — PRN)",
+    "seccao": "Posologia e frequência"
+  },
+  {
+    "sigla": "mg",
+    "significado": "Miligramas — unidade de massa dos fármacos",
+    "seccao": "Posologia e frequência"
+  },
+  {
+    "sigla": "mcg / µg",
+    "significado": "Microgramas (1 mcg = 0,001 mg)",
+    "seccao": "Posologia e frequência"
+  },
+  {
+    "sigla": "mL",
+    "significado": "Mililitros — unidade de volume de líquidos",
+    "seccao": "Posologia e frequência"
+  },
+  {
+    "sigla": "UI",
+    "significado": "Unidades Internacionais (insulina, penicilina, vitaminas)",
+    "seccao": "Posologia e frequência"
+  },
+  {
+    "sigla": "kg",
+    "significado": "Quilogramas — dose calculada por peso corporal (ex: mg/kg)",
+    "seccao": "Posologia e frequência"
+  },
+  {
+    "sigla": "Hb",
+    "significado": "Hemoglobina (normal: H &gt;13 g/dL · M &gt;12 g/dL)",
+    "seccao": "Análises e laboratório"
+  },
+  {
+    "sigla": "VGM",
+    "significado": "Volume Globular Médio — tamanho dos glóbulos vermelhos (normal 80–100 fL)",
+    "seccao": "Análises e laboratório"
+  },
+  {
+    "sigla": "PCR",
+    "significado": "Proteína C Reactiva — marcador de inflamação/infecção",
+    "seccao": "Análises e laboratório"
+  },
+  {
+    "sigla": "VS",
+    "significado": "Velocidade de Sedimentação — marcador de inflamação",
+    "seccao": "Análises e laboratório"
+  },
+  {
+    "sigla": "TGO / TGP",
+    "significado": "Transaminases hepáticas (AST / ALT) — avaliação do fígado",
+    "seccao": "Análises e laboratório"
+  },
+  {
+    "sigla": "TSH",
+    "significado": "Hormona estimulante da tiróide — rastreio tiróide",
+    "seccao": "Análises e laboratório"
+  },
+  {
+    "sigla": "ClCr",
+    "significado": "Clearance de Creatinina — avaliação da função renal (mL/min)",
+    "seccao": "Análises e laboratório"
+  },
+  {
+    "sigla": "INR",
+    "significado": "International Normalized Ratio — monitorização da anticoagulação oral",
+    "seccao": "Análises e laboratório"
+  },
+  {
+    "sigla": "aPTT",
+    "significado": "Tempo de Tromboplastina Parcial Activada — monitorização da heparina",
+    "seccao": "Análises e laboratório"
+  },
+  {
+    "sigla": "BNP / NT-proBNP",
+    "significado": "Peptídeo Natriurético — marcador de insuficiência cardíaca",
+    "seccao": "Análises e laboratório"
+  },
+  {
+    "sigla": "VDRL / RPR",
+    "significado": "Testes não treponémicos para diagnóstico e monitorização da sífilis",
+    "seccao": "Análises e laboratório"
+  },
+  {
+    "sigla": "GSA",
+    "significado": "Gasimetria arterial — mede pH, pO2, pCO2, bicarbonato",
+    "seccao": "Análises e laboratório"
+  },
+  {
+    "sigla": "NAAT / PCR",
+    "significado": "Teste de amplificação de ácidos nucleicos — gold standard para clamídia e gonorreia",
+    "seccao": "Análises e laboratório"
+  },
+  {
+    "sigla": "PA / PAS / PAD",
+    "significado": "Pressão Arterial / Sistólica / Diastólica (mmHg)",
+    "seccao": "Sinais vitais e parâmetros"
+  },
+  {
+    "sigla": "PAM",
+    "significado": "Pressão Arterial Média — objectivo no choque: &gt;65 mmHg",
+    "seccao": "Sinais vitais e parâmetros"
+  },
+  {
+    "sigla": "FC",
+    "significado": "Frequência Cardíaca — batimentos por minuto (bpm)",
+    "seccao": "Sinais vitais e parâmetros"
+  },
+  {
+    "sigla": "FR",
+    "significado": "Frequência Respiratória — ciclos por minuto (cpm)",
+    "seccao": "Sinais vitais e parâmetros"
+  },
+  {
+    "sigla": "SpO2",
+    "significado": "Saturação periférica de oxigénio — oximetria de pulso (%)",
+    "seccao": "Sinais vitais e parâmetros"
+  },
+  {
+    "sigla": "GCS",
+    "significado": "Glasgow Coma Scale — avaliação do nível de consciência (3–15)",
+    "seccao": "Sinais vitais e parâmetros"
+  },
+  {
+    "sigla": "IMC",
+    "significado": "Índice de Massa Corporal — peso(kg) ÷ altura²(m)",
+    "seccao": "Sinais vitais e parâmetros"
+  },
+  {
+    "sigla": "PASI",
+    "significado": "Psoriasis Area and Severity Index — gravidade da psoríase (objectivo: PASI 75/90/100)",
+    "seccao": "Scores e escalas"
+  },
+  {
+    "sigla": "DLQI",
+    "significado": "Dermatology Life Quality Index — impacto na qualidade de vida (0–30)",
+    "seccao": "Scores e escalas"
+  },
+  {
+    "sigla": "BSA",
+    "significado": "Body Surface Area — % de superfície corporal envolvida",
+    "seccao": "Scores e escalas"
+  },
+  {
+    "sigla": "CURB-65",
+    "significado": "Score de gravidade na pneumonia — Confusão, Uremia, FR, PA, Idade ≥65",
+    "seccao": "Scores e escalas"
+  },
+  {
+    "sigla": "SOFA",
+    "significado": "Sequential Organ Failure Assessment — score de disfunção orgânica na sépsis",
+    "seccao": "Scores e escalas"
+  },
+  {
+    "sigla": "qSOFA",
+    "significado": "Quick SOFA — triagem rápida de sépsis (FR≥22 + alteração mental + PA≤100)",
+    "seccao": "Scores e escalas"
+  },
+  {
+    "sigla": "NIHSS",
+    "significado": "NIH Stroke Scale — gravidade do AVC (0=normal, quanto maior pior)",
+    "seccao": "Scores e escalas"
+  },
+  {
+    "sigla": "Wells (TEP)",
+    "significado": "Score de probabilidade clínica de Tromboembolismo Pulmonar",
+    "seccao": "Scores e escalas"
+  },
+  {
+    "sigla": "CAM",
+    "significado": "Confusion Assessment Method — diagnóstico de delirium",
+    "seccao": "Scores e escalas"
+  },
+  {
+    "sigla": "CHA2DS2-VASc",
+    "significado": "Score de risco tromboembólico na fibrilhação auricular",
+    "seccao": "Scores e escalas"
+  },
+  {
+    "sigla": "FRAX®",
+    "significado": "Fracture Risk Assessment Tool — risco de fractura a 10 anos na osteoporose",
+    "seccao": "Scores e escalas"
+  },
+  {
+    "sigla": "AINE",
+    "significado": "Anti-Inflamatório Não Esteroide (ex: ibuprofeno, naproxeno, diclofenac)",
+    "seccao": "Classes de fármacos"
+  },
+  {
+    "sigla": "AAS",
+    "significado": "Ácido Acetilsalicílico (Aspirina®) — NUNCA usar em crianças com varicela (risco de Síndrome de Reye — insuficiência hepática grave)",
+    "seccao": "Classes de fármacos"
+  },
+  {
+    "sigla": "IECA",
+    "significado": "Inibidor da Enzima Conversora da Angiotensina (ex: ramipril, enalapril)",
+    "seccao": "Classes de fármacos"
+  },
+  {
+    "sigla": "ARA2",
+    "significado": "Antagonista dos Receptores da Angiotensina II (ex: losartan, valsartan)",
+    "seccao": "Classes de fármacos"
+  },
+  {
+    "sigla": "BCC",
+    "significado": "Bloqueador dos Canais de Cálcio (ex: amlodipina, diltiazem)",
+    "seccao": "Classes de fármacos"
+  },
+  {
+    "sigla": "IBP",
+    "significado": "Inibidor da Bomba de Protões (ex: omeprazol, pantoprazol, lansoprazol)",
+    "seccao": "Classes de fármacos"
+  },
+  {
+    "sigla": "HBPM",
+    "significado": "Heparina de Baixo Peso Molecular (ex: enoxaparina/Clexane®)",
+    "seccao": "Classes de fármacos"
+  },
+  {
+    "sigla": "NOAC / DOAC",
+    "significado": "Anticoagulante Oral Directo (ex: apixabano, rivaroxabano, dabigatrano)",
+    "seccao": "Classes de fármacos"
+  },
+  {
+    "sigla": "AVK",
+    "significado": "Antagonista da Vitamina K — anticoagulante oral clássico (ex: varfarina)",
+    "seccao": "Classes de fármacos"
+  },
+  {
+    "sigla": "ICS",
+    "significado": "Corticosteróide Inalado (ex: budesonida, fluticasona, beclometasona)",
+    "seccao": "Classes de fármacos"
+  },
+  {
+    "sigla": "LABA",
+    "significado": "Beta-2 agonista de longa duração inalado (ex: formoterol, salmeterol)",
+    "seccao": "Classes de fármacos"
+  },
+  {
+    "sigla": "LAMA",
+    "significado": "Anticolinérgico de longa duração inalado (ex: tiotrópio/Spiriva®)",
+    "seccao": "Classes de fármacos"
+  },
+  {
+    "sigla": "SABA",
+    "significado": "Beta-2 agonista de curta duração inalado (ex: salbutamol/Ventolin®)",
+    "seccao": "Classes de fármacos"
+  },
+  {
+    "sigla": "DAPT",
+    "significado": "Dupla Antiagregação Plaquetária (AAS + inibidor P2Y12)",
+    "seccao": "Classes de fármacos"
+  },
+  {
+    "sigla": "TMP-SMX",
+    "significado": "Trimetoprim + Sulfametoxazol (Bactrim®, Septrin®)",
+    "seccao": "Classes de fármacos"
+  },
+  {
+    "sigla": "ITU",
+    "significado": "Infeção do Trato Urinário (cistite, pielonefrite)",
+    "seccao": "Patologias e condições"
+  },
+  {
+    "sigla": "PAC",
+    "significado": "Pneumonia Adquirida na Comunidade",
+    "seccao": "Patologias e condições"
+  },
+  {
+    "sigla": "DPOC",
+    "significado": "Doença Pulmonar Obstrutiva Crónica (enfisema + bronquite crónica)",
+    "seccao": "Patologias e condições"
+  },
+  {
+    "sigla": "AVC",
+    "significado": "Acidente Vascular Cerebral (isquémico ou hemorrágico)",
+    "seccao": "Patologias e condições"
+  },
+  {
+    "sigla": "AIT",
+    "significado": "Acidente Isquémico Transitório — AVC transitório (&lt;24h)",
+    "seccao": "Patologias e condições"
+  },
+  {
+    "sigla": "SCA",
+    "significado": "Síndrome Coronário Agudo (angina instável + EAM)",
+    "seccao": "Patologias e condições"
+  },
+  {
+    "sigla": "EAM",
+    "significado": "Enfarte Agudo do Miocárdio",
+    "seccao": "Patologias e condições"
+  },
+  {
+    "sigla": "FA",
+    "significado": "Fibrilhação Auricular",
+    "seccao": "Patologias e condições"
+  },
+  {
+    "sigla": "TEP",
+    "significado": "Tromboembolismo Pulmonar",
+    "seccao": "Patologias e condições"
+  },
+  {
+    "sigla": "TEV",
+    "significado": "Tromboembolismo Venoso (TVP + TEP)",
+    "seccao": "Patologias e condições"
+  },
+  {
+    "sigla": "TVP",
+    "significado": "Trombose Venosa Profunda",
+    "seccao": "Patologias e condições"
+  },
+  {
+    "sigla": "EPA",
+    "significado": "Edema Pulmonar Agudo",
+    "seccao": "Patologias e condições"
+  },
+  {
+    "sigla": "IC",
+    "significado": "Insuficiência Cardíaca",
+    "seccao": "Patologias e condições"
+  },
+  {
+    "sigla": "FEVE",
+    "significado": "Fracção de Ejecção do Ventrículo Esquerdo (normal &gt;55%)",
+    "seccao": "Patologias e condições"
+  },
+  {
+    "sigla": "CAD",
+    "significado": "Cetoacidose Diabética",
+    "seccao": "Patologias e condições"
+  },
+  {
+    "sigla": "DM",
+    "significado": "Diabetes Mellitus (tipo 1 ou tipo 2)",
+    "seccao": "Patologias e condições"
+  },
+  {
+    "sigla": "HTA",
+    "significado": "Hipertensão Arterial",
+    "seccao": "Patologias e condições"
+  },
+  {
+    "sigla": "DIP",
+    "significado": "Doença Inflamatória Pélvica",
+    "seccao": "Patologias e condições"
+  },
+  {
+    "sigla": "IST / DST",
+    "significado": "Infeção/Doença Sexualmente Transmissível",
+    "seccao": "Patologias e condições"
+  },
+  {
+    "sigla": "VIH / HIV",
+    "significado": "Vírus da Imunodeficiência Humana",
+    "seccao": "Patologias e condições"
+  },
+  {
+    "sigla": "EME",
+    "significado": "Estado de Mal Epilético — crise convulsiva &gt;5 minutos",
+    "seccao": "Patologias e condições"
+  },
+  {
+    "sigla": "DII",
+    "significado": "Doença Inflamatória Intestinal (Crohn + Colite Ulcerosa)",
+    "seccao": "Patologias e condições"
+  },
+  {
+    "sigla": "IRC / DRC",
+    "significado": "Insuficiência/Doença Renal Crónica",
+    "seccao": "Patologias e condições"
+  },
+  {
+    "sigla": "EOT",
+    "significado": "Entubação OroTraqueal — colocação de tubo na traqueia para ventilação mecânica",
+    "seccao": "Procedimentos e técnicas"
+  },
+  {
+    "sigla": "VNI",
+    "significado": "Ventilação Não Invasiva (CPAP, BiPAP) — ventilação por máscara",
+    "seccao": "Procedimentos e técnicas"
+  },
+  {
+    "sigla": "VM",
+    "significado": "Ventilação Mecânica — suporte respiratório por via artificial",
+    "seccao": "Procedimentos e técnicas"
+  },
+  {
+    "sigla": "RCP",
+    "significado": "Reanimação CardioPulmonar",
+    "seccao": "Procedimentos e técnicas"
+  },
+  {
+    "sigla": "ICP",
+    "significado": "Intervenção Coronária Percutânea (angioplastia + stent)",
+    "seccao": "Procedimentos e técnicas"
+  },
+  {
+    "sigla": "EDA",
+    "significado": "Endoscopia Digestiva Alta — exame endoscópico do esófago, estômago e duodeno",
+    "seccao": "Procedimentos e técnicas"
+  },
+  {
+    "sigla": "PL",
+    "significado": "Punção Lombar — colheita de líquido cefalorraquidiano (LCR)",
+    "seccao": "Procedimentos e técnicas"
+  },
+  {
+    "sigla": "PEP / PPE",
+    "significado": "Profilaxia Pós-Exposição (ao VIH) — iniciar &lt;72h após exposição",
+    "seccao": "Procedimentos e técnicas"
+  },
+  {
+    "sigla": "PrEP",
+    "significado": "Profilaxia Pré-Exposição ao VIH — toma diária preventiva de antirretrovirais",
+    "seccao": "Procedimentos e técnicas"
+  },
+  {
+    "sigla": "DEXA",
+    "significado": "Densitometria Óssea por Absorção de Raios X — avaliação da osteoporose",
+    "seccao": "Procedimentos e técnicas"
+  }
+]

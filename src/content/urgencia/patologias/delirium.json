@@ -1,0 +1,36 @@
+{
+  "id": "delirium",
+  "titulo": "Delirium",
+  "icone": "😵‍💫",
+  "tags": [
+    {
+      "texto": "Neurologia",
+      "cor": "purple"
+    },
+    {
+      "texto": "Medicina Interna",
+      "cor": "blue"
+    },
+    {
+      "texto": "Investigar causa",
+      "cor": "amber"
+    }
+  ],
+  "tabs": [
+    {
+      "id": "diag",
+      "label": "Diagnóstico / CAM",
+      "html": "<div class=\"alert alert-amber\"><span class=\"alert-icon\">⚠️</span><div class=\"alert-text\"><b>O delirium é sempre sintoma de outra doença</b> — investigar e tratar a causa. Nunca tratar apenas com sedação sem perceber a etiologia.</div></div>\n      <div class=\"slbl\">Critérios CAM (Confusion Assessment Method)</div>\n      <div class=\"nf-grid\">\n        <div class=\"nf-item\"><strong>1. Início agudo + flutuação</strong>Alteração aguda do estado mental com flutuação ao longo do dia (obrigatório)</div>\n        <div class=\"nf-item\"><strong>2. Desatenção</strong>Dificuldade em manter a atenção (obrigatório)</div>\n        <div class=\"nf-item\"><strong>3. Pensamento desorganizado</strong>Discurso incoerente, mudança de assunto imprevisível</div>\n        <div class=\"nf-item\"><strong>4. Alteração do nível de consciência</strong>Hipervigilante, letárgico, estuporoso</div>\n      </div>\n      <div class=\"alert alert-green\" style=\"margin-top:8px\"><span class=\"alert-icon\">✅</span><div class=\"alert-text\"><b>Diagnóstico CAM positivo:</b> Critérios 1 + 2 + (3 ou 4).</div></div>\n      <div class=\"slbl\" style=\"margin-top:12px\">Causas — investigar (mnemónica AEIOU-TIPS)</div>\n      <div class=\"nf-grid\">\n        <div class=\"nf-item\"><strong>Mais frequentes no internamento</strong>Infecção (ITU, pneumonia, bacteriemia) · Fármacos (opioides, BDZ, anticolinérgicos, polifarmácia) · Retenção urinária / fecal · Distúrbios electrolíticos (Na, Ca, glicemia)</div>\n        <div class=\"nf-item\"><strong>Outras causas a excluir</strong>Privação de álcool/benzodiazepinas · EAM silencioso · TEP · Hipoxia · Hipotermia · AVC · Meningite/encefalite · Insuficiência hepática/renal</div>\n      </div>\n      <div class=\"slbl\" style=\"margin-top:12px\">Exames mínimos</div>\n      <div class=\"nf-grid\">\n        <div class=\"nf-item\"><strong>Analíticos</strong>Hemograma · ionograma (Na, K, Ca) · glicemia · função renal · hepática · CRP · TSH · GSA · Urocultura · Hemoculturas</div>\n        <div class=\"nf-item\"><strong>Se suspeita SNC</strong>TC-CE (excluir AVC/hematoma) · PL se meningite · EEG se EME não convulsivo</div>\n      </div>"
+    },
+    {
+      "id": "alg",
+      "label": "Algoritmo — Tratamento",
+      "html": "<div class=\"linha-block\">\n        <div class=\"linha-head\"><span class=\"linha-pill lp-1\">1.ª linha — não farmacológica (sempre)</span></div>\n        <div class=\"cards-grid\">\n          <div class=\"drug-card star\"><div class=\"star-label\">Base do tratamento — reduz duração e gravidade</div>\n            <div class=\"drug-row\"><div><div class=\"drug-name\">Medidas ambientais e orientadoras</div></div></div>\n            <div class=\"drug-body\">Iluminação adequada (evitar escuridão e luz excessiva) · Relógio e calendário visíveis · Presença de familiar · Estimulação cognitiva suave · Ciclo sono-vigília regular · Evitar contenção física (agrava delirium) · Retirar cateteres desnecessários · Mobilização precoce · Corrigir défices sensoriais (óculos, aparelho auditivo).</div>\n          </div>\n          <div class=\"drug-card\"><div class=\"drug-row\"><div><div class=\"drug-name\">Rever e suspender fármacos precipitantes</div></div></div>\n            <div class=\"drug-body\">Opioides (reduzir dose ou mudar) · Anticolinérgicos (hioscina, clorfeniramina, antipsicóticos clássicos) · BDZ · Digoxina · Antihistamínicos · Corticóides · IBPs em excesso.</div>\n          </div>\n        </div>\n      </div>\n      <div class=\"rule\"></div>\n      <div class=\"linha-block\">\n        <div class=\"linha-head\"><span class=\"linha-pill lp-2\">2.ª linha — farmacológica · apenas se agitação ameaça segurança</span><span class=\"linha-name\">Menor dose eficaz · Curto prazo · Vigiar QTc</span></div>\n        <div class=\"cards-grid\">\n          <div class=\"drug-card star\"><div class=\"star-label\">1.ª escolha antipsicótico</div>\n            <div class=\"drug-row\"><div><div class=\"drug-name\">Haloperidol</div><div class=\"drug-mol\">Haldol® 1 mg/mL gotas · 5 mg/mL amp. IM/IV/SC</div></div></div>\n            <div class=\"drug-body\"><b>0,5–1 mg / dose PO, IM, IV ou SC</b> (máx. 5–10 mg/24h). Titular pela resposta. Vigilar QTc (&gt;500 ms suspender) e sintomas extrapiramidais. IV prolonga QTc.</div>\n          </div>\n          <div class=\"drug-card\"><div class=\"drug-row\"><div><div class=\"drug-name\">Atípicos (melhor perfil segurança)</div><div class=\"drug-mol\">Olanzapina (Zyprexa®) · Quetiapina (Seroquel®) · Risperidona (Risperdal®)</div></div></div>\n            <div class=\"drug-body\"><b>Olanzapina 2,5–5 mg PO / dia</b> ou <b>Quetiapina 12,5–25 mg PO / dia</b> (preferir em Parkinson). Atípicos eficazes em delirium hipoactivo e em parkinsonismo.</div>\n          </div>\n          <div class=\"drug-card\"><div class=\"drug-row\"><div><div class=\"drug-name\">Benzodiazepinas — casos específicos</div><div class=\"drug-mol\">Lorazepam · Midazolam</div></div></div>\n            <div class=\"drug-body\"><b>Apenas em:</b> abstinência alcoólica (1.ª linha) · Convulsões · Sedação para procedimento urgente. <b>Evitar em delirium de outra etiologia</b> — pioram confusão e risco de quedas.</div>\n          </div>\n        </div>\n      </div>"
+    },
+    {
+      "id": "alarme",
+      "label": "Sinais de alarme",
+      "html": "<div class=\"alarm-list\">\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>Delirium com febre + rigidez nuca → meningite/encefalite → PL urgente + antibiótico</span></div>\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>Delirium com sinais focais → AVC/hematoma → TC-CE urgente</span></div>\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>Delirium tremens (abstinência alcoólica grave) → convulsões + agitação extrema + hiperpirexia → BDZ IV urgente (diazepam 10 mg IV)</span></div>\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>Delirium em idoso com queda → excluir hematoma subdural (TC-CE)</span></div>\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>Contenção física em delirium → associada a morte e agravamento → usar apenas em extrema necessidade, mínimo tempo possível</span></div>\n      </div>"
+    }
+  ]
+}

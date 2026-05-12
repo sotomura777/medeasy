@@ -1,0 +1,36 @@
+{
+  "id": "hipoglicemia",
+  "titulo": "Hipoglicemia",
+  "icone": "🍬",
+  "tags": [
+    {
+      "texto": "Endocrinologia",
+      "cor": "amber"
+    },
+    {
+      "texto": "Urgência",
+      "cor": "red"
+    },
+    {
+      "texto": "Glicemia &lt;70 mg/dL",
+      "cor": "blue"
+    }
+  ],
+  "tabs": [
+    {
+      "id": "diag",
+      "label": "Diagnóstico / Classificação",
+      "html": "<div class=\"slbl\">Classificação por gravidade</div>\n      <table class=\"drug-table\"><thead><tr><th>Nível</th><th>Glicemia</th><th>Clínica</th></tr></thead><tbody>\n        <tr><td><span class=\"dn\">Nível 1 — Alerta</span></td><td>&lt;70 mg/dL (&lt;3,9 mmol/L)</td><td class=\"dd\">Sintomas autonómicos: sudorese, tremor, palpitações, fome</td></tr>\n        <tr><td><span class=\"dn\">Nível 2 — Clínicamente significativa</span></td><td>&lt;54 mg/dL (&lt;3,0 mmol/L)</td><td class=\"dd\">Sintomas neuroglucopénicos: confusão, comportamento estranho, visão turva</td></tr>\n        <tr><td><span class=\"dn\">Nível 3 — Grave</span></td><td>Qualquer valor</td><td class=\"dd\">Incapacidade de auto-tratamento, convulsão, perda de consciência</td></tr>\n      </tbody></table>\n      <div class=\"slbl\" style=\"margin-top:12px\">Causas mais comuns</div>\n      <div class=\"nf-grid\">\n        <div class=\"nf-item\"><strong>Diabético tratado (mais comum)</strong>Insulina em excesso · Sulfonilureias · Refeição atrasada ou omitida · Exercício intenso · Álcool (inibe gliconeogénese)</div>\n        <div class=\"nf-item\"><strong>Não diabético</strong>Insulinoma · Insuficiência hepática · Sépsis · Insuficiência adrenal · Hipotiroidismo · Fármacos (quinino, pentamidina)</div>\n      </div>"
+    },
+    {
+      "id": "alg",
+      "label": "Algoritmo — Tratamento",
+      "html": "<div class=\"linha-block\">\n        <div class=\"linha-head\"><span class=\"linha-pill lp-1\">Doente consciente + via oral disponível</span></div>\n        <div class=\"cards-grid\">\n          <div class=\"drug-card star\"><div class=\"star-label\">Regra 15-15 — 1.ª linha</div>\n            <div class=\"drug-row\"><div><div class=\"drug-name\">15g de hidratos de carbono de absorção rápida</div></div></div>\n            <div class=\"drug-body\"><b>15g HC oral:</b> 3 comprimidos de glucose (Dextro-Energen®) · 150 mL de sumo fruta · 1 colher de sopa de açúcar. Aguardar 15 min e repetir glicemia. <b>Se ainda &lt;70 mg/dL → repetir.</b> Após resolução → refeição com HC complexos para evitar recidiva.</div>\n          </div>\n        </div>\n      </div>\n      <div class=\"rule\"></div>\n      <div class=\"linha-block\">\n        <div class=\"linha-head\"><span class=\"linha-pill lp-lp\" style=\"background:var(--red-bg);color:var(--red-text);border-color:var(--red-border)\">Doente inconsciente / sem via oral</span></div>\n        <div class=\"cards-grid\">\n          <div class=\"drug-card star\"><div class=\"star-label\">1.ª escolha — acesso IV disponível</div>\n            <div class=\"drug-row\"><div><div class=\"drug-name\">Glicose 50% IV</div><div class=\"drug-mol\">Glicose 50% Braun® seringa 50 mL</div></div></div>\n            <div class=\"drug-body\"><b>25 mL (12,5 g) de glicose 50% IV em bólus</b> lento. Repetir 10 mL/10 min se necessário. Depois iniciar SG 10% em perfusão para manutenção. Monitorizar glicemia a cada 15–30 min.</div>\n          </div>\n          <div class=\"drug-card star\"><div class=\"star-label\">Sem acesso IV — pré-hospitalar</div>\n            <div class=\"drug-row\"><div><div class=\"drug-name\">Glucagon IM</div><div class=\"drug-mol\">GlucaGen® HypoKit 1 mg · Baqsimi® nasal</div></div></div>\n            <div class=\"drug-body\"><b>Glucagon 1 mg IM</b> (face externa da coxa ou braço). Recuperação em 10–15 min. Alternativa: <b>Glucagon 3 mg intranasal</b> (Baqsimi® — novo, eficaz). Ineficaz em insuficiência hepática grave e alcoolismo (sem reservas glicogénio).</div>\n          </div>\n        </div>\n      </div>\n      <div class=\"rule\"></div>\n      <div class=\"linha-block\">\n        <div class=\"linha-head\"><span class=\"linha-pill lp-2\">Hipoglicemia por sulfonilureias — cuidado especial</span></div>\n        <div class=\"cards-grid\">\n          <div class=\"drug-card star\"><div class=\"star-label\">Vigilância prolongada obrigatória</div>\n            <div class=\"drug-row\"><div><div class=\"drug-name\">Carvão activado + Octreotido IV</div><div class=\"drug-mol\">Carvão activado Farmalabor® · Sandostatin® IV</div></div></div>\n            <div class=\"drug-body\">Sulfonilureias têm semivida longa — risco de recidiva até 24–48h. Se ingestão recente (&lt;2h): <b>Carvão activado 50 g PO.</b> <b>Octreotido 50 µg bólus IV + 25 µg/h perfusão × 12h</b> — inibe secreção de insulina. Internamento obrigatório para Glibenclamida e Glimepirida.</div>\n          </div>\n        </div>\n      </div>"
+    },
+    {
+      "id": "alarme",
+      "label": "Sinais de alarme",
+      "html": "<div class=\"alarm-list\">\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>Hipoglicemia grave recorrente → investigar insulinoma (jejum + pepetídeo C + insulina) → Endocrinologia</span></div>\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>Coma hipoglicémico → glicose 50% IV imediato → se sem resposta: excluir outras causas (AVC, epilepsia)</span></div>\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>Hipoglicemia por sulfonilureias → não dar alta após resolução → vigiar 24–48h (risco de recidiva)</span></div>\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>Glucagon ineficaz → desnutrição severa ou alcoolismo (sem reservas de glicogénio) → glicose IV exclusiva</span></div>\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>Insuficiência adrenal suspeita (hipoglicemia + hipotensão + hiponatremia) → hidrocortisona 100 mg IV urgente</span></div>\n      </div>"
+    }
+  ]
+}

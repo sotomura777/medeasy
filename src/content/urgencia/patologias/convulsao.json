@@ -1,0 +1,36 @@
+{
+  "id": "convulsao",
+  "titulo": "Crise Convulsiva / Estado de Mal",
+  "icone": "⚡",
+  "tags": [
+    {
+      "texto": "Neurologia",
+      "cor": "purple"
+    },
+    {
+      "texto": "Urgência — 5 min",
+      "cor": "red"
+    },
+    {
+      "texto": "Benzodiazepinas 1.ª linha",
+      "cor": "amber"
+    }
+  ],
+  "tabs": [
+    {
+      "id": "diag",
+      "label": "Diagnóstico",
+      "html": "<div class=\"alert alert-red\"><span class=\"alert-icon\">🚨</span><div class=\"alert-text\"><b>Estado de mal epilético (EME):</b> crise &gt;5 min ou crises repetidas sem recuperação entre elas. Tratar como emergência — iniciar benzodiazepina imediatamente.</div></div>\n      <div class=\"slbl\">Classificação das crises</div>\n      <div class=\"nf-grid\">\n        <div class=\"nf-item\"><strong>Focais (limitadas a 1 hemisfério)</strong>Com ou sem alteração de consciência · podem generalizar secundariamente</div>\n        <div class=\"nf-item\"><strong>Generalizadas</strong>Tónico-clónicas · Ausência (mais em crianças) · Atónicas · Mioclónicas</div>\n        <div class=\"nf-item\"><strong>EME convulsivo</strong>Duração &gt;5 min → tratar imediatamente. Definição clássica: &gt;30 min. Definição prática: &gt;5 min.</div>\n        <div class=\"nf-item\"><strong>EME não convulsivo</strong>Confusão persistente pós-ictal, nistagmo, mioclonias subtis → EEG urgente se não recupera consciência</div>\n      </div>\n      <div class=\"slbl\" style=\"margin-top:12px\">Causas — investigar sempre</div>\n      <div class=\"nf-grid\">\n        <div class=\"nf-item\"><strong>Epilepsia de base</strong>Níveis subterapêuticos de antiepilépticos (mais comum) · não adesão · triggers (febre, privação sono, álcool)</div>\n        <div class=\"nf-item\"><strong>Crise sintomática aguda</strong>Hipoglicemia (excluir primeiro!) · Distúrbios iónicos (Na, Ca, Mg) · Infeção SNC · AVC/hematoma · Fármacos/tóxicos (álcool, cocaína, privação BDZ) · Encefalopatia hepática</div>\n      </div>"
+    },
+    {
+      "id": "alg",
+      "label": "Algoritmo — Tratamento faseado",
+      "html": "<div class=\"linha-block\">\n        <div class=\"linha-head\"><span class=\"linha-pill lp-1\">Fase inicial (0–10 min) — ABC + Benzodiazepina</span></div>\n        <div class=\"cards-grid\">\n          <div class=\"drug-card star\"><div class=\"star-label\">ABC + corrigir hipoglicemia PRIMEIRO</div>\n            <div class=\"drug-row\"><div><div class=\"drug-name\">Via aérea + O2 + Glicemia + Acesso IV</div></div></div>\n            <div class=\"drug-body\">Permeabilizar via aérea. O2 12–15 L/min. <b>Glicemia capilar imediata</b> — se hipoglicemia: Glicose 50% 50 mL IV. 2 acessos vasculares. Tiamina 100 mg IV (alcoolismo/desnutrição). Monitorizar PA, FC, SpO2, ECG.</div>\n          </div>\n          <div class=\"drug-card star\"><div class=\"star-label\">1.ª linha — com acesso IV</div>\n            <div class=\"drug-row\"><div><div class=\"drug-name\">Lorazepam IV ou Diazepam IV</div><div class=\"drug-mol\">Lorazepam Generis® · Valium® 10 mg/2 mL</div></div></div>\n            <div class=\"drug-body\"><b>Lorazepam 0,1 mg/kg IV (máx 4 mg) a 2 mg/min</b> — preferido por duração de ação mais longa. Alternativa: <b>Diazepam 0,15 mg/kg IV (5–10 mg) a 5 mg/min</b> + fenitoína 18 mg/kg noutro acesso. Repetir dose se crise persistir após 5 min.</div>\n          </div>\n          <div class=\"drug-card star\"><div class=\"star-label\">1.ª linha — sem acesso IV</div>\n            <div class=\"drug-row\"><div><div class=\"drug-name\">Midazolam intranasal ou bucal</div><div class=\"drug-mol\">Buccolam® solução bucal · Midazolam Actavis®</div></div></div>\n            <div class=\"drug-body\"><b>Midazolam 10 mg intranasal</b> (5 mg em cada narina) ou <b>10 mg solução bucal.</b> Tão eficaz como diazepam IV em contexto pré-hospitalar. Alternativa: diazepam retal 10–20 mg.</div>\n          </div>\n        </div>\n      </div>\n      <div class=\"rule\"></div>\n      <div class=\"linha-block\">\n        <div class=\"linha-head\"><span class=\"linha-pill lp-2\">Estado de mal (10–30 min) — 2.ª linha</span><span class=\"linha-name\">Crise persistente após 2 doses de BDZ</span></div>\n        <div class=\"cards-grid\">\n          <div class=\"drug-card star\"><div class=\"star-label\">Opções equivalentes — escolher uma</div>\n            <div class=\"drug-row\"><div><div class=\"drug-name\">Levetiracetam IV · Valproato IV · Fenitoína IV</div><div class=\"drug-mol\">Keppra® IV · Depakene® IV · Fenitoína Generis® IV</div></div></div>\n            <div class=\"drug-body\"><b>Levetiracetam:</b> 500–2000 mg IV em 30–60 min → manutenção 1000–1500 mg 2×/dia (cada 12h). <b>Valproato:</b> 15 mg/kg IV em 15 min → 15–25 mg/kg/dia (evitar em hepatopatia). <b>Fenitoína:</b> 15–30 mg/kg IV a 50 mg/min em 100 mL SF (nunca em dextrose).</div>\n          </div>\n          <div class=\"drug-card\"><div class=\"drug-row\"><div><div class=\"drug-name\">Fenobarbital IV</div><div class=\"drug-mol\">Fenobarbital Labesfal® IV</div></div></div>\n            <div class=\"drug-body\"><b>20–30 mg/kg IV a 100 mg/min.</b> Eficaz mas mais sedação. Risco de depressão respiratória — ter disponível material de entubação.</div>\n          </div>\n        </div>\n      </div>\n      <div class=\"rule\"></div>\n      <div class=\"linha-block\">\n        <div class=\"linha-head\"><span class=\"linha-pill lp-lp\" style=\"background:var(--red-bg);color:var(--red-text);border-color:var(--red-border)\">EME refratário (&gt;60 min) — UCI + EOT + Anestesia</span></div>\n        <div class=\"cards-grid\">\n          <div class=\"drug-card star\"><div class=\"star-label\">EOT + 3.ª linha anestésica</div>\n            <div class=\"drug-row\"><div><div class=\"drug-name\">Propofol IV · Midazolam IV · Tiopental IV</div></div></div>\n            <div class=\"drug-body\">Transferir para UCI. EOT + ventilação mecânica. Monitorização EEG contínua. <b>Propofol 1–2 mg/kg bólus + perfusão 4–10 mg/kg/h IV</b> ou <b>Midazolam 0,2 mg/kg bólus + perfusão 0,1–0,5 mg/kg/h.</b></div>\n          </div>\n        </div>\n      </div>"
+    },
+    {
+      "id": "alarme",
+      "label": "Sinais de alarme",
+      "html": "<div class=\"alarm-list\">\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>Crise &gt;5 min → EME → iniciar benzodiazepina imediatamente sem esperar</span></div>\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>Não recupera consciência entre crises → EME não convulsivo → EEG urgente</span></div>\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>Primeira crise em adulto sem epilepsia conhecida → TC-CE urgente (excluir AVC, tumor, hematoma)</span></div>\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>Febre + crise = meningite até prova em contrário → PL + antibiótico urgente</span></div>\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>Crise em grávida → eclampsia → Sulfato Mg 4–6 g IV + obstetrícia urgente</span></div>\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>Hipoglicemia como causa de crise — exclusão obrigatória antes de qualquer antiepiléptico</span></div>\n      </div>"
+    }
+  ]
+}

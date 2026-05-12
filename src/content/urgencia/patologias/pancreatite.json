@@ -1,0 +1,36 @@
+{
+  "id": "pancreatite",
+  "titulo": "Pancreatite Aguda",
+  "icone": "🫄",
+  "tags": [
+    {
+      "texto": "Gastrenterologia",
+      "cor": "green"
+    },
+    {
+      "texto": "Medicina Interna",
+      "cor": "blue"
+    },
+    {
+      "texto": "Fluidoterapia intensiva",
+      "cor": "amber"
+    }
+  ],
+  "tabs": [
+    {
+      "id": "diag",
+      "label": "Diagnóstico / Gravidade",
+      "html": "<div class=\"slbl\">Critérios diagnósticos — 2 de 3</div>\n      <div class=\"nf-grid\">\n        <div class=\"nf-item\"><strong>1. Dor abdominal típica</strong>Dor epigástrica intensa, persistente, irradiação em \"faixa\" para as costas</div>\n        <div class=\"nf-item\"><strong>2. Amilase ou Lipase &gt;3× limite superior normal</strong>Lipase mais específica (persiste mais tempo)</div>\n        <div class=\"nf-item\"><strong>3. Achados imagiológicos compatíveis</strong>TC-abdominal com contraste (pancreatite intersticial vs necrótica)</div>\n      </div>\n      <div class=\"slbl\" style=\"margin-top:12px\">Score de Atlanta — gravidade</div>\n      <table class=\"drug-table\"><thead><tr><th>Gravidade</th><th>Características</th><th>Mortalidade</th></tr></thead><tbody>\n        <tr><td><span class=\"dn\">Ligeira</span></td><td>Sem falência orgânica · sem complicações locais</td><td class=\"dd\">&lt;1%</td></tr>\n        <tr><td><span class=\"dn\">Moderada</span></td><td>Falência orgânica transitória (&lt;48h) ou complicações locais</td><td class=\"dd\">~5%</td></tr>\n        <tr><td><span class=\"dn\">Grave</span></td><td>Falência orgânica persistente (&gt;48h)</td><td class=\"dd\">30–40%</td></tr>\n      </tbody></table>\n      <div class=\"slbl\" style=\"margin-top:12px\">Causas — as mais frequentes</div>\n      <div class=\"nf-grid\">\n        <div class=\"nf-item\"><strong>Litiásica (40–70%)</strong>Cálculos biliares → bloquear o canal de Wirsung. Ecografia abdominal urgente.</div>\n        <div class=\"nf-item\"><strong>Alcoólica (25–35%)</strong>Consumo crónico de álcool. Investigar outros focos (hepatite alcoólica).</div>\n        <div class=\"nf-item\"><strong>Outras</strong>Hipertrigliceridemia (&gt;1000 mg/dL) · CPRE · Fármacos (azatioprina, tiazidas) · Trauma · Idiopática</div>\n      </div>"
+    },
+    {
+      "id": "alg",
+      "label": "Algoritmo — Tratamento",
+      "html": "<div class=\"linha-block\">\n        <div class=\"linha-head\"><span class=\"linha-pill lp-1\">1.º — Fluidoterapia (todos)</span></div>\n        <div class=\"cards-grid\">\n          <div class=\"drug-card star\"><div class=\"star-label\">Pedra angular do tratamento — iniciar nas primeiras 24h</div>\n            <div class=\"drug-row\"><div><div class=\"drug-name\">Cristaloides IV agressivos</div><div class=\"drug-mol\">Lactato de Ringer · NaCl 0,9%</div></div></div>\n            <div class=\"drug-body\"><b>250–500 mL/h nas primeiras horas</b> (adaptar a comorbilidades). Preferir <b>Lactato de Ringer</b> (reduz inflamação vs NaCl). Ajuste posterior por hematócrito, ureia, creatinina, lactatos e diurese. <b>Objectivo:</b> diurese &gt;0,5 mL/kg/h · FC &lt;120 · PAM 65–85 mmHg.</div>\n          </div>\n        </div>\n      </div>\n      <div class=\"rule\"></div>\n      <div class=\"linha-block\">\n        <div class=\"linha-head\"><span class=\"linha-pill lp-2\">2.º — Analgesia</span></div>\n        <div class=\"cards-grid\">\n          <div class=\"drug-card star\"><div class=\"star-label\">1.ª linha — opioides</div>\n            <div class=\"drug-row\"><div><div class=\"drug-name\">Morfina IV / Petidina IM</div><div class=\"drug-mol\">Morfina Labesfal® IV · Petidina amp. IM</div></div></div>\n            <div class=\"drug-body\"><b>Morfina 2–4 mg IV / 4–6h</b> ou <b>Petidina 75–100 mg IM / 4–6h.</b> Opioides são a 1.ª linha no controlo da dor — não têm impacto negativo no outcome (mito do espasmo do Oddii com morfina está refutado). Paracetamol como adjuvante.</div>\n          </div>\n        </div>\n      </div>\n      <div class=\"rule\"></div>\n      <div class=\"linha-block\">\n        <div class=\"linha-head\"><span class=\"linha-pill lp-2\">3.º — Nutrição</span></div>\n        <div class=\"cards-grid\">\n          <div class=\"drug-card star\"><div class=\"star-label\">Via oral precoce — se tolerada</div>\n            <div class=\"drug-row\"><div><div class=\"drug-name\">Dieta oral precoce · Nutrição enteral se grave</div></div></div>\n            <div class=\"drug-body\"><b>Via oral até 24h</b> em pancreatite moderada se tolerado (não aguardar resolução da dor). <b>Nutrição enteral</b> (via SNG) preferida à parentérica se suporte nutricional necessário — reduz complicações infecciosas. NPT só se enteral impossível.</div>\n          </div>\n        </div>\n      </div>\n      <div class=\"alert alert-red\" style=\"margin-top:10px\"><span class=\"alert-icon\">⛔</span><div class=\"alert-text\"><b>NÃO usar antibiótico profilático na pancreatite aguda</b> (sem evidência de benefício e selecciona bactérias resistentes). Antibioterapia apenas se suspeita de necrose infectada ou infecção extra-pancreática documentada.</div></div>\n      <div class=\"alert alert-amber\" style=\"margin-top:8px\"><span class=\"alert-icon\">⚠️</span><div class=\"alert-text\"><b>Pancreatite litiásica + colangite:</b> CPRE em &lt;24h. <b>Pancreatite litiásica sem colangite:</b> colecistectomia laparoscópica antes da alta (prevenir recidiva).</div></div>"
+    },
+    {
+      "id": "alarme",
+      "label": "Sinais de alarme",
+      "html": "<div class=\"alarm-list\">\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>Falência orgânica persistente (&gt;48h) → pancreatite grave → UCI</span></div>\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>Febre + leucocitose persistente após 7–10 dias sem melhoria → suspeita de necrose infectada → PAAF guiada por TC + antibiótico (imipenem ou meropenem)</span></div>\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>Dor abdominal súbita com hemograma em queda → hemorragia retroperitoneal (sinal de Grey-Turner / Cullen) → urgência cirúrgica</span></div>\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>Hipertrigliceridemia &gt;1000 mg/dL como causa → heparinização IV + plasmaferese se grave</span></div>\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>Pseudo-quisto pancreático crescente + dor → drenagem endoscópica guiada por EUS se sintomático</span></div>\n      </div>"
+    }
+  ]
+}

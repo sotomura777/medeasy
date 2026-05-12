@@ -1,0 +1,36 @@
+{
+  "id": "hemorragia-digestiva",
+  "titulo": "Hemorragia Digestiva",
+  "icone": "🩸",
+  "tags": [
+    {
+      "texto": "Gastrenterologia",
+      "cor": "green"
+    },
+    {
+      "texto": "Urgência",
+      "cor": "red"
+    },
+    {
+      "texto": "EDA em 12–24h",
+      "cor": "amber"
+    }
+  ],
+  "tabs": [
+    {
+      "id": "diag",
+      "label": "Diagnóstico / Classificação",
+      "html": "<div class=\"slbl\">Classificação por localização</div>\n      <div class=\"nf-grid\">\n        <div class=\"nf-item\"><strong>Hemorragia digestiva alta (HDA)</strong>Acima do ângulo de Treitz. Causas: Úlcera péptica (50%) · Varizes esofágicas (5–40%) · Laceração Mallory-Weiss (5–10%) · Erosões · Neoplasia</div>\n        <div class=\"nf-item\"><strong>Hemorragia digestiva baixa (HDB)</strong>Abaixo do ângulo de Treitz. Causas: Hemorróidas · Diverticulose · Angiodisplasia · Neoplasia cólica · Colite</div>\n      </div>\n      <div class=\"slbl\" style=\"margin-top:12px\">Tipo de apresentação</div>\n      <div class=\"nf-grid\">\n        <div class=\"nf-item\"><strong>Hematemeses</strong>→ HDA · Vómito de sangue vivo (activo) ou \"borra de café\" (coágulo digerido)</div>\n        <div class=\"nf-item\"><strong>Melenas</strong>→ geralmente HDA · Fezes negras, pegajosas, fétidas (sangue &gt;14h no TGI)</div>\n        <div class=\"nf-item\"><strong>Hematoquezias</strong>→ geralmente HDB · Fezes com sangue vivo (excepção: HDA maciça)</div>\n      </div>\n      <div class=\"slbl\" style=\"margin-top:12px\">Score de Blatchford — estratificação risco HDA</div>\n      <div class=\"nf-grid\">\n        <div class=\"nf-item\"><strong>Score 0 → baixo risco</strong>Alta precoce · EDA ambulatório. Critérios: Hb≥13(H)/12(M) · Ureia&lt;6,5 · PAS≥110 · FC&lt;100 · Sem melena · Sem síncope · Sem hepatopatia ou IC</div>\n        <div class=\"nf-item\"><strong>Score ≥1 → internar + EDA</strong>EDA em &lt;24h (ou &lt;12h se instabilidade). Maior o score → maior risco de necessidade de intervenção</div>\n      </div>"
+    },
+    {
+      "id": "alg",
+      "label": "Algoritmo",
+      "html": "<div class=\"linha-block\">\n        <div class=\"linha-head\"><span class=\"linha-pill lp-lp\" style=\"background:var(--red-bg);color:var(--red-text);border-color:var(--red-border)\">Estabilização hemodinâmica — imediata</span></div>\n        <div class=\"cards-grid\">\n          <div class=\"drug-card star\"><div class=\"star-label\">ABC + 2 acessos + Tipagem</div>\n            <div class=\"drug-row\"><div><div class=\"drug-name\">Fluidoterapia IV + Transfusão</div><div class=\"drug-mol\">NaCl 0,9% / Lactato Ringer · GR concentrado</div></div></div>\n            <div class=\"drug-body\"><b>500 mL cristaloide em 30 min</b> se PAS &lt;90. 2 acessos periféricos calibrosos. Tipagem e cruzamento. <b>Transfusão GR se Hb &lt;7 g/dL</b> (alvo 7–9 g/dL). Se suspeita de varizes: alvo Hb 7–8 (transfusão excessiva piora hipertensão portal). Corrigir coagulopatia: INR &gt;2,5 → PFC; plaquetas &lt;50.000 → concentrado plaquetas.</div>\n          </div>\n        </div>\n      </div>\n      <div class=\"rule\"></div>\n      <div class=\"linha-block\">\n        <div class=\"linha-head\"><span class=\"linha-pill lp-2\">Úlcera péptica — pré-EDA</span></div>\n        <div class=\"cards-grid\">\n          <div class=\"drug-card star\"><div class=\"star-label\">IBP IV — reduz necessidade de hemostase endoscópica</div>\n            <div class=\"drug-row\"><div><div class=\"drug-name\">Pantoprazol IV</div><div class=\"drug-mol\">Pantoprazol Generis® 40 mg IV · Pantoloc® IV</div></div></div>\n            <div class=\"drug-body\"><b>80 mg IV bólus + perfusão 8 mg/h × 72h</b> após EDA com estigmas alto risco (vaso visível, coágulo aderente, hemorragia activa). Pré-EDA: 40–80 mg IV bólus. Reduz ressangramento e necessidade cirurgia.</div>\n          </div>\n          <div class=\"drug-card\"><div class=\"drug-row\"><div><div class=\"drug-name\">Eritromicina IV — melhora visibilidade na EDA</div><div class=\"drug-mol\">Eritromicina Labesfal® IV</div></div></div>\n            <div class=\"drug-body\"><b>250 mg IV em bólus 30–120 min antes da EDA.</b> Pró-cinético gástrico — promove esvaziamento do sangue do estômago melhorando visibilidade endoscópica.</div>\n          </div>\n        </div>\n      </div>\n      <div class=\"rule\"></div>\n      <div class=\"linha-block\">\n        <div class=\"linha-head\"><span class=\"linha-pill lp-2\">Varizes esofágicas — vasoconstrição esplâncnica</span></div>\n        <div class=\"cards-grid\">\n          <div class=\"drug-card star\"><div class=\"star-label\">Iniciar imediatamente na suspeita de varizes</div>\n            <div class=\"drug-row\"><div><div class=\"drug-name\">Terlipressina IV ou Octreotido IV</div><div class=\"drug-mol\">Glypressin® IV · Sandostatin® IV</div></div></div>\n            <div class=\"drug-body\"><b>Terlipressina 2 mg IV / 4h × 48h</b>, depois 1 mg / 4h até 5 dias. Alternativa: <b>Octreotido 50 µg bólus + 25–50 µg/h perfusão.</b> Reduz fluxo portal e controla hemorragia. Manter 5 dias após EDA. Após 5 dias: iniciar β-bloqueante não selectivo (Propranolol ou Carvedilol) + laqueação elástica.</div>\n          </div>\n          <div class=\"drug-card\"><div class=\"drug-row\"><div><div class=\"drug-name\">Antibioterapia profilática — varizes</div><div class=\"drug-mol\">Ceftriaxone Generis® IV</div></div></div>\n            <div class=\"drug-body\"><b>Ceftriaxone 1g IV / 24h × 7 dias</b> — profilaxia de infecção bacteriana (peritonite espontânea, sépsis) em cirrótico com HDA. Reduz mortalidade. Se ambulatório: Norfloxacina 400 mg 2×/dia (cada 12h).</div>\n          </div>\n        </div>\n      </div>"
+    },
+    {
+      "id": "alarme",
+      "label": "Sinais de alarme",
+      "html": "<div class=\"alarm-list\">\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>Instabilidade hemodinâmica persistente (PAS &lt;90 após fluidos) → UCI + EDA urgente (&lt;12h) + considerar TIPS se varizes</span></div>\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>Ressangramento após EDA → nova EDA + hemostase · se falha: arteriografia + embolização ou cirurgia</span></div>\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>HDA em anticoagulado: INR &gt;2,5 → PFC · Vit K 10 mg IV · Se NOAC: considerar antídoto (idarucizumab para dabigatrano · andexanet para anti-Xa)</span></div>\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>HDA em cirrótico → peritonite espontânea frequente → ascite + febre + dor abdominal → PL diagnóstica + ceftriaxone</span></div>\n        <div class=\"alarm-item\"><div class=\"adot\"></div><span>HDB com Hb em queda rápida sem causa identificada → angioTC abdominal para localização + arteriografia</span></div>\n      </div>"
+    }
+  ]
+}

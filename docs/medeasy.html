@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medeasy</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0F2340;--navy-mid:#1A3558;--navy-light:#E8EFF8;
+  --teal:#0E6B5A;--teal-mid:#128A72;--teal-light:#D4F0E8;
+  --amber:#B85C00;--amber-light:#FFF3E0;
+  --red:#8B1A1A;--red-light:#FDECEA;
+  --purple:#3B1A6B;--purple-light:#EDE9FF;
+  --green-ok:#1A5C1A;--green-bg:#E8F5E8;
+  --text:#1A2030;--text-soft:#4A5568;--text-muted:#8A9AB0;
+  --white:#FFFFFF;--page:#F2F6FB;--border:#DDE4EE;
+}
+
+/* ══════════════════════════ HOME ══════════════════════════ */
+body{font-family:'DM Sans',sans-serif;background:var(--page);color:var(--text);min-height:100vh}
+
+nav{background:var(--navy);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:200}
+.nav-brand{display:flex;align-items:center;gap:10px}
+.nav-logo{width:32px;height:32px;background:var(--teal-mid);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px}
+.nav-title{font-family:'Lora',serif;font-size:17px;color:white;font-weight:500;letter-spacing:-0.01em}
+.nav-sub{font-size:11px;color:rgba(255,255,255,.45);margin-top:1px}
+.nav-badge{font-size:11px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);padding:3px 10px;border-radius:20px;border:0.5px solid rgba(255,255,255,.15)}
+
+main{max-width:1000px;margin:0 auto;padding:2.5rem 2rem 4rem}
+
+.home-hero{margin-bottom:2.5rem}
+.home-hero h1{font-family:'Lora',serif;font-size:30px;color:var(--navy);font-weight:600;line-height:1.2;margin-bottom:.5rem}
+.home-hero p{font-size:14px;color:var(--text-soft);line-height:1.7;max-width:460px}
+.home-hero-line{width:44px;height:3px;background:var(--teal-mid);border-radius:2px;margin-bottom:1rem}
+
+.section-label{font-size:11px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:1rem}
+
+.module-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.module-card{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:1.5rem;cursor:pointer;transition:border-color .15s,transform .15s,box-shadow .15s;position:relative;overflow:hidden}
+.module-card:hover{border-color:var(--teal-mid);transform:translateY(-2px);box-shadow:0 8px 24px rgba(14,107,90,.1)}
+.module-card.available::after{content:'';position:absolute;top:0;right:0;width:4px;height:100%;background:var(--teal-mid);border-radius:0 18px 18px 0}
+.module-card.soon{opacity:.55;cursor:default}
+.module-card.soon:hover{transform:none;border-color:var(--border);box-shadow:none}
+.mc-emoji{font-size:34px;margin-bottom:12px;display:block}
+.mc-name{font-family:'Lora',serif;font-size:16px;font-weight:600;color:var(--navy);margin-bottom:5px}
+.mc-desc{font-size:12px;color:var(--text-soft);line-height:1.5;margin-bottom:12px}
+.mc-status{display:inline-block;font-size:10px;font-weight:500;padding:3px 10px;border-radius:20px}
+.mc-status.ok{background:var(--teal-light);color:var(--teal)}
+.mc-status.soon{background:var(--page);color:var(--text-muted);border:0.5px solid var(--border)}
+.mc-arrow{position:absolute;bottom:1.4rem;right:1.25rem;color:var(--teal-mid);font-size:20px;opacity:0;transition:opacity .15s}
+.module-card.available:hover .mc-arrow{opacity:1}
+
+/* ══════════════════════════ VIEWS ══════════════════════════ */
+.view{display:none!important}
+.view.active{display:block!important}
+
+.back-bar{display:flex;align-items:center;gap:12px;margin-bottom:1.75rem}
+.back-btn{display:flex;align-items:center;gap:6px;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:7px 14px;font-size:13px;color:var(--text-soft);cursor:pointer;transition:border-color .15s;font-family:'DM Sans',sans-serif}
+.back-btn:hover{border-color:var(--navy);color:var(--navy)}
+.breadcrumb{font-size:13px;color:var(--text-muted)}
+.breadcrumb span{color:var(--text-soft)}
+
+/* ══════════════════════════ URGÊNCIA ══════════════════════════ */
+#urg-view{font-family:'IBM Plex Sans',sans-serif}
+.urg-header{background:#1a1916;border-radius:14px;padding:18px 24px;margin-bottom:1.5rem;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.urg-title{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;color:#c8401a;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+.urg-sub{font-size:11px;color:#888;font-family:'IBM Plex Mono',monospace}
+.search-wrap{flex:1;min-width:200px;position:relative}
+.search-wrap svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#666;pointer-events:none}
+#urg-search{width:100%;background:#2a2926;border:1px solid #444;border-radius:6px;padding:9px 12px 9px 36px;font-family:'IBM Plex Sans',sans-serif;font-size:14px;color:#fff;outline:none;transition:border-color .15s}
+#urg-search::placeholder{color:#666}
+#urg-search:focus{border-color:#c8401a}
+.count-badge{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#666;white-space:nowrap}
+
+#urg-main{max-width:100%}
+.alpha-group{margin-bottom:4px}
+.alpha-label{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;color:#8a8880;letter-spacing:.1em;text-transform:uppercase;padding:12px 0 6px;border-bottom:1px solid #dddbd3;margin-bottom:8px}
+
+.ucard{background:#fff;border:1px solid #dddbd3;border-radius:10px;margin-bottom:8px;overflow:hidden;transition:box-shadow .15s}
+.ucard:hover{box-shadow:0 2px 12px rgba(0,0,0,.07)}
+.ucard.open{border-color:#c8c6bc}
+.ucard-header{display:flex;align-items:center;gap:14px;padding:16px 20px;cursor:pointer;user-select:none}
+.ucard-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;background:#f0efe9;border:1px solid #dddbd3}
+.ucard-meta{flex:1;min-width:0}
+.ucard-title{font-size:15px;font-weight:600;color:#1a1916;margin-bottom:4px}
+.ucard-tags{display:flex;gap:5px;flex-wrap:wrap}
+.utag{font-size:10px;font-family:'IBM Plex Mono',monospace;padding:2px 7px;border-radius:4px;letter-spacing:.05em}
+.utag-blue{background:#e8eef8;color:#1a4fa0;border:1px solid #b0c2e0}
+.utag-amber{background:#fdf3d8;color:#7a4e00;border:1px solid #e8c870}
+.utag-green{background:#e6f4eb;color:#1a5c30;border:1px solid #8ecba0}
+.utag-red{background:#fce8e8;color:#8c1a1a;border:1px solid #e0a0a0}
+.utag-purple{background:#ede9ff;color:#3b1a6b;border:1px solid #afa9ec}
+.ucard-chevron{color:#8a8880;transition:transform .25s;flex-shrink:0}
+.ucard.open .ucard-chevron{transform:rotate(180deg)}
+.ucard-body{display:none;border-top:1px solid #dddbd3;background:#fefefe}
+.ucard.open .ucard-body{display:block}
+
+.utabs{display:flex;gap:4px;padding:14px 18px 0;flex-wrap:wrap;border-bottom:1px solid #dddbd3}
+.utab-btn{padding:6px 14px;border-radius:8px 8px 0 0;font-size:12px;font-family:'IBM Plex Mono',monospace;cursor:pointer;border:1px solid transparent;background:transparent;color:#8a8880;transition:all .12s;margin-bottom:-1px;border-bottom:1px solid transparent}
+.utab-btn.active{background:#fefefe;color:#1a1916;border-color:#dddbd3;border-bottom-color:#fefefe;font-weight:500}
+.utab-pane{display:none;padding:20px}
+.utab-pane.active{display:block}
+
+.linha-block{margin-bottom:1.4rem}
+.linha-head{display:flex;align-items:center;gap:10px;margin-bottom:.8rem;flex-wrap:wrap}
+.linha-pill{font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;white-space:nowrap;font-family:'IBM Plex Mono',monospace}
+.lp-1{background:#e8eef8;color:#1a4fa0;border:1px solid #b0c2e0}
+.lp-2{background:#fdf3d8;color:#7a4e00;border:1px solid #e8c870}
+.lp-comb{background:#e6f4eb;color:#1a5c30;border:1px solid #8ecba0}
+.lp-lp{background:#ede9ff;color:#3b1a6b;border:1px solid #afa9ec}
+.lp-cir{background:#fce8e8;color:#8c1a1a;border:1px solid #e0a0a0}
+.lp-base{background:#d4f0e8;color:#0e6b5a;border:1px solid #6ecba8}
+.linha-name{font-size:13px;font-weight:500;color:#1a1916}
+
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:10px}
+.drug-card{background:#fff;border:1px solid #dddbd3;border-radius:10px;padding:.9rem 1rem}
+.drug-card.star{border:2px solid #0e6b5a}
+.star-label{display:inline-block;font-size:10px;background:#d4f0e8;color:#0e6b5a;padding:2px 9px;border-radius:20px;font-weight:500;font-family:'IBM Plex Mono',monospace;margin-bottom:8px}
+.drug-row{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:5px}
+.drug-name{font-size:14px;font-weight:600;color:#1a1916}
+.drug-mol{font-size:11px;color:#8a8880;margin-top:2px}
+.badges-col{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0;margin-left:8px}
+.sleep-tag{font-size:10px;font-weight:500;padding:2px 9px;border-radius:20px;white-space:nowrap;font-family:'IBM Plex Mono',monospace}
+.st-none{background:#e6f4eb;color:#1a5c30}
+.st-light{background:#fdf3d8;color:#7a4e00}
+.st-yes{background:#fce8e8;color:#8c1a1a}
+.wada-tag{font-size:10px;font-weight:500;padding:2px 9px;border-radius:20px;background:#e6f4eb;color:#1a5c30;font-family:'IBM Plex Mono',monospace}
+.drug-body{font-size:12px;color:#5a5850;line-height:1.6;margin-top:4px}
+.drug-body b{font-weight:500;color:#1a1916}
+
+.alert{border-radius:8px;padding:10px 13px;font-size:12px;line-height:1.6;margin-bottom:1rem;display:flex;gap:10px;align-items:flex-start}
+.alert-amber{background:#fdf3d8;color:#7a4e00;border:1px solid #e8c870}
+.alert-red{background:#fce8e8;color:#8c1a1a;border:1px solid #e0a0a0}
+.alert-green{background:#e6f4eb;color:#1a5c30;border:1px solid #8ecba0}
+.alert-icon{font-size:14px;flex-shrink:0;margin-top:1px}
+.alert-text b{font-weight:600}
+
+.legend-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:1rem}
+.leg{display:flex;align-items:center;gap:6px;font-size:11px;color:#5a5850;font-family:'IBM Plex Mono',monospace}
+.leg-dot{width:12px;height:12px;border-radius:3px}
+.rule{height:1px;background:#dddbd3;margin:1.2rem 0}
+.slbl{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:#8a8880;margin:14px 0 8px}
+.slbl:first-child{margin-top:0}
+
+.drug-table{width:100%;border-collapse:collapse;font-size:12.5px}
+.drug-table th{text-align:left;font-size:10px;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.08em;color:#8a8880;padding:0 8px 7px 0;border-bottom:1px solid #dddbd3}
+.drug-table td{padding:8px 8px 8px 0;border-bottom:1px solid #dddbd3;vertical-align:top;line-height:1.4}
+.drug-table tr:last-child td{border-bottom:none}
+.dn{font-weight:600;color:#1a1916}
+.db{color:#1a4fa0}
+.dd{color:#5a5850;font-size:12px}
+
+.nf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.nf-item{background:#f0efe9;border:1px solid #dddbd3;border-radius:8px;padding:10px 12px;font-size:12px;color:#5a5850;line-height:1.5}
+.nf-item strong{display:block;font-size:13px;color:#1a1916;font-weight:500;margin-bottom:3px}
+
+.alarm-list{display:flex;flex-direction:column}
+.alarm-item{display:flex;gap:8px;align-items:baseline;font-size:13px;color:#5a5850;padding:7px 0;border-bottom:1px solid #dddbd3}
+.alarm-item:last-child{border-bottom:none}
+.adot{min-width:6px;height:6px;background:#8c1a1a;border-radius:50%;margin-top:4px;flex-shrink:0}
+
+.empty{text-align:center;padding:60px 20px;color:#8a8880;font-family:'IBM Plex Mono',monospace;font-size:13px}
+
+/* abbrev */
+.abbrev-btn{position:fixed;bottom:20px;right:20px;z-index:1000;background:#c8401a;color:#fff;border:none;border-radius:50%;width:44px;height:44px;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.25);font-family:'IBM Plex Mono',monospace;transition:transform .15s;display:none}
+.abbrev-btn.show{display:flex;align-items:center;justify-content:center}
+.abbrev-btn:hover{transform:scale(1.1)}
+.abbrev-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:1001}
+.abbrev-overlay.open{display:block}
+.abbrev-panel{position:fixed;bottom:74px;right:20px;z-index:1002;background:#fff;border:1px solid #dddbd3;border-radius:12px;width:320px;max-height:70vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,.18);display:none}
+.abbrev-panel.open{display:block}
+.abbrev-header{padding:14px 16px 10px;border-bottom:1px solid #dddbd3;display:flex;align-items:center;justify-content:space-between}
+.abbrev-header h3{font-size:13px;font-weight:600;color:#1a1916;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.08em;margin:0}
+.abbrev-close{background:none;border:none;font-size:18px;cursor:pointer;color:#8a8880;line-height:1}
+.abbrev-search{padding:8px 12px;border-bottom:1px solid #dddbd3}
+.abbrev-search input{width:100%;border:1px solid #dddbd3;border-radius:6px;padding:6px 10px;font-size:12px;font-family:'IBM Plex Mono',monospace;background:#f0efe9;color:#1a1916;outline:none;box-sizing:border-box}
+.abbrev-search input:focus{border-color:#c8401a}
+.abbrev-section-title{font-size:10px;font-weight:600;color:#8a8880;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.1em;padding:10px 14px 4px;background:#f0efe9}
+.abbrev-row{display:flex;align-items:baseline;gap:10px;padding:6px 14px;border-bottom:1px solid #dddbd3}
+.abbrev-row:last-child{border-bottom:none}
+.abbrev-key{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;color:#c8401a;min-width:60px;flex-shrink:0}
+.abbrev-val{font-size:12px;color:#5a5850;line-height:1.4}
+.abbrev-row.hidden,.abbrev-item.hidden{display:none}
+
+/* ══════════════════════════ NOTAS ══════════════════════════ */
+#notas-view{font-family:'DM Sans',sans-serif}
+.notas-hero{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem 1.75rem;margin-bottom:1.5rem}
+.notas-hero-line{width:36px;height:2px;background:var(--teal-mid);border-radius:2px;margin-bottom:.75rem}
+.notas-hero h2{font-family:'Lora',serif;font-size:22px;font-weight:600;color:var(--navy);margin-bottom:.3rem}
+.notas-hero p{font-size:13px;color:var(--text-soft);line-height:1.6}
+
+.cat-card{background:var(--white);border:1px solid var(--border);border-radius:18px;overflow:hidden;margin-bottom:10px;transition:box-shadow .2s}
+.cat-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.07)}
+.cat-header{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;cursor:pointer;user-select:none;gap:1rem}
+.cat-header-left{display:flex;align-items:center;gap:12px}
+.cat-icon-wrap{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.cat-title-text{font-family:'Lora',serif;font-size:17px;color:var(--text);letter-spacing:-.01em}
+.cat-subtitle-text{font-size:12px;color:var(--text-muted);margin-top:2px}
+.cat-meta{display:flex;align-items:center;gap:10px}
+.cat-count{font-size:12px;color:var(--text-muted);background:var(--page);padding:3px 10px;border-radius:20px}
+.cat-chevron{font-size:18px;color:var(--text-muted);transition:transform .2s;flex-shrink:0}
+.cat-card.open .cat-chevron{transform:rotate(180deg)}
+.cat-body{display:none;padding:0 1.5rem 1.5rem;border-top:1px solid var(--border)}
+.cat-card.open .cat-body{display:block}
+
+.sub-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:1.25rem}
+.sub-card{background:var(--page);border:1px solid var(--border);border-radius:14px;padding:1.1rem;cursor:pointer;transition:all .17s;display:flex;flex-direction:column;gap:8px;position:relative}
+.sub-card:hover{background:var(--white);box-shadow:0 4px 16px rgba(0,0,0,.08);transform:translateY(-2px);border-color:transparent}
+.sub-card-icon{font-size:22px}
+.sub-card-title{font-family:'Lora',serif;font-size:14px;color:var(--text);line-height:1.3}
+.sub-card-desc{font-size:12px;color:var(--text-muted);line-height:1.4}
+.sub-card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:8px;border-top:1px solid var(--border);font-size:11px;color:var(--text-muted)}
+.sub-card-add{background:transparent;border:1.5px dashed var(--border);border-radius:14px;padding:1.1rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:120px;color:var(--text-muted);font-size:12px;cursor:pointer;transition:all .15s}
+.sub-card-add:hover{border-color:var(--teal-mid);color:var(--teal-mid);background:var(--teal-light)}
+.sub-card-add-icon{font-size:22px}
+
+.add-cat-btn{background:var(--white);border:1.5px dashed var(--border);border-radius:18px;padding:1rem 1.5rem;display:flex;align-items:center;gap:10px;cursor:pointer;transition:all .15s;color:var(--text-muted);font-size:14px;font-family:'DM Sans',sans-serif;margin-top:4px}
+.add-cat-btn:hover{border-color:var(--teal-mid);color:var(--teal-mid);background:var(--teal-light)}
+
+/* modal overlay */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(26,26,24,.5);z-index:500;align-items:center;justify-content:center;padding:1.5rem}
+.modal-overlay.open{display:flex}
+.modal{background:var(--white);border-radius:18px;width:100%;max-width:500px;max-height:90vh;overflow-y:auto;padding:2rem;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.modal-hd{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.5rem}
+.modal-title{font-family:'Lora',serif;font-size:20px;color:var(--navy)}
+.modal-close{font-size:22px;cursor:pointer;color:var(--text-muted);background:none;border:none;line-height:1}
+.form-group{margin-bottom:1rem}
+.flabel{font-size:12px;font-weight:500;color:var(--text-soft);display:block;margin-bottom:5px}
+.finput{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13px;background:var(--page);color:var(--text);outline:none;transition:border-color .15s}
+.finput:focus{border-color:var(--teal-mid)}
+textarea.finput{resize:vertical;min-height:70px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mfooter{display:flex;justify-content:space-between;align-items:center;margin-top:1.5rem}
+.mfooter-right{display:flex;gap:8px}
+.mbtn{display:inline-flex;align-items:center;gap:5px;padding:8px 16px;border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .15s;border:1px solid var(--border);background:var(--white);color:var(--text)}
+.mbtn:hover{background:var(--page)}
+.mbtn-primary{background:var(--teal-mid);color:white;border-color:var(--teal-mid)}
+.mbtn-primary:hover{background:var(--teal)}
+.mbtn-del{color:var(--red);border-color:rgba(139,26,26,.2)}
+
+/* nota detail overlay */
+.nota-detail-overlay{display:none;position:fixed;inset:0;background:rgba(26,26,24,.5);z-index:500;align-items:flex-start;justify-content:center;padding:2rem 1rem;overflow-y:auto}
+.nota-detail-overlay.open{display:flex}
+.nota-detail{background:var(--white);border-radius:18px;width:100%;max-width:700px;margin:auto;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.nd-hero{padding:1.5rem 2rem;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
+.nd-icon{font-size:30px;margin-bottom:6px}
+.nd-title{font-family:'Lora',serif;font-size:20px;color:var(--navy);margin-bottom:4px}
+.nd-desc{font-size:13px;color:var(--text-soft);line-height:1.6}
+.nd-actions{display:flex;gap:6px;flex-shrink:0}
+.nd-body{padding:1.5rem 2rem}
+.nd-label{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.6rem}
+.nd-text{font-size:14px;color:var(--text-soft);line-height:1.7;white-space:pre-line;background:var(--page);border-radius:10px;padding:1rem;border-left:3px solid var(--teal-light)}
+
+/* antibio placeholder */
+#antibio-view .placeholder-block{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:3rem;text-align:center}
+#antibio-view .placeholder-icon{font-size:48px;margin-bottom:1rem;display:block}
+#antibio-view .placeholder-title{font-family:'Lora',serif;font-size:20px;color:var(--navy);margin-bottom:.5rem}
+#antibio-view .placeholder-desc{font-size:13px;color:var(--text-soft);line-height:1.6}
+
+@media(max-width:600px){.cards-grid{grid-template-columns:1fr}.nf-grid{grid-template-columns:1fr}.module-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">⚕</div>
+    <div>
+      <div class="nav-title">Medeasy</div>
+      <div class="nav-sub">Referência clínica — SPMD 2025/2026</div>
+    </div>
+  </div>
+  <span class="nav-badge" id="nav-badge">Início</span>
+</nav>
+
+<!-- ═══ HOME ═══ -->
+<div id="home-view">
+  <main>
+    <div class="home-hero">
+      <div class="home-hero-line"></div>
+      <h1>Referência clínica<br>rápida e organizada</h1>
+      <p>Protocolos terapêuticos, urgência, antibioterapia e as tuas notas — tudo num só lugar.</p>
+    </div>
+    <div class="section-label">Módulos disponíveis</div>
+    <div class="module-grid">
+      <div class="module-card available" onclick="openView('urg')">
+        <span class="mc-emoji">🚨</span>
+        <div class="mc-name">Urgência</div>
+        <div class="mc-desc">Protocolos de tratamento por patologia com linhas terapêuticas, fármacos e sinais de alarme</div>
+        <span class="mc-status ok">Disponível</span>
+        <span class="mc-arrow">→</span>
+      </div>
+      <div class="module-card available" onclick="openView('antibio')">
+        <span class="mc-emoji">💊</span>
+        <div class="mc-name">Antibioterapia</div>
+        <div class="mc-desc">Guia de antibióticos por infecção, espectro e contexto clínico</div>
+        <span class="mc-status ok">Disponível</span>
+        <span class="mc-arrow">→</span>
+      </div>
+      <div class="module-card available" onclick="openView('notas')">
+        <span class="mc-emoji">📝</span>
+        <div class="mc-name">Notas & Dívidas</div>
+        <div class="mc-desc">As tuas notas por especialidade — adiciona, edita e guarda tudo localmente</div>
+        <span class="mc-status ok">Disponível</span>
+        <span class="mc-arrow">→</span>
+      </div>
+      <div class="module-card soon">
+        <span class="mc-emoji">🩺</span>
+        <div class="mc-name">Sintomas</div>
+        <div class="mc-desc">Abordagem por sintoma — diagnóstico diferencial e orientação</div>
+        <span class="mc-status soon">Em breve</span>
+      </div>
+      <div class="module-card soon">
+        <span class="mc-emoji">🧠</span>
+        <div class="mc-name">Neurologia</div>
+        <div class="mc-desc">Protocolos neurológicos — em preparação</div>
+        <span class="mc-status soon">Em breve</span>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- ═══ URGÊNCIA ═══ -->
+<div id="urg-view" class="view">
+  <main>
+    <div class="back-bar">
+      <button class="back-btn" onclick="goHome()">← Voltar</button>
+      <span class="breadcrumb">Início / <span>Urgência</span></span>
+    </div>
+    <div class="urg-header">
+      <div>
+        <div class="urg-title">⚕ Tratamento — Urgência</div>
+        <div class="urg-sub">Protocolos por patologia · Portugal</div>
+      </div>
+      <div class="search-wrap">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="urg-search" placeholder="Pesquisar patologia..." autocomplete="off" oninput="filterUrgCards()">
+      </div>
+      <span class="count-badge" id="urg-count-badge"></span>
+    </div>
+    <div id="urg-main"></div>
+  </main>
+</div>
+
+<!-- ═══ ANTIBIOTERAPIA (placeholder) ═══ -->
+<div id="antibio-view" class="view">
+  <main>
+    <div class="back-bar">
+      <button class="back-btn" onclick="goHome()">← Voltar</button>
+      <span class="breadcrumb">Início / <span>Antibioterapia</span></span>
+    </div>
+    <div class="placeholder-block">
+      <span class="placeholder-icon">💊</span>
+      <div class="placeholder-title">Antibioterapia</div>
+      <div class="placeholder-desc">Este módulo será integrado em breve com o guia de antibióticos por infecção, espectro e contexto clínico.</div>
+    </div>
+  </main>
+</div>
+
+<!-- ═══ NOTAS ═══ -->
+<div id="notas-view" class="view">
+  <main>
+    <div class="back-bar">
+      <button class="back-btn" onclick="goHome()">← Voltar</button>
+      <span class="breadcrumb">Início / <span>Notas & Dívidas</span></span>
+    </div>
+    <div class="notas-hero">
+      <div class="notas-hero-line"></div>
+      <h2>Notas & Dívidas</h2>
+      <p>As tuas notas por especialidade. Tudo guardado localmente no teu dispositivo.</p>
+    </div>
+    <div id="notas-page"></div>
+    <button class="add-cat-btn" onclick="openCatModal()">
+      <span style="font-size:20px">＋</span> Adicionar especialidade
+    </button>
+  </main>
+</div>
+
+<!-- ═══ ABBREV PANEL ═══ -->
+<button class="abbrev-btn" id="abbrev-btn" onclick="toggleAbbrev()" title="Abreviaturas">Abr</button>
+<div class="abbrev-overlay" id="abbrev-overlay" onclick="closeAbbrev()"></div>
+<div class="abbrev-panel" id="abbrev-panel">
+  <div class="abbrev-header">
+    <h3>Abreviaturas</h3>
+    <button class="abbrev-close" onclick="closeAbbrev()">✕</button>
+  </div>
+  <div class="abbrev-search"><input type="text" id="abbrev-input" placeholder="Pesquisar abreviatura..." oninput="filterAbbrev(this.value)"></div>
+  <div class="abbrev-section-title abbrev-item" data-search="vias administração">Vias de administração</div>
+  <div class="abbrev-row abbrev-item" data-search="po per os oral boca"><span class="abbrev-key">PO</span><span class="abbrev-val">Per os — via oral (comprimido, cápsula, xarope)</span></div>
+  <div class="abbrev-row abbrev-item" data-search="iv intravenoso veia"><span class="abbrev-key">IV</span><span class="abbrev-val">Intravenoso — administrado numa veia</span></div>
+  <div class="abbrev-row abbrev-item" data-search="im intramuscular músculo"><span class="abbrev-key">IM</span><span class="abbrev-val">Intramuscular — injecção no músculo</span></div>
+  <div class="abbrev-row abbrev-item" data-search="sc subcutâneo pele"><span class="abbrev-key">SC</span><span class="abbrev-val">Subcutâneo — injecção sob a pele</span></div>
+  <div class="abbrev-row abbrev-item" data-search="sl sublingual língua"><span class="abbrev-key">SL</span><span class="abbrev-val">Sublingual — debaixo da língua</span></div>
+  <div class="abbrev-row abbrev-item" data-search="inalado inalação aerossol"><span class="abbrev-key">Inal.</span><span class="abbrev-val">Inalado — por inalação (aerossol, nebulização)</span></div>
+  <div class="abbrev-section-title abbrev-item" data-search="posologia frequência doses">Posologia e frequência</div>
+  <div class="abbrev-row abbrev-item" data-search="sos em necessidade"><span class="abbrev-key">SOS</span><span class="abbrev-val">Em caso de necessidade (pro re nata — PRN)</span></div>
+  <div class="abbrev-row abbrev-item" data-search="mg miligramas dose"><span class="abbrev-key">mg / mcg / UI</span><span class="abbrev-val">Miligramas / Microgramas / Unidades Internacionais</span></div>
+  <div class="abbrev-section-title abbrev-item" data-search="análises laboratorio">Análises e laboratório</div>
+  <div class="abbrev-row abbrev-item" data-search="pcr proteína c reactiva inflamação"><span class="abbrev-key">PCR</span><span class="abbrev-val">Proteína C Reactiva — marcador de inflamação/infecção</span></div>
+  <div class="abbrev-row abbrev-item" data-search="inr coagulação varfarina"><span class="abbrev-key">INR</span><span class="abbrev-val">International Normalized Ratio — monitorização da anticoagulação oral</span></div>
+  <div class="abbrev-row abbrev-item" data-search="tgo tgp transaminases fígado hepático alt ast"><span class="abbrev-key">TGO / TGP</span><span class="abbrev-val">Transaminases hepáticas (AST / ALT) — avaliação do fígado</span></div>
+  <div class="abbrev-section-title abbrev-item" data-search="sinais vitais parâmetros">Sinais vitais</div>
+  <div class="abbrev-row abbrev-item" data-search="pa tensão arterial pressão"><span class="abbrev-key">PA / PAS / PAD</span><span class="abbrev-val">Pressão Arterial / Sistólica / Diastólica (mmHg)</span></div>
+  <div class="abbrev-row abbrev-item" data-search="fc frequência cardíaca pulsações"><span class="abbrev-key">FC</span><span class="abbrev-val">Frequência Cardíaca — batimentos por minuto (bpm)</span></div>
+  <div class="abbrev-row abbrev-item" data-search="spo2 saturação oxigénio oximetria"><span class="abbrev-key">SpO2</span><span class="abbrev-val">Saturação periférica de oxigénio — oximetria de pulso (%)</span></div>
+  <div class="abbrev-section-title abbrev-item" data-search="fármacos classes terapêuticas">Classes de fármacos</div>
+  <div class="abbrev-row abbrev-item" data-search="aine anti-inflamatório não esteroide ibuprofeno"><span class="abbrev-key">AINE</span><span class="abbrev-val">Anti-Inflamatório Não Esteroide (ex: ibuprofeno, naproxeno, diclofenac)</span></div>
+  <div class="abbrev-row abbrev-item" data-search="ibp inibidor bomba protões omeprazol"><span class="abbrev-key">IBP</span><span class="abbrev-val">Inibidor da Bomba de Protões (ex: omeprazol, pantoprazol)</span></div>
+  <div class="abbrev-row abbrev-item" data-search="hbpm heparina baixo peso molecular enoxaparina"><span class="abbrev-key">HBPM</span><span class="abbrev-val">Heparina de Baixo Peso Molecular (ex: enoxaparina/Clexane®)</span></div>
+  <div class="abbrev-row abbrev-item" data-search="noac anticoagulante oral apixabano rivaroxabano"><span class="abbrev-key">NOAC / DOAC</span><span class="abbrev-val">Anticoagulante Oral Directo (ex: apixabano, rivaroxabano, dabigatrano)</span></div>
+  <div class="abbrev-row abbrev-item" data-search="ics corticoide inalado budesonida fluticasona"><span class="abbrev-key">ICS</span><span class="abbrev-val">Corticosteróide Inalado (ex: budesonida, fluticasona)</span></div>
+  <div class="abbrev-row abbrev-item" data-search="saba broncodilatador curta duração salbutamol"><span class="abbrev-key">SABA</span><span class="abbrev-val">Beta-2 agonista de curta duração inalado (ex: salbutamol/Ventolin®)</span></div>
+  <div class="abbrev-section-title abbrev-item" data-search="patologias condições diagnósticos">Patologias e condições</div>
+  <div class="abbrev-row abbrev-item" data-search="avc acidente vascular cerebral isquémico"><span class="abbrev-key">AVC</span><span class="abbrev-val">Acidente Vascular Cerebral (isquémico ou hemorrágico)</span></div>
+  <div class="abbrev-row abbrev-item" data-search="eam enfarte agudo miocardio infarto coração"><span class="abbrev-key">EAM</span><span class="abbrev-val">Enfarte Agudo do Miocárdio</span></div>
+  <div class="abbrev-row abbrev-item" data-search="fa fibrilhação auricular arritmia coração"><span class="abbrev-key">FA</span><span class="abbrev-val">Fibrilhação Auricular</span></div>
+  <div class="abbrev-row abbrev-item" data-search="tep tromboembolismo pulmonar coágulo pulmão"><span class="abbrev-key">TEP</span><span class="abbrev-val">Tromboembolismo Pulmonar</span></div>
+  <div class="abbrev-row abbrev-item" data-search="itu infecção trato urinário cistite"><span class="abbrev-key">ITU</span><span class="abbrev-val">Infeção do Trato Urinário (cistite, pielonefrite)</span></div>
+  <div class="abbrev-row abbrev-item" data-search="dpoc doença pulmonar obstrutiva crónica"><span class="abbrev-key">DPOC</span><span class="abbrev-val">Doença Pulmonar Obstrutiva Crónica (enfisema + bronquite crónica)</span></div>
+  <div class="abbrev-row abbrev-item" data-search="hta hipertensão arterial tensão alta"><span class="abbrev-key">HTA</span><span class="abbrev-val">Hipertensão Arterial</span></div>
+  <div class="abbrev-row abbrev-item" data-search="dm diabetes mellitus açúcar insulina"><span class="abbrev-key">DM</span><span class="abbrev-val">Diabetes Mellitus (tipo 1 ou tipo 2)</span></div>
+  <div class="abbrev-row abbrev-item" data-search="frax osteoporose fractura risco"><span class="abbrev-key">FRAX®</span><span class="abbrev-val">Fracture Risk Assessment Tool — risco de fractura a 10 anos</span></div>
+  <div class="abbrev-row abbrev-item" data-search="dexa densitometria óssea osteoporose"><span class="abbrev-key">DEXA</span><span class="abbrev-val">Densitometria Óssea por Absorção de Raios X — avaliação da osteoporose</span></div>
+  <div class="abbrev-section-title abbrev-item" data-search="procedimentos técnicas intervenções">Procedimentos</div>
+  <div class="abbrev-row abbrev-item" data-search="rcp reanimação cardiopulmonar manobras"><span class="abbrev-key">RCP</span><span class="abbrev-val">Reanimação CardioPulmonar</span></div>
+  <div class="abbrev-row abbrev-item" data-search="vni ventilação não invasiva cpap bipap"><span class="abbrev-key">VNI</span><span class="abbrev-val">Ventilação Não Invasiva (CPAP, BiPAP) — ventilação por máscara</span></div>
+  <div class="abbrev-row abbrev-item" data-search="eot entubação orotraqueal ventilação mecânica"><span class="abbrev-key">EOT</span><span class="abbrev-val">Entubação OroTraqueal — colocação de tubo na traqueia para ventilação mecânica</span></div>
+</div>
+
+<!-- ═══ MODAL: Categoria ═══ -->
+<div class="modal-overlay" id="cat-modal-overlay" onclick="closeCatModalIf(event)">
+  <div class="modal">
+    <div class="modal-hd">
+      <div class="modal-title" id="cat-modal-title">Nova especialidade</div>
+      <button class="modal-close" onclick="closeCatModal()">✕</button>
+    </div>
+    <div class="form-group"><label class="flabel">Nome da especialidade</label><input type="text" id="cat-nome" class="finput" placeholder="ex: Cardiologia, Pneumologia..."></div>
+    <div class="frow">
+      <div class="form-group"><label class="flabel">Emoji / ícone</label><input type="text" id="cat-emoji" class="finput" placeholder="🫀" maxlength="4"></div>
+      <div class="form-group"><label class="flabel">Subtítulo (opcional)</label><input type="text" id="cat-sub" class="finput" placeholder="ex: Temas a rever"></div>
+    </div>
+    <div class="mfooter">
+      <button class="mbtn mbtn-del" id="cat-del-btn" style="display:none" onclick="deleteCat()">🗑 Remover</button>
+      <div class="mfooter-right">
+        <button class="mbtn" onclick="closeCatModal()">Cancelar</button>
+        <button class="mbtn mbtn-primary" onclick="saveCat()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MODAL: Nota ═══ -->
+<div class="modal-overlay" id="nota-modal-overlay" onclick="closeNotaModalIf(event)">
+  <div class="modal">
+    <div class="modal-hd">
+      <div class="modal-title" id="nota-modal-title">Nova nota</div>
+      <button class="modal-close" onclick="closeNotaModal()">✕</button>
+    </div>
+    <div class="form-group"><label class="flabel">Título</label><input type="text" id="nota-nome" class="finput" placeholder="ex: FA paroxística, Score CHA2DS2..."></div>
+    <div class="form-group"><label class="flabel">Tag / categoria</label><input type="text" id="nota-tag" class="finput" placeholder="ex: Dívida, Referência..."></div>
+    <div class="form-group"><label class="flabel">Conteúdo</label><textarea id="nota-conteudo" class="finput" placeholder="Escreve a nota, dívida ou referência aqui..."></textarea></div>
+    <div class="mfooter">
+      <button class="mbtn mbtn-del" id="nota-del-btn" style="display:none" onclick="deleteNota()">🗑 Remover</button>
+      <div class="mfooter-right">
+        <button class="mbtn" onclick="closeNotaModal()">Cancelar</button>
+        <button class="mbtn mbtn-primary" onclick="saveNota()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ DETALHE NOTA ═══ -->
+<div class="nota-detail-overlay" id="nota-detail-overlay" onclick="closeNotaDetailIf(event)">
+  <div class="nota-detail" id="nota-detail-inner"></div>
+</div>
+
+<script>
+/* ══════════════════════════════════════════
+   URGÊNCIA — dados (3 patologias)
+══════════════════════════════════════════ */
+const patologias = [
+{
+  id:"espasmo-muscular",titulo:"Espasmo muscular e dor muscular",icone:"💪",
+  tags:[{texto:"Musculoesquelético",cor:"blue"},{texto:"AINEs",cor:"amber"},{texto:"Relaxantes musculares",cor:"green"}],
+  tabs:[
+    {id:"alg",label:"Algoritmo",html:`
+      <div class="alert alert-amber"><span class="alert-icon">⚠️</span><div class="alert-text"><b>Atenção ao tipo de dor:</b> Se há componente inflamatório — AINE é mais eficaz que paracetamol isolado. Se há espasmo muscular evidente — associar relaxante muscular de curta duração. Os relaxantes musculares <b>não substituem</b> a analgesia; são sempre adjuvantes.</div></div>
+      <div class="legend-row">
+        <div class="leg"><div class="leg-dot" style="background:var(--blue-bg);border:1px solid var(--blue-border)"></div>1.ª linha</div>
+        <div class="leg"><div class="leg-dot" style="background:var(--amber-bg);border:1px solid var(--amber-border)"></div>Adjuvante / 2.ª linha</div>
+        <div class="leg"><div class="leg-dot" style="background:var(--red-bg);border:1px solid var(--red-border)"></div>Refratário / especialidade</div>
+      </div>
+      <div class="rule"></div>
+      <div class="linha-block">
+        <div class="linha-head"><span class="linha-pill lp-base">Base — sempre</span><span class="linha-name">Medidas não farmacológicas</span></div>
+        <div class="cards-grid">
+          <div class="drug-card star"><div class="star-label">Fase aguda — primeiras 48h</div><div class="drug-row"><div><div class="drug-name">Frio local</div><div class="drug-mol">crioterapia</div></div></div><div class="drug-body">Gelo em pano — <b>10–15 min, 3–4×dia.</b> Reduz inflamação e dor. Não aplicar directamente na pele.</div></div>
+          <div class="drug-card star"><div class="star-label">Fase subaguda / crónica</div><div class="drug-row"><div><div class="drug-name">Calor local</div><div class="drug-mol">termoterapia</div></div></div><div class="drug-body">Compressas quentes — <b>15–20 min, 3×dia.</b> Reduz espasmo e rigidez muscular.</div></div>
+          <div class="drug-card"><div class="drug-row"><div><div class="drug-name">Repouso relativo + alongamento</div><div class="drug-mol">mobilidade suave preferível ao repouso absoluto</div></div></div><div class="drug-body">Evitar actividade que agrave. Alongamento suave após fase aguda. Fisioterapia se persistir &gt;1–2 semanas (TENS, massagem, ultrassonografia).</div></div>
+        </div>
+      </div>
+      <div class="rule"></div>
+      <div class="linha-block">
+        <div class="linha-head"><span class="linha-pill lp-1">1.ª linha</span><span class="linha-name">Analgesia simples — dor leve a moderada</span></div>
+        <div class="cards-grid">
+          <div class="drug-card star"><div class="star-label">1.ª escolha — preferir se contraindicação a AINEs</div><div class="drug-row"><div><div class="drug-name">Ben-u-ron® / Panadol®</div><div class="drug-mol">paracetamol 500 mg / 1000 mg</div></div><div class="badges-col"><span class="sleep-tag st-none">Sem sedação</span><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>500–1000 mg / 6–8h · máx. 4 g/dia</b> (3 g/dia em idosos ou doença hepática). Sem efeito anti-inflamatório. Preferir em grávidas, insuficiência renal, úlcera ou idosos.</div></div>
+        </div>
+      </div>
+      <div class="rule"></div>
+      <div class="linha-block">
+        <div class="linha-head"><span class="linha-pill lp-1">1.ª linha alternativa</span><span class="linha-name">AINEs — dor com componente inflamatório</span></div>
+        <div class="cards-grid">
+          <div class="drug-card star"><div class="star-label">Melhor perfil eficácia / segurança GI</div><div class="drug-row"><div><div class="drug-name">Brufen® / Nurofen®</div><div class="drug-mol">ibuprofeno 400 mg / 600 mg</div></div><div class="badges-col"><span class="sleep-tag st-none">Sem sedação</span><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>400–600 mg / 8h · máx. 2,4 g/dia.</b> Tomar com alimento. Menor risco cardiovascular vs. diclofenac.</div></div>
+          <div class="drug-card"><div class="drug-row"><div><div class="drug-name">Voltaren® / Voltaren Emulgel®</div><div class="drug-mol">diclofenac 50 mg / 75 mg / gel tópico</div></div><div class="badges-col"><span class="sleep-tag st-none">Sem sedação</span><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>50 mg / 8–12h ou 75 mg / 12h.</b> Gel tópico: 2–4 g / área, 3×dia — menos efeitos sistémicos, útil em dor localizada.</div></div>
+          <div class="drug-card"><div class="drug-row"><div><div class="drug-name">Naprosyn® / Synflex®</div><div class="drug-mol">naproxeno 250 mg / 500 mg</div></div><div class="badges-col"><span class="sleep-tag st-none">Sem sedação</span><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>250–500 mg / 12h · máx. 1,25 g/dia.</b> Ação prolongada. Perfil cardiovascular favorável.</div></div>
+          <div class="drug-card"><div class="drug-row"><div><div class="drug-name">Mobic® / Meloxicam Generis®</div><div class="drug-mol">meloxicam 7,5 mg / 15 mg</div></div><div class="badges-col"><span class="sleep-tag st-none">Sem sedação</span><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>7,5–15 mg / 24h.</b> Inibidor preferencial COX-2 — menor risco GI. Toma única diária.</div></div>
+          <div class="drug-card"><div class="drug-row"><div><div class="drug-name">Arcoxia®</div><div class="drug-mol">etoricoxib 60 mg / 90 mg</div></div><div class="badges-col"><span class="sleep-tag st-none">Sem sedação</span><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>60–90 mg / 24h.</b> COX-2 selectivo — menor risco GI. Contraindicado em doença cardiovascular estabelecida.</div></div>
+        </div>
+      </div>
+      <div class="alert alert-amber"><span class="alert-icon">⚠️</span><div class="alert-text"><b>Segurança dos AINEs:</b> dose mínima eficaz pelo menor tempo possível (≤5 dias na fase aguda). Associar IBP em doentes de risco (&gt;65 anos, úlcera, anticoagulantes). Nunca combinar dois AINEs. Evitar na gravidez.</div></div>
+      <div class="rule"></div>
+      <div class="linha-block">
+        <div class="linha-head"><span class="linha-pill lp-2">Adjuvante — 2.ª linha</span><span class="linha-name">Relaxantes musculares disponíveis em Portugal — espasmo evidente</span></div>
+        <div class="legend-row">
+          <div class="leg"><div class="leg-dot" style="background:var(--green-bg);border:1px solid var(--green-border)"></div>Sem sedação relevante</div>
+          <div class="leg"><div class="leg-dot" style="background:var(--amber-bg);border:1px solid var(--amber-border)"></div>Ligeira sedação</div>
+          <div class="leg"><div class="leg-dot" style="background:var(--red-bg);border:1px solid var(--red-border)"></div>Sedação significativa</div>
+        </div>
+        <div class="cards-grid">
+          <div class="drug-card star"><div class="star-label">1.ª escolha — espasmo musculosquelético agudo</div><div class="drug-row"><div><div class="drug-name">Adalgur N®</div><div class="drug-mol">tiocolquicosido 2 mg + paracetamol 500 mg — Angelini Pharma PT</div></div><div class="badges-col"><span class="sleep-tag st-light">Ligeira sedação</span><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>1–2 comp. / 8h · máx. 7 dias.</b> Combinação prática num só comprimido: relaxante muscular + analgésico. Indicado em adultos e adolescentes ≥16 anos para contracções musculares dolorosas e episódios agudos da coluna. Contraindicado em grávidas, mulheres com potencial para engravidar sem contraceção, lactantes, doença hepática grave e insuficiência renal manifesta. Também disponível como <b>Tiocolquicosido Generis® 4 mg</b> em monoterapia (sem paracetamol).</div></div>
+          <div class="drug-card star"><div class="star-label">Espasmo e contractura — boa eficácia</div><div class="drug-row"><div><div class="drug-name">Sirdalud® / Tizanidina Generis®</div><div class="drug-mol">tizanidina 2 mg / 4 mg</div></div><div class="badges-col"><span class="sleep-tag st-yes">Com sedação</span><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>Iniciar 2 mg/dia → 2–4 mg / 8h.</b> Agonista α2-adrenérgico central. Sedação e hipotensão no início. Monitorizar enzimas hepáticas em uso prolongado.</div></div>
+          <div class="drug-card"><div class="drug-row"><div><div class="drug-name">Ciclobenzaprina Generis®</div><div class="drug-mol">ciclobenzaprina 5 mg / 10 mg</div></div><div class="badges-col"><span class="sleep-tag st-yes">Com sedação</span><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>5–10 mg / 8h · máx. 3 semanas.</b> Estruturalmente semelhante a tricíclicos. Efeitos anticolinérgicos (boca seca). Evitar em idosos e glaucoma.</div></div>
+          <div class="drug-card"><div class="drug-row"><div><div class="drug-name">Robaxisal® / Metocarbamol Generis®</div><div class="drug-mol">metocarbamol 380 mg + paracetamol 300 mg</div></div><div class="badges-col"><span class="sleep-tag st-light">Ligeira sedação</span><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>2 comp. / 4–6h · máx. 12 comp./dia.</b> Combinação fixa relaxante + analgésico. Curta duração.</div></div>
+          <div class="drug-card"><div class="drug-row"><div><div class="drug-name">Lioresal® / Baclofeno Generis®</div><div class="drug-mol">baclofeno 10 mg</div></div><div class="badges-col"><span class="sleep-tag st-yes">Sedação clara</span><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>Iniciar 5 mg / 8h · titulação gradual.</b> Principalmente espasticidade neurológica (EM, AVC, lesão medular). Não suspender abruptamente.</div></div>
+        </div>
+      </div>
+      <div class="alert alert-red"><span class="alert-icon">⛔</span><div class="alert-text"><b>Relaxantes musculares:</b> todos causam sedação — avisar para não conduzir. Evitar em idosos (quedas). Usar ≤2 semanas. Benzodiazepinas (diazepam) como relaxante apenas em contexto hospitalar.</div></div>
+      <div class="rule"></div>
+      <div class="linha-block">
+        <div class="linha-head"><span class="linha-pill lp-lp">3.ª linha — refratário / neurológico</span><span class="linha-name">Referência a especialidade</span></div>
+        <div class="cards-grid">
+          <div class="drug-card"><div class="drug-row"><div><div class="drug-name">Neurologia</div></div></div><div class="drug-body">Espasticidade, esclerose múltipla, AVC, lesão medular, doenças neuromusculares.</div></div>
+          <div class="drug-card"><div class="drug-row"><div><div class="drug-name">Reumatologia</div></div></div><div class="drug-body">Fibromialgia, miosite, artrite, doenças inflamatórias musculares.</div></div>
+          <div class="drug-card"><div class="drug-row"><div><div class="drug-name">Ortopedia / MFR</div></div></div><div class="drug-body">Lesão estrutural muscular ou tendinosa, pós-cirúrgico, reabilitação.</div></div>
+        </div>
+      </div>`},
+    {id:"farm",label:"Fármacos",html:`
+      <div class="slbl">Analgésicos</div>
+      <table class="drug-table"><thead><tr><th>Princípio ativo</th><th>Nome comercial (PT)</th><th>Dose adulto</th></tr></thead><tbody>
+        <tr><td><span class="dn">Paracetamol</span></td><td class="db">Ben-u-ron®, Panadol®, Dafalgan®</td><td class="dd">500–1000 mg / 6–8h (máx. 4g/dia)</td></tr>
+      </tbody></table>
+      <div class="slbl">AINEs</div>
+      <table class="drug-table"><thead><tr><th>Princípio ativo</th><th>Nome comercial (PT)</th><th>Dose adulto</th></tr></thead><tbody>
+        <tr><td><span class="dn">Ibuprofeno</span></td><td class="db">Brufen®, Nurofen®, Ibuprofeno Generis®</td><td class="dd">400–600 mg / 8h (máx. 2,4g/dia)</td></tr>
+        <tr><td><span class="dn">Diclofenac</span></td><td class="db">Voltaren®, Diclofenac Generis®</td><td class="dd">50 mg / 8–12h ou 75 mg / 12h</td></tr>
+        <tr><td><span class="dn">Naproxeno</span></td><td class="db">Naprosyn®, Synflex®</td><td class="dd">250–500 mg / 12h (máx. 1,25g/dia)</td></tr>
+        <tr><td><span class="dn">Meloxicam</span></td><td class="db">Mobic®, Meloxicam Generis®</td><td class="dd">7,5–15 mg / 24h</td></tr>
+        <tr><td><span class="dn">Etoricoxib</span></td><td class="db">Arcoxia®</td><td class="dd">60–90 mg / 24h</td></tr>
+        <tr><td><span class="dn">Diclofenac gel (tópico)</span></td><td class="db">Voltaren Emulgel®</td><td class="dd">2–4 g / área, 3×dia</td></tr>
+      </tbody></table>
+      <div class="alert alert-amber" style="margin-top:10px"><span class="alert-icon">⚠️</span><div class="alert-text"><b>AINEs na dose mínima eficaz pelo menor tempo possível.</b> IBP em doentes de risco (&gt;65 anos, úlcera, anticoagulantes).</div></div>
+      <div class="slbl">Relaxantes musculares — disponíveis em Portugal</div>
+      <table class="drug-table"><thead><tr><th>Princípio ativo</th><th>Nome comercial (PT)</th><th>Dose adulto</th></tr></thead><tbody>
+        <tr><td><span class="dn">Tiocolquicosido + Paracetamol</span></td><td class="db">Adalgur N® (2 mg + 500 mg)</td><td class="dd">1–2 comp. / 8h (máx. 7 dias)</td></tr>
+        <tr><td><span class="dn">Tiocolquicosido</span></td><td class="db">Tiocolquicosido Generis® 4 mg</td><td class="dd">4 mg / 12h (máx. 7 dias)</td></tr>
+        <tr><td><span class="dn">Tizanidina</span></td><td class="db">Sirdalud®, Tizanidina Generis®</td><td class="dd">2–4 mg / 8h; iniciar 2 mg/dia</td></tr>
+        <tr><td><span class="dn">Ciclobenzaprina</span></td><td class="db">Ciclobenzaprina Generis®</td><td class="dd">5–10 mg / 8h (máx. 3 semanas)</td></tr>
+        <tr><td><span class="dn">Baclofeno</span></td><td class="db">Lioresal®, Baclofeno Generis®</td><td class="dd">5 mg / 8h; titulação gradual</td></tr>
+        <tr><td><span class="dn">Metocarbamol + Paracetamol</span></td><td class="db">Robaxisal®, Metocarbamol Generis®</td><td class="dd">380/300 mg — 2 comp. / 4–6h</td></tr>
+      </tbody></table>
+      <div class="alert alert-red" style="margin-top:10px"><span class="alert-icon">⛔</span><div class="alert-text"><b>Relaxantes musculares causam sedação.</b> Evitar ao conduzir. Uso ≤2 semanas. Precaução em idosos.</div></div>`},
+    {id:"nf",label:"Não farmacológico",html:`
+      <div class="nf-grid">
+        <div class="nf-item"><strong>❄️ Frio local</strong>Gelo em pano — 10–15 min, 3–4×dia. Fase aguda (primeiras 48h).</div>
+        <div class="nf-item"><strong>🌡️ Calor local</strong>Compressas quentes — 15–20 min, 3×dia. Fase subaguda/crónica.</div>
+        <div class="nf-item"><strong>🏃 Alongamento suave</strong>Após fase aguda. Exercícios progressivos. Mobilidade suave preferível ao repouso absoluto.</div>
+        <div class="nf-item"><strong>🩺 Fisioterapia</strong>Massagem, TENS, ultrassonografia. Se dor persistir &gt;1–2 semanas.</div>
+        <div class="nf-item"><strong>💧 Hidratação</strong>Ingestão adequada de água. Importante na prevenção de câimbras.</div>
+        <div class="nf-item"><strong>🌿 Magnésio</strong>Suplementação útil em câimbras frequentes. Confirmar défice antes de suplementar.</div>
+        <div class="nf-item"><strong>🪡 Acupuntura</strong>Evidência moderada na dor muscular crónica. Referenciar especialista.</div>
+        <div class="nf-item"><strong>🌙 Repouso relativo</strong>Evitar actividade que agrave. Não recomendar repouso absoluto prolongado.</div>
+      </div>`},
+    {id:"alarme",label:"Sinais de alarme",html:`
+      <div class="alert alert-red" style="margin-bottom:14px"><span class="alert-icon">🚨</span><div class="alert-text"><b>Referenciar urgência se presentes.</b></div></div>
+      <div class="alarm-list">
+        <div class="alarm-item"><div class="adot"></div><span>Fraqueza muscular progressiva ou paralisia de um membro</span></div>
+        <div class="alarm-item"><div class="adot"></div><span>Dormência, parestesias, perda de sensibilidade</span></div>
+        <div class="alarm-item"><div class="adot"></div><span>Dificuldade a caminhar, alteração do equilíbrio</span></div>
+        <div class="alarm-item"><div class="adot"></div><span>Espasmos muito frequentes, intensos e prolongados (&gt;15 min)</span></div>
+        <div class="alarm-item"><div class="adot"></div><span>Febre + rigidez muscular generalizada — excluir tétano ou meningite</span></div>
+        <div class="alarm-item"><div class="adot"></div><span>Dor torácica ou abdominal com espasmo — excluir causa visceral</span></div>
+        <div class="alarm-item"><div class="adot"></div><span>Sem melhoria após 5–7 dias de tratamento adequado</span></div>
+        <div class="alarm-item"><div class="adot"></div><span>Dor noturna intensa, perda de peso inexplicada — excluir neoplasia</span></div>
+      </div>`}
+  ]
+},
+{
+  id:"rinite-cronica",titulo:"Rinite crónica (alérgica)",icone:"🌿",
+  tags:[{texto:"ORL / Alergologia",cor:"blue"},{texto:"WADA — verificar sedação",cor:"amber"},{texto:"Imunoterapia",cor:"purple"}],
+  tabs:[
+    {id:"alg",label:"Algoritmo",html:`
+      <div class="alert alert-amber"><span class="alert-icon">⚠️</span><div class="alert-text"><b>Atenção ao sintoma dominante:</b> Se o sintoma principal for <b>obstrução nasal</b> — o corticóide nasal é sempre mais eficaz do que qualquer anti-histamínico oral. Os anti-histamínicos orais são melhores para <b>espirros, prurido e rinorreia</b>.</div></div>
+      <div class="legend-row">
+        <div class="leg"><div class="leg-dot" style="background:var(--green-bg);border:1px solid var(--green-border)"></div>Sem sonolência</div>
+        <div class="leg"><div class="leg-dot" style="background:var(--amber-bg);border:1px solid var(--amber-border)"></div>Ligeira sonolência</div>
+        <div class="leg"><div class="leg-dot" style="background:var(--red-bg);border:1px solid var(--red-border)"></div>Com sonolência</div>
+      </div>
+      <div class="rule"></div>
+      <div class="linha-block">
+        <div class="linha-head"><span class="linha-pill lp-1">1.ª linha</span><span class="linha-name">Corticóide nasal tópico — o mais eficaz para obstrução</span></div>
+        <div class="cards-grid">
+          <div class="drug-card star"><div class="star-label">Melhor evidência 2024/2025</div><div class="drug-row"><div><div class="drug-name">Avamys® spray nasal</div><div class="drug-mol">fluticasona furoato 27,5 μg</div></div><div class="badges-col"><span class="sleep-tag st-none">Sem sonolência</span><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>1 puff cada narina, 1×/dia.</b> Efeito pleno em 1–2 semanas. Maior ranking de eficácia na meta-análise em rede 2025. Biodisponibilidade sistémica quase nula. EA: epistáxis 10–15% — dirigir o spray para a parede lateral, não para o septo.</div></div>
+          <div class="drug-card"><div class="drug-row"><div><div class="drug-name">Nasonex® spray nasal</div><div class="drug-mol">mometasona furoato 50 μg</div></div><div class="badges-col"><span class="sleep-tag st-none">Sem sonolência</span><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>2 puffs cada narina, 1×/dia.</b> Alternativa equivalente ao Avamys. Boa eficácia na obstrução nasal.</div></div>
+          <div class="drug-card"><div class="drug-row"><div><div class="drug-name">Rhinocort® spray nasal</div><div class="drug-mol">budesonida 64 μg</div></div><div class="badges-col"><span class="sleep-tag st-none">Sem sonolência</span><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>2 puffs cada narina, 1×/dia.</b> Opção bem estabelecida, muito usada em Portugal. Boa eficácia geral.</div></div>
+        </div>
+      </div>
+      <div class="rule"></div>
+      <div class="linha-block">
+        <div class="linha-head"><span class="linha-pill lp-1">1.ª linha alternativa</span><span class="linha-name">Anti-histamínico oral — melhor para espirros e prurido</span></div>
+        <div class="cards-grid">
+          <div class="drug-card star"><div class="star-label">Escolha preferencial no atleta</div><div class="drug-row"><div><div class="drug-name">Bilaxten® 20mg</div><div class="drug-mol">bilastina</div></div><div class="badges-col"><span class="sleep-tag st-none">Sem sonolência</span><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>1 comprimido/dia, em jejum</b> (1h antes ou 2h após refeição — obrigatório, a comida reduz absorção 30%). Não atravessa a barreira hemato-encefálica. Sem impacto no tempo de reacção. Ideal para atletas de alta competição.</div></div>
+          <div class="drug-card"><div class="drug-row"><div><div class="drug-name">Telfast® 120mg / 180mg</div><div class="drug-mol">fexofenadina</div></div><div class="badges-col"><span class="sleep-tag st-none">Sem sonolência</span><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>1 comprimido/dia, sem restrição de jejum.</b> Boa alternativa sem sedação. Sem impacto no desempenho cognitivo.</div></div>
+          <div class="drug-card"><div class="drug-row"><div><div class="drug-name">Rupafin® 10mg</div><div class="drug-mol">rupatadina</div></div><div class="badges-col"><span class="sleep-tag st-light">Ligeira sonolência</span><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>1 comprimido/dia.</b> Bloqueia também o PAF — ligeiramente melhor para obstrução. Ligeira sedação residual — precaução em atletas de precisão técnica.</div></div>
+          <div class="drug-card"><div class="drug-row"><div><div class="drug-name">Aerius® 5mg</div><div class="drug-mol">desloratadina</div></div><div class="badges-col"><span class="sleep-tag st-none">Sem sonolência</span><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>1 comprimido/dia.</b> Boa tolerabilidade. Metabolito activo da loratadina.</div></div>
+          <div class="drug-card"><div class="drug-row"><div><div class="drug-name">Claritine® 10mg</div><div class="drug-mol">loratadina</div></div><div class="badges-col"><span class="sleep-tag st-light">Ligeira residual</span><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>1 comprimido/dia.</b> Clássico e acessível. Alguma sedação residual mensurável em EEG. Não é 1.ª escolha no atleta de alto rendimento.</div></div>
+          <div class="drug-card"><div class="drug-row"><div><div class="drug-name">Zyrtec® 10mg</div><div class="drug-mol">cetirizina</div></div><div class="badges-col"><span class="sleep-tag st-yes">Com sonolência</span><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>1 comprimido/dia, de preferência à noite.</b> Mais potente mas com sedação clara. Evitar em atletas com exigências de precisão e reacção. Útil se sintomas dominantemente nocturnos.</div></div>
+        </div>
+      </div>
+      <div class="alert alert-red"><span class="alert-icon">⛔</span><div class="alert-text"><b>Anti-histamínicos de 1.ª geração</b> (Polaramine®, Phenergan®, etc.) — sonolência intensa e impacto grave na cognição e no tempo de reacção. <b>Contraindicados em atletas de alta competição.</b></div></div>
+      <div class="rule"></div>
+      <div class="linha-block">
+        <div class="linha-head"><span class="linha-pill lp-comb">2.ª linha / Combinação</span><span class="linha-name">Quando a 1.ª linha isolada não é suficiente</span></div>
+        <div class="cards-grid">
+          <div class="drug-card star"><div class="star-label">Melhor ranking para todos os outcomes</div><div class="drug-row"><div><div class="drug-name">Dymista® spray nasal</div><div class="drug-mol">azelastina + fluticasona propionato</div></div><div class="badges-col"><span class="sleep-tag st-none">Sem sonolência</span><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>1 puff cada narina, 2×/dia (cada 12h).</b> Anti-histamínico nasal + corticóide num único spray (INAH+INCS). Melhor ranking de eficácia para obstrução, rinorreia, espirros e sintomas oculares na meta-análise 2025.</div></div>
+          <div class="drug-card"><div class="drug-row"><div><div class="drug-name">Singulair® 10mg</div><div class="drug-mol">montelucaste</div></div><div class="badges-col"><span class="sleep-tag st-none">Sem sonolência</span><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>1 comprimido/dia, à noite.</b> Anti-leucotrieno. Útil sobretudo na obstrução e quando há asma associada (via aérea única). EA raros: neuropsiquiátricos — informar o doente.</div></div>
+          <div class="drug-card"><div class="drug-row"><div><div class="drug-name">Avamys® + Bilaxten®</div><div class="drug-mol">corticóide nasal + anti-H1 oral</div></div><div class="badges-col"><span class="sleep-tag st-none">Sem sonolência</span><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>Avamys spray de manhã + Bilaxten 20mg à noite em jejum.</b> Opção prática se Dymista indisponível. Cobre obstrução (INCS) + espirros/prurido (anti-H1).</div></div>
+        </div>
+      </div>
+      <div class="rule"></div>
+      <div class="linha-block">
+        <div class="linha-head"><span class="linha-pill lp-lp">Longo prazo — modifica a doença</span><span class="linha-name">Imunoterapia com alergénios (AIT) — referência Imunoalergologia</span></div>
+        <div class="cards-grid">
+          <div class="drug-card"><div class="drug-row"><div><div class="drug-name">Grazax® / Itulazax®</div><div class="drug-mol">extracto alergénio gramíneas — sublingual</div></div><div class="badges-col"><span class="sleep-tag st-none">Sem sonolência</span><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>1 comprimido sublingual/dia, 3–5 anos.</b> Única terapêutica que modifica a doença. Reduz progressão rinite → asma. Efeito persiste anos após suspensão.</div></div>
+          <div class="drug-card"><div class="drug-row"><div><div class="drug-name">Acarizax®</div><div class="drug-mol">extracto alergénio ácaros — sublingual</div></div><div class="badges-col"><span class="sleep-tag st-none">Sem sonolência</span><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>1 comprimido sublingual/dia, 3–5 anos.</b> Para ácaros do pó. Administrada em casa após 1.ª dose supervisionada.</div></div>
+          <div class="drug-card"><div class="drug-row"><div><div class="drug-name">SCIT — injecções subcutâneas</div><div class="drug-mol">imunoterapia subcutânea em clínica</div></div><div class="badges-col"><span class="sleep-tag st-none">Sem sonolência</span><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>Injecções em clínica, 3–5 anos.</b> Maior corpo de evidência. Observação obrigatória 30 min após cada injecção.</div></div>
+        </div>
+      </div>
+      <div class="alert alert-green"><span class="alert-icon">✅</span><div class="alert-text"><b>Imunoterapia para o atleta:</b> reduz a necessidade de medicação na época polínica. Única terapêutica modificadora da causa.</div></div>
+      <div class="rule"></div>
+      <div class="linha-block">
+        <div class="linha-head"><span class="linha-pill lp-cir">Componente estrutural</span><span class="linha-name">Desvio do septo — quando operar</span></div>
+        <div class="cards-grid">
+          <div class="drug-card"><div class="drug-row"><div><div class="drug-name">Septoplastia</div><div class="drug-mol">cirurgia correctiva do septo — ORL</div></div><div class="badges-col"><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>Sequência correcta:</b> 1.º controlar a rinite farmacologicamente → 2.º reavaliar obstrução residual fora da época polínica. Se persistir → indicação cirúrgica.</div></div>
+        </div>
+      </div>
+      <div class="alert alert-red"><span class="alert-icon">⛔</span><div class="alert-text"><b>WADA — Proibidos:</b> descongestionantes orais com efedrina ou metilefedrina (Actifed®, Rhinadvil®) se concentração urinária &gt;10 μg/ml. Descongestionantes nasais tópicos (Otrivina®) — permitidos mas nunca usar &gt;5–7 dias (rinite medicamentosa).</div></div>`},
+    {id:"farm",label:"Fármacos",html:`
+      <div class="slbl">Corticóides intranasais (1.ª linha — obstrução)</div>
+      <table class="drug-table"><thead><tr><th>Princípio ativo</th><th>Nome comercial (PT)</th><th>Dose adulto</th></tr></thead><tbody>
+        <tr><td><span class="dn">Fluticasona furoato</span></td><td class="db">Avamys®</td><td class="dd">1 puff/narina, 1×dia</td></tr>
+        <tr><td><span class="dn">Mometasona furoato</span></td><td class="db">Nasonex®, Mometasona Generis®</td><td class="dd">2 puffs/narina, 1×dia</td></tr>
+        <tr><td><span class="dn">Budesonida</span></td><td class="db">Rhinocort Aqua®</td><td class="dd">2 puffs/narina, 1×dia</td></tr>
+        <tr><td><span class="dn">Fluticasona propionato</span></td><td class="db">Flixonase®</td><td class="dd">2 puffs/narina, 1×dia</td></tr>
+        <tr><td><span class="dn">Beclometasona</span></td><td class="db">Beconase®, Rinoclenil®</td><td class="dd">2 puffs/narina, 2–4×dia</td></tr>
+      </tbody></table>
+      <div class="slbl">Anti-histamínicos orais — 2.ª geração (preferir)</div>
+      <table class="drug-table"><thead><tr><th>Princípio ativo</th><th>Nome comercial (PT)</th><th>Sedação / Dose</th></tr></thead><tbody>
+        <tr><td><span class="dn">Bilastina</span></td><td class="db">Bilaxten®, Ilaxten®</td><td class="dd">Sem sedação · 20 mg/dia em jejum</td></tr>
+        <tr><td><span class="dn">Fexofenadina</span></td><td class="db">Telfast®</td><td class="dd">Sem sedação · 120–180 mg/dia</td></tr>
+        <tr><td><span class="dn">Desloratadina</span></td><td class="db">Aerius®, Desloratadina Generis®</td><td class="dd">Sem sedação · 5 mg/dia</td></tr>
+        <tr><td><span class="dn">Rupatadina</span></td><td class="db">Rupafin®</td><td class="dd">Ligeira sedação · 10 mg/dia</td></tr>
+        <tr><td><span class="dn">Loratadina</span></td><td class="db">Claritine®, Loratadina Generis®</td><td class="dd">Ligeira sedação · 10 mg/dia</td></tr>
+        <tr><td><span class="dn">Cetirizina</span></td><td class="db">Zyrtec®, Cetirizina Generis®</td><td class="dd">Com sedação · 10 mg/dia (noite)</td></tr>
+      </tbody></table>
+      <div class="slbl">Combinados e outros</div>
+      <table class="drug-table"><thead><tr><th>Princípio ativo</th><th>Nome comercial (PT)</th><th>Dose adulto</th></tr></thead><tbody>
+        <tr><td><span class="dn">Fluticasona + Azelastina</span></td><td class="db">Dymista®</td><td class="dd">1 puff/narina, 2×dia</td></tr>
+        <tr><td><span class="dn">Montelucaste</span></td><td class="db">Singulair®, Montelucaste Generis®</td><td class="dd">10 mg/dia à noite</td></tr>
+        <tr><td><span class="dn">Xilometazolina</span></td><td class="db">Otrivina®</td><td class="dd">0,1% — 3×dia · máx. 5 dias</td></tr>
+      </tbody></table>
+      <div class="alert alert-amber" style="margin-top:10px"><span class="alert-icon">⚠️</span><div class="alert-text"><b>Descongestionantes nasais — máx. 5 dias.</b> Uso prolongado causa rinite medicamentosa. Corticóides intranasais são seguros a longo prazo.</div></div>`},
+    {id:"nf",label:"Não farmacológico",html:`
+      <div class="nf-grid">
+        <div class="nf-item"><strong>🧼 Lavagem nasal salina</strong>Soro fisiológico ou solução hipertónica — 2×dia. Melhora clearance mucociliar.</div>
+        <div class="nf-item"><strong>🪟 Controlo ambiental</strong>Capas anti-ácaros, temperatura &lt;20°C, humidade &lt;50%, evitar animais no quarto.</div>
+        <div class="nf-item"><strong>🌬️ Filtros HEPA</strong>Purificador com filtro HEPA no quarto — reduz pólenes, ácaros e fungos.</div>
+        <div class="nf-item"><strong>🤧 Técnica de aplicação nasal</strong>Apontar para a parede lateral da narina (não septo) — evita epistáxis.</div>
+        <div class="nf-item"><strong>🚭 Evitar irritantes</strong>Tabaco, cloro de piscinas, perfumes, produtos de limpeza.</div>
+        <div class="nf-item"><strong>📅 Monitorização sazonal</strong>Iniciar medicação 2 semanas antes da época de polinização.</div>
+      </div>`},
+    {id:"alarme",label:"Sinais de alarme",html:`
+      <div class="alert alert-red" style="margin-bottom:14px"><span class="alert-icon">🚨</span><div class="alert-text"><b>Referenciar ORL ou Alergologia se presentes.</b></div></div>
+      <div class="alarm-list">
+        <div class="alarm-item"><div class="adot"></div><span>Obstrução nasal unilateral persistente — excluir pólipo ou neoplasia</span></div>
+        <div class="alarm-item"><div class="adot"></div><span>Epistáxis recorrente ou abundante</span></div>
+        <div class="alarm-item"><div class="adot"></div><span>Rinorreia purulenta com febre — suspeita de sinusite bacteriana</span></div>
+        <div class="alarm-item"><div class="adot"></div><span>Cefaleia frontossinusal intensa ou edema periorbitário</span></div>
+        <div class="alarm-item"><div class="adot"></div><span>Anosmia súbita sem contexto viral recente</span></div>
+        <div class="alarm-item"><div class="adot"></div><span>Rinite não controlada com tratamento adequado após 4–6 semanas</span></div>
+        <div class="alarm-item"><div class="adot"></div><span>Suspeita de rinite medicamentosa (vasoconstritores prolongados)</span></div>
+      </div>`}
+  ]
+},
+{
+  id:"osteoporose",titulo:"Osteoporose",icone:"🦴",
+  tags:[{texto:"Reumatologia / Endocrinologia",cor:"blue"},{texto:"Bifosfonatos",cor:"amber"},{texto:"WADA ✓ todos",cor:"green"}],
+  tabs:[
+    {id:"alg",label:"Algoritmo",html:`
+      <div class="alert alert-amber"><span class="alert-icon">⚠️</span><div class="alert-text"><b>Diagnóstico densitométrico (DEXA):</b> T-score ≥ −1,0 = Normal · −1,0 a −2,5 = Osteopénia · ≤ −2,5 = Osteoporose · ≤ −2,5 + fractura de fragilidade = Osteoporose grave. Usar sempre o local de menor T-score.</div></div>
+      <div class="alert alert-green"><span class="alert-icon">✅</span><div class="alert-text"><b>FRAX®:</b> calculadora de risco a 10 anos (WHO). Estimar antes de decidir tratamento farmacológico na osteopénia — <b>sheffield.ac.uk/FRAX</b>.</div></div>
+      <div class="legend-row">
+        <div class="leg"><div class="leg-dot" style="background:var(--teal-bg);border:1px solid var(--teal-border)"></div>Base (sempre)</div>
+        <div class="leg"><div class="leg-dot" style="background:var(--blue-bg);border:1px solid var(--blue-border)"></div>1.ª linha</div>
+        <div class="leg"><div class="leg-dot" style="background:var(--amber-bg);border:1px solid var(--amber-border)"></div>2.ª linha</div>
+        <div class="leg"><div class="leg-dot" style="background:var(--purple-bg);border:1px solid var(--purple-border)"></div>3.ª linha</div>
+      </div>
+      <div class="rule"></div>
+      <div class="linha-block">
+        <div class="linha-head"><span class="linha-pill lp-base">Base — sempre e em todos</span><span class="linha-name">Cálcio + Vitamina D + Exercício</span></div>
+        <div class="cards-grid">
+          <div class="drug-card star"><div class="star-label">Pilar fundamental — nunca dispensar</div><div class="drug-row"><div><div class="drug-name">Cálcio</div><div class="drug-mol">ingestão total = 1000–1200 mg/dia</div></div><div class="badges-col"><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>Preferir via alimentar.</b> Suplemento só se ingestão insuficiente. Dose máx. do suplemento: 500–600 mg por toma. Cálcio em excesso pode ↑ risco cardiovascular.</div></div>
+          <div class="drug-card star"><div class="star-label">Deficiência muito frequente</div><div class="drug-row"><div><div class="drug-name">Vitamina D</div><div class="drug-mol">alvo: 25-OH-VitD ≥ 30 ng/ml</div></div><div class="badges-col"><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>800–2000 UI/dia</b> (D3 preferível ao D2). Dose de carga se deficiência grave: 50 000 UI/semana × 8 semanas. Dosar antes e após 3 meses de suplementação.</div></div>
+          <div class="drug-card star"><div class="star-label">Único tratamento que melhora a estrutura óssea</div><div class="drug-row"><div><div class="drug-name">Exercício físico</div><div class="drug-mol">impacto + força = estímulo osteogénico</div></div><div class="badges-col"><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>Impacto (corrida, saltar) + força progressiva + equilíbrio/propriocepção</b> (↓ quedas). Natação e bicicleta têm menos efeito osteogénico — complementar.</div></div>
+        </div>
+      </div>
+      <div class="rule"></div>
+      <div class="linha-block">
+        <div class="linha-head"><span class="linha-pill lp-1">1.ª linha farmacológica</span><span class="linha-name">Bifosfonatos — antiressorptivos de 1.ª escolha</span></div>
+        <div class="cards-grid">
+          <div class="drug-card star"><div class="star-label">1.ª escolha oral</div><div class="drug-row"><div><div class="drug-name">Alendronato 70mg</div><div class="drug-mol">bifosfonato oral — Fosamax®, genérico</div></div><div class="badges-col"><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>1 comp./semana, em jejum</b> + 200ml água + permanecer em pé 30 min. ↓ risco fractura vertebral ~45%, anca ~40%. Drug holiday após 3–5 anos se risco baixo-moderado.</div></div>
+          <div class="drug-card"><div class="drug-row"><div><div class="drug-name">Risedronato 35mg</div><div class="drug-mol">bifosfonato oral — Actonel®, genérico</div></div><div class="badges-col"><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>1 comp./semana, em jejum.</b> Alternativa ao alendronato — eficácia similar. Pode ter melhor tolerabilidade GI.</div></div>
+          <div class="drug-card star"><div class="star-label">Melhor adesão — 1×/ano IV</div><div class="drug-row"><div><div class="drug-name">Ácido Zoledrónico 5mg IV</div><div class="drug-mol">bifosfonato IV — Aclasta®</div></div><div class="badges-col"><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>Perfusão IV 15 min, 1×/ano.</b> Preferir se: má tolerância oral, baixa adesão. EA: síndrome gripal 24–48h após 1.ª dose (paracetamol profiláctico). Requer creatinina normal.</div></div>
+        </div>
+      </div>
+      <div class="alert alert-amber"><span class="alert-icon">⚠️</span><div class="alert-text"><b>EA importantes dos bifosfonatos:</b> esofagite (oral) → instruir correctamente. Osteonecrose da mandíbula (rara). Fractura atípica do fémur com uso &gt;5 anos → suspeitar se dor crónica na coxa. Drug holiday após 3–5 anos.</div></div>
+      <div class="rule"></div>
+      <div class="linha-block">
+        <div class="linha-head"><span class="linha-pill lp-2">2.ª linha</span><span class="linha-name">Alternativas aos bifosfonatos</span></div>
+        <div class="cards-grid">
+          <div class="drug-card star"><div class="star-label">Melhor opção pós-menopausa com risco CV baixo</div><div class="drug-row"><div><div class="drug-name">Denosumab 60mg SC</div><div class="drug-mol">anticorpo anti-RANKL — Prolia®</div></div><div class="badges-col"><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>60 mg SC cada 6 meses.</b> Não requer função renal normal. <b>Atenção: NÃO suspender abruptamente</b> — risco de rebote com fracturas vertebrais. Transitar para bifosfonato IV antes de suspender.</div></div>
+          <div class="drug-card"><div class="drug-row"><div><div class="drug-name">Raloxifeno 60mg</div><div class="drug-mol">SERM — Evista®</div></div><div class="badges-col"><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>1 comp./dia, mulheres pós-menopausa.</b> Eficaz na fractura vertebral (~36%). Vantagem: ↓ risco cancro mama ER+. EA: ↑ risco TEV — contraindicado se TEV prévio.</div></div>
+        </div>
+      </div>
+      <div class="rule"></div>
+      <div class="linha-block">
+        <div class="linha-head"><span class="linha-pill lp-lp">3.ª linha — alto risco / refractários</span><span class="linha-name">Agentes osteoanabólicos</span></div>
+        <div class="cards-grid">
+          <div class="drug-card star"><div class="star-label">Maior redução do risco de fractura disponível</div><div class="drug-row"><div><div class="drug-name">Romosozumab 210mg SC</div><div class="drug-mol">anticorpo anti-esclerostina — Evenity®</div></div><div class="badges-col"><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>2 injecções SC/mês × 12 meses,</b> depois transitar para antiressorptivo. ↓ 75% fractura vertebral vs. placebo. <b>Contraindicado:</b> EAM ou AVC no último ano.</div></div>
+          <div class="drug-card"><div class="drug-row"><div><div class="drug-name">Teriparatida 20μg SC</div><div class="drug-mol">PTH recombinante (1-34) — Forsteo®</div></div><div class="badges-col"><span class="wada-tag">WADA ✓</span></div></div><div class="drug-body"><b>1 injecção SC/dia × máx. 24 meses (lifetime).</b> ↓ 65% fractura vertebral. Após suspensão → bifosfonato ou denosumab obrigatório para manter o ganho.</div></div>
+        </div>
+      </div>
+      <div class="alert alert-green"><span class="alert-icon">✅</span><div class="alert-text"><b>Sequência preferida em osteoporose grave:</b> Romosozumab 12 meses → Denosumab ou Bifosfonato IV de manutenção. Maior eficácia anti-fractura disponível (~75% ↓ de novas fracturas vertebrais).</div></div>`},
+    {id:"farm",label:"Fármacos",html:`
+      <div class="slbl">Base — sempre</div>
+      <table class="drug-table"><thead><tr><th>Princípio ativo</th><th>Nome comercial (PT)</th><th>Dose adulto</th></tr></thead><tbody>
+        <tr><td><span class="dn">Cálcio (carbonato/citrato)</span></td><td class="db">Caltrate®, Calcium Sandoz®, genérico</td><td class="dd">500–600 mg / toma (máx. 1200 mg/dia)</td></tr>
+        <tr><td><span class="dn">Colecalciferol (Vit. D3)</span></td><td class="db">Vigantol®, Oleovit D3®, Decristol®</td><td class="dd">800–2000 UI/dia manutenção</td></tr>
+        <tr><td><span class="dn">Cálcio + Vitamina D</span></td><td class="db">Cálcio+D3 Generis®, Calcigran Forte®</td><td class="dd">1 comp. 1–2×dia</td></tr>
+      </tbody></table>
+      <div class="slbl">1.ª linha — bifosfonatos</div>
+      <table class="drug-table"><thead><tr><th>Princípio ativo</th><th>Nome comercial (PT)</th><th>Dose adulto</th></tr></thead><tbody>
+        <tr><td><span class="dn">Alendronato 70mg</span></td><td class="db">Fosamax®, Alendronato Generis®</td><td class="dd">70 mg / semana em jejum</td></tr>
+        <tr><td><span class="dn">Risedronato 35mg</span></td><td class="db">Actonel®, Risedronato Generis®</td><td class="dd">35 mg / semana em jejum</td></tr>
+        <tr><td><span class="dn">Ácido Zoledrónico 5mg</span></td><td class="db">Aclasta®</td><td class="dd">5 mg IV / ano (perfusão 15 min)</td></tr>
+      </tbody></table>
+      <div class="slbl">2.ª linha</div>
+      <table class="drug-table"><thead><tr><th>Princípio ativo</th><th>Nome comercial (PT)</th><th>Dose adulto</th></tr></thead><tbody>
+        <tr><td><span class="dn">Denosumab 60mg</span></td><td class="db">Prolia®</td><td class="dd">60 mg SC / 6 meses</td></tr>
+        <tr><td><span class="dn">Raloxifeno 60mg</span></td><td class="db">Evista®, Raloxifeno Generis®</td><td class="dd">60 mg / dia</td></tr>
+      </tbody></table>
+      <div class="slbl">3.ª linha — osteoanabólicos</div>
+      <table class="drug-table"><thead><tr><th>Princípio ativo</th><th>Nome comercial (PT)</th><th>Dose adulto</th></tr></thead><tbody>
+        <tr><td><span class="dn">Romosozumab 210mg</span></td><td class="db">Evenity®</td><td class="dd">210 mg SC / mês × 12 meses</td></tr>
+        <tr><td><span class="dn">Teriparatida 20μg</span></td><td class="db">Forsteo®</td><td class="dd">20 μg SC / dia × máx. 24 meses</td></tr>
+      </tbody></table>`},
+    {id:"nf",label:"Não farmacológico",html:`
+      <div class="nf-grid">
+        <div class="nf-item"><strong>🥛 Cálcio alimentar</strong>Leite (300mg/copo), iogurte (200–250mg), queijo, sardinhas com espinha, bróculos, amêndoas.</div>
+        <div class="nf-item"><strong>☀️ Sol / Vitamina D</strong>Exposição solar moderada diária. Atletas indoor têm risco acrescido de deficiência.</div>
+        <div class="nf-item"><strong>🏋️ Treino de força</strong>Resistência progressiva + impacto (corrida, saltar, dança). Mínimo 3×/semana.</div>
+        <div class="nf-item"><strong>⚖️ Equilíbrio / propriocepção</strong>↓ risco de quedas. Especialmente importante em &gt;65 anos.</div>
+        <div class="nf-item"><strong>🚭 Cessar tabaco</strong>Tabaco ↓ DMO e ↑ risco de fractura. Limitar álcool (≤2 unid/dia).</div>
+        <div class="nf-item"><strong>🥩 Proteínas</strong>≥1 g/kg/dia — fundamentais para a matriz óssea.</div>
+        <div class="nf-item"><strong>🏠 Prevenção de quedas</strong>Retirar tapetes, boa iluminação, calçado adequado, corrigir visão.</div>
+        <div class="nf-item"><strong>⚡ REDs no atleta</strong>Low Energy Availability → ↓ DMO. Tratar o LEA: ↑ disponibilidade energética ≥45 kcal/kg MLG/dia.</div>
+      </div>`},
+    {id:"alarme",label:"Sinais de alarme",html:`
+      <div class="alert alert-red" style="margin-bottom:14px"><span class="alert-icon">🚨</span><div class="alert-text"><b>Fracturas de alto risco — IMOBILIZAÇÃO imediata + referência ortopedia urgente + RMN.</b></div></div>
+      <div class="alarm-list">
+        <div class="alarm-item"><div class="adot"></div><span>Fractura do colo do fémur — risco de necrose avascular</span></div>
+        <div class="alarm-item"><div class="adot"></div><span>Fractura do navicular — alto risco de progressão para fractura completa</span></div>
+        <div class="alarm-item"><div class="adot"></div><span>Face anterior da tíbia — risco de fractura completa</span></div>
+        <div class="alarm-item"><div class="adot"></div><span>Fractura do sacro ou escafoide</span></div>
+        <div class="alarm-item"><div class="adot"></div><span>Perda progressiva de DMO apesar de tratamento — avaliar adesão ou falência terapêutica</span></div>
+        <div class="alarm-item"><div class="adot"></div><span>Fractura de fragilidade sem trauma major — iniciar ou intensificar tratamento imediatamente</span></div>
+        <div class="alarm-item"><div class="adot"></div><span>Suspensão abrupta de denosumab sem transição para bifosfonato — risco de rebote</span></div>
+      </div>`}
+  ]
+},
+]; // fim patologias
+
+/* ══════════════════════════════════════════
+   URGÊNCIA — render
+══════════════════════════════════════════ */
+function renderUrgAll(list){
+  const c=document.getElementById('urg-main');
+  c.innerHTML='';
+  if(!list.length){c.innerHTML='<div class="empty">Nenhuma patologia encontrada.</div>';return}
+  const groups={};
+  list.forEach(p=>{const l=p.titulo[0].toUpperCase();if(!groups[l])groups[l]=[];groups[l].push(p)});
+  Object.keys(groups).sort().forEach(l=>{
+    const g=document.createElement('div');g.className='alpha-group';
+    const lbl=document.createElement('div');lbl.className='alpha-label';lbl.textContent=l;g.appendChild(lbl);
+    groups[l].forEach(p=>g.appendChild(buildUrgCard(p)));
+    c.appendChild(g);
+  });
+}
+
+function buildUrgCard(p){
+  const card=document.createElement('div');card.className='ucard';card.dataset.id=p.id;
+  const tags=p.tags.map(t=>`<span class="utag utag-${t.cor}">${t.texto}</span>`).join('');
+  card.innerHTML=`
+    <div class="ucard-header" onclick="toggleUrgCard('${p.id}')">
+      <div class="ucard-icon">${p.icone}</div>
+      <div class="ucard-meta"><div class="ucard-title">${p.titulo}</div><div class="ucard-tags">${tags}</div></div>
+      <svg class="ucard-chevron" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="ucard-body">
+      <div class="utabs">${p.tabs.map((t,i)=>`<button class="utab-btn${i===0?' active':''}" onclick="switchUrgTab(event,'${p.id}','${t.id}')">${t.label}</button>`).join('')}</div>
+      ${p.tabs.map((t,i)=>`<div class="utab-pane${i===0?' active':''}" id="${p.id}-${t.id}">${t.html}</div>`).join('')}
+    </div>`;
+  return card;
+}
+
+function toggleUrgCard(id){document.querySelector(`[data-id="${id}"]`).classList.toggle('open')}
+
+function switchUrgTab(e,cardId,tabId){
+  e.stopPropagation();
+  const body=document.querySelector(`[data-id="${cardId}"] .ucard-body`);
+  body.querySelectorAll('.utab-btn').forEach(b=>b.classList.remove('active'));
+  body.querySelectorAll('.utab-pane').forEach(p=>p.classList.remove('active'));
+  e.target.classList.add('active');
+  document.getElementById(`${cardId}-${tabId}`).classList.add('active');
+}
+
+function filterUrgCards(){
+  const q=document.getElementById('urg-search').value.toLowerCase().trim();
+  const f=q===''?patologias:patologias.filter(p=>p.titulo.toLowerCase().includes(q)||p.tags.some(t=>t.texto.toLowerCase().includes(q)));
+  renderUrgAll(f);
+  document.getElementById('urg-count-badge').textContent=f.length+(f.length===1?' patologia':' patologias');
+}
+
+/* ══════════════════════════════════════════
+   NAVEGAÇÃO
+══════════════════════════════════════════ */
+let currentView = 'home';
+
+function openView(name){
+  document.getElementById('home-view').style.display='none';
+  ['urg','antibio','notas'].forEach(v=>{
+    const el=document.getElementById(v+'-view');
+    if(el) el.classList.remove('active');
+  });
+  const el=document.getElementById(name+'-view');
+  if(el) el.classList.add('active');
+  currentView=name;
+  const labels={urg:'Urgência',antibio:'Antibioterapia',notas:'Notas & Dívidas'};
+  document.getElementById('nav-badge').textContent=labels[name]||name;
+  document.getElementById('abbrev-btn').className='abbrev-btn'+(name==='urg'?' show':'');
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(name==='urg'){
+    patologias.sort((a,b)=>a.titulo.localeCompare(b.titulo,'pt'));
+    renderUrgAll(patologias);
+    document.getElementById('urg-count-badge').textContent=patologias.length+' patologias';
+    document.getElementById('urg-search').value='';
+  }
+  if(name==='notas') renderNotas();
+}
+
+function goHome(){
+  ['urg','antibio','notas'].forEach(v=>{
+    const el=document.getElementById(v+'-view');
+    if(el) el.classList.remove('active');
+  });
+  document.getElementById('home-view').style.display='block';
+  document.getElementById('nav-badge').textContent='Início';
+  document.getElementById('abbrev-btn').className='abbrev-btn';
+  currentView='home';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ══════════════════════════════════════════
+   ABREVIATURAS
+══════════════════════════════════════════ */
+function toggleAbbrev(){
+  document.getElementById('abbrev-panel').classList.toggle('open');
+  document.getElementById('abbrev-overlay').classList.toggle('open');
+  if(document.getElementById('abbrev-panel').classList.contains('open'))
+    document.getElementById('abbrev-input').focus();
+}
+function closeAbbrev(){
+  document.getElementById('abbrev-panel').classList.remove('open');
+  document.getElementById('abbrev-overlay').classList.remove('open');
+}
+function filterAbbrev(q){
+  const term=q.toLowerCase().trim();
+  document.querySelectorAll('.abbrev-item').forEach(el=>{
+    const searchText=(el.dataset.search||'')+' '+el.textContent.toLowerCase();
+    el.classList.toggle('hidden',term.length>0&&!searchText.includes(term));
+  });
+}
+
+/* ══════════════════════════════════════════
+   NOTAS — localStorage
+══════════════════════════════════════════ */
+let NOTAS_DB={cats:[]};
+let notasCtx={};
+
+function notasLoad(){
+  try{const s=localStorage.getItem('medeasy_notas_v1');if(s)Object.assign(NOTAS_DB,JSON.parse(s));}catch(e){}
+}
+function notasSave(){
+  try{localStorage.setItem('medeasy_notas_v1',JSON.stringify(NOTAS_DB));}catch(e){}
+}
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
+
+function renderNotas(){
+  const page=document.getElementById('notas-page');
+  if(!NOTAS_DB.cats.length){page.innerHTML='';return;}
+  page.innerHTML=NOTAS_DB.cats.map(catHTML).join('');
+}
+
+function catHTML(cat){
+  const isOpen=cat._open?'open':'';
+  const bodyStyle=cat._open?'block':'none';
+  const notas=cat.notas||[];
+  const chevron=cat._open?'▲':'▼';
+  const subCards=notas.map(n=>subCardHTML(cat.id,n)).join('');
+  return `<div class="cat-card ${isOpen}" id="cat-${cat.id}">
+    <div class="cat-header" onclick="toggleCat('${cat.id}')">
+      <div class="cat-header-left">
+        <div class="cat-icon-wrap" style="background:${cat.bg||'#E8EFF8'}">${cat.emoji||'📋'}</div>
+        <div>
+          <div class="cat-title-text">${cat.nome}</div>
+          ${cat.sub?`<div class="cat-subtitle-text">${cat.sub}</div>`:''}
+        </div>
+      </div>
+      <div class="cat-meta">
+        <span class="cat-count">${notas.length} nota${notas.length!==1?'s':''}</span>
+        <button class="mbtn" style="padding:4px 10px;font-size:12px" onclick="event.stopPropagation();openCatModal('${cat.id}')">✏️</button>
+        <span class="cat-chevron">${chevron}</span>
+      </div>
+    </div>
+    <div class="cat-body" style="display:${bodyStyle}">
+      <div class="sub-grid">
+        ${subCards}
+        <div class="sub-card-add" onclick="openNotaModal('${cat.id}')">
+          <div class="sub-card-add-icon">＋</div>
+          <span>Adicionar nota</span>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function subCardHTML(catId,n){
+  return `<div class="sub-card" onclick="openNotaDetail('${catId}','${n.id}')">
+    <div class="sub-card-title">${n.nome}</div>
+    ${n.conteudo?`<div class="sub-card-desc">${n.conteudo.slice(0,60)}${n.conteudo.length>60?'…':''}</div>`:''}
+    <div class="sub-card-footer">
+      ${n.tag?`<span>${n.tag}</span>`:'<span></span>'}
+      <span>→</span>
+    </div>
+  </div>`;
+}
+
+function toggleCat(id){
+  const cat=NOTAS_DB.cats.find(c=>c.id===id);
+  if(!cat)return;
+  cat._open=!cat._open;
+  notasSave();
+  renderNotas();
+}
+
+/* ═══ MODAL CATEGORIA ═══ */
+function openCatModal(editId){
+  notasCtx.editCatId=editId||null;
+  const title=editId?'Editar especialidade':'Nova especialidade';
+  document.getElementById('cat-modal-title').textContent=title;
+  document.getElementById('cat-del-btn').style.display=editId?'inline-flex':'none';
+  if(editId){
+    const cat=NOTAS_DB.cats.find(c=>c.id===editId);
+    document.getElementById('cat-nome').value=cat.nome||'';
+    document.getElementById('cat-emoji').value=cat.emoji||'';
+    document.getElementById('cat-sub').value=cat.sub||'';
+  } else {
+    document.getElementById('cat-nome').value='';
+    document.getElementById('cat-emoji').value='';
+    document.getElementById('cat-sub').value='';
+  }
+  document.getElementById('cat-modal-overlay').classList.add('open');
+}
+function closeCatModal(){document.getElementById('cat-modal-overlay').classList.remove('open');}
+function closeCatModalIf(e){if(e.target.id==='cat-modal-overlay')closeCatModal();}
+function saveCat(){
+  const nome=document.getElementById('cat-nome').value.trim();
+  if(!nome)return document.getElementById('cat-nome').focus();
+  const emoji=document.getElementById('cat-emoji').value.trim()||'📋';
+  const sub=document.getElementById('cat-sub').value.trim();
+  const bgs=['#E8EFF8','#FFF3E0','#E8F5E8','#EDE9FF','#FDECEA','#D4F0E8'];
+  if(notasCtx.editCatId){
+    const cat=NOTAS_DB.cats.find(c=>c.id===notasCtx.editCatId);
+    if(cat){cat.nome=nome;cat.emoji=emoji;cat.sub=sub;}
+  } else {
+    const bg=bgs[NOTAS_DB.cats.length%bgs.length];
+    NOTAS_DB.cats.push({id:uid(),nome,emoji,sub,bg,_open:true,notas:[]});
+  }
+  notasSave();renderNotas();closeCatModal();
+}
+function deleteCat(){
+  if(!confirm('Remover esta especialidade e todas as notas?'))return;
+  NOTAS_DB.cats=NOTAS_DB.cats.filter(c=>c.id!==notasCtx.editCatId);
+  notasSave();renderNotas();closeCatModal();
+}
+
+/* ═══ MODAL NOTA ═══ */
+function openNotaModal(catId,editId){
+  notasCtx.catId=catId;
+  notasCtx.editNotaId=editId||null;
+  const title=editId?'Editar nota':'Nova nota';
+  document.getElementById('nota-modal-title').textContent=title;
+  document.getElementById('nota-del-btn').style.display=editId?'inline-flex':'none';
+  if(editId){
+    const cat=NOTAS_DB.cats.find(c=>c.id===catId);
+    const nota=(cat.notas||[]).find(n=>n.id===editId);
+    document.getElementById('nota-nome').value=nota.nome||'';
+    document.getElementById('nota-tag').value=nota.tag||'';
+    document.getElementById('nota-conteudo').value=nota.conteudo||'';
+  } else {
+    document.getElementById('nota-nome').value='';
+    document.getElementById('nota-tag').value='';
+    document.getElementById('nota-conteudo').value='';
+  }
+  document.getElementById('nota-modal-overlay').classList.add('open');
+}
+function closeNotaModal(){document.getElementById('nota-modal-overlay').classList.remove('open');}
+function closeNotaModalIf(e){if(e.target.id==='nota-modal-overlay')closeNotaModal();}
+function saveNota(){
+  const nome=document.getElementById('nota-nome').value.trim();
+  if(!nome)return document.getElementById('nota-nome').focus();
+  const tag=document.getElementById('nota-tag').value.trim();
+  const conteudo=document.getElementById('nota-conteudo').value.trim();
+  const cat=NOTAS_DB.cats.find(c=>c.id===notasCtx.catId);
+  if(!cat)return;
+  if(!cat.notas)cat.notas=[];
+  if(notasCtx.editNotaId){
+    const nota=cat.notas.find(n=>n.id===notasCtx.editNotaId);
+    if(nota){nota.nome=nome;nota.tag=tag;nota.conteudo=conteudo;}
+  } else {
+    cat.notas.push({id:uid(),nome,tag,conteudo});
+  }
+  notasSave();renderNotas();closeNotaModal();
+}
+function deleteNota(){
+  if(!confirm('Remover esta nota?'))return;
+  const cat=NOTAS_DB.cats.find(c=>c.id===notasCtx.catId);
+  if(cat)cat.notas=(cat.notas||[]).filter(n=>n.id!==notasCtx.editNotaId);
+  notasSave();renderNotas();closeNotaModal();
+  closeNotaDetail();
+}
+
+/* ═══ DETALHE NOTA ═══ */
+function openNotaDetail(catId,notaId){
+  const cat=NOTAS_DB.cats.find(c=>c.id===catId);
+  if(!cat)return;
+  const nota=(cat.notas||[]).find(n=>n.id===notaId);
+  if(!nota)return;
+  notasCtx.catId=catId;
+  notasCtx.editNotaId=notaId;
+  const inner=document.getElementById('nota-detail-inner');
+  inner.innerHTML=`
+    <div class="nd-hero">
+      <div>
+        <div class="nd-title">${nota.nome}</div>
+        ${nota.tag?`<div class="nd-desc">${nota.tag}</div>`:''}
+      </div>
+      <div class="nd-actions">
+        <button class="mbtn" onclick="openNotaModal('${catId}','${notaId}');closeNotaDetail()">✏️ Editar</button>
+        <button class="mbtn" onclick="closeNotaDetail()">✕</button>
+      </div>
+    </div>
+    <div class="nd-body">
+      ${nota.conteudo?`<div class="nd-label">Conteúdo</div><div class="nd-text">${nota.conteudo}</div>`:'<div class="nd-text" style="color:var(--text-muted);font-style:italic">Sem conteúdo.</div>'}
+    </div>`;
+  document.getElementById('nota-detail-overlay').classList.add('open');
+}
+function closeNotaDetail(){document.getElementById('nota-detail-overlay').classList.remove('open');}
+function closeNotaDetailIf(e){if(e.target.id==='nota-detail-overlay')closeNotaDetail();}
+
+/* ══════════════════════════════════════════
+   INIT
+══════════════════════════════════════════ */
+notasLoad();
+</script>
+</body>
+</html>
