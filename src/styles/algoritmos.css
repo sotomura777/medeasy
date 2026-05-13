@@ -1,0 +1,406 @@
+/* ===== ALGORITMOS MODULE — scoped under .algo-scope ===== */
+
+.algo-scope {
+  --algo-bg: #0d1117;
+  --algo-surface: #161b22;
+  --algo-surface2: #1c2230;
+  --algo-border: #2a3244;
+  --algo-accent: #4f9cf9;
+  --algo-accent2: #7ee787;
+  --algo-warn: #f0883e;
+  --algo-danger: #f85149;
+  --algo-purple: #bc8cff;
+  --algo-text: #e6edf3;
+  --algo-muted: #8b949e;
+  --algo-faint: #30363d;
+
+  background: var(--algo-bg);
+  min-height: 100vh;
+  font-family: 'DM Sans', -apple-system, system-ui, sans-serif;
+  color: var(--algo-text);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ===== HOME ===== */
+.algo-home { max-width: 800px; margin: 0 auto; padding: 28px 20px; }
+.algo-home-header { margin-bottom: 28px; }
+.algo-home-header h2 { font-size: 24px; font-weight: 600; margin: 0 0 6px; }
+.algo-home-header p { font-size: 14px; color: var(--algo-muted); margin: 0; }
+
+.algo-home-grid { display: grid; gap: 14px; }
+.algo-home-card {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--algo-surface); border: 1px solid var(--algo-border);
+  border-radius: 14px; padding: 20px; cursor: pointer;
+  transition: border-color 0.2s, transform 0.15s;
+  text-align: left; color: inherit; font-family: inherit; font-size: inherit;
+}
+.algo-home-card:hover { border-color: var(--algo-accent); transform: translateY(-2px); }
+.algo-home-card-icon {
+  width: 52px; height: 52px; min-width: 52px;
+  background: linear-gradient(135deg, var(--algo-accent) 0%, var(--algo-accent2) 100%);
+  border-radius: 12px; display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+}
+.algo-home-card-body { flex: 1; }
+.algo-home-card-title { font-weight: 600; font-size: 16px; margin-bottom: 2px; }
+.algo-home-card-subtitle { font-size: 11px; color: var(--algo-muted); margin-bottom: 6px; }
+.algo-home-card-desc { font-size: 13px; color: var(--algo-muted); line-height: 1.5; margin-bottom: 8px; }
+.algo-home-card-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.algo-home-tag {
+  font-size: 10px; padding: 2px 8px; border-radius: 10px;
+  background: rgba(79,156,249,0.12); color: var(--algo-accent);
+  font-weight: 600;
+}
+.algo-home-card-arrow { color: var(--algo-muted); flex-shrink: 0; }
+
+/* ===== SHOULDER HEADER ===== */
+.algo-sh-header {
+  padding: 20px 24px; border-bottom: 1px solid var(--algo-border);
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--algo-surface); flex-wrap: wrap; gap: 12px;
+}
+.algo-sh-header-left { display: flex; align-items: center; gap: 12px; }
+.algo-sh-back {
+  background: none; border: none; color: var(--algo-muted); cursor: pointer;
+  padding: 4px; display: flex;
+}
+.algo-sh-back:hover { color: var(--algo-text); }
+.algo-sh-icon {
+  width: 42px; height: 42px;
+  background: linear-gradient(135deg, var(--algo-accent) 0%, var(--algo-accent2) 100%);
+  border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+}
+.algo-sh-header h2 { font-size: 20px; font-weight: 600; margin: 0; }
+.algo-sh-header h2 span { color: var(--algo-accent); }
+.algo-sh-sub { font-size: 11px; color: var(--algo-muted); margin-top: 2px; }
+.algo-sh-badge {
+  font-size: 11px; color: var(--algo-muted);
+  background: var(--algo-faint); padding: 3px 10px;
+  border-radius: 20px; border: 1px solid var(--algo-border);
+}
+
+/* Tabs */
+.algo-sh-tabs {
+  display: flex; gap: 0; padding: 0 24px;
+  background: var(--algo-surface); border-bottom: 1px solid var(--algo-border);
+  overflow-x: auto;
+}
+.algo-sh-tab {
+  padding: 12px 20px; font-size: 13px; font-weight: 500;
+  color: var(--algo-muted); cursor: pointer;
+  border: none; background: none; border-bottom: 2px solid transparent;
+  transition: all 0.2s; white-space: nowrap; font-family: inherit;
+}
+.algo-sh-tab:hover { color: var(--algo-text); }
+.algo-sh-tab.active { color: var(--algo-accent); border-bottom-color: var(--algo-accent); }
+
+.algo-sh-main { max-width: 1100px; margin: 0 auto; padding: 28px 24px; }
+
+/* Sources */
+.algo-sh-sources {
+  margin-top: 32px; padding: 14px 16px;
+  background: var(--algo-surface); border: 1px solid var(--algo-border);
+  border-radius: 10px; font-size: 11px; color: var(--algo-muted);
+}
+.algo-sh-sources strong { color: var(--algo-text); }
+
+/* ===== ALGORITHM STEPS ===== */
+.algo-sh-grid { display: grid; grid-template-columns: 320px 1fr; gap: 20px; align-items: start; }
+
+/* Sidebar */
+.algo-sh-sidebar {
+  background: var(--algo-surface); border: 1px solid var(--algo-border);
+  border-radius: 12px; padding: 16px; position: sticky; top: 80px;
+}
+.algo-sh-sidebar h3 {
+  font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--algo-muted); margin: 0 0 14px; font-weight: 600;
+}
+.algo-sh-step-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 6px 0; opacity: 0.35; transition: all 0.3s;
+}
+.algo-sh-step-item.done { opacity: 1; }
+.algo-sh-step-item.current { opacity: 1; }
+.algo-sh-step-dot {
+  width: 22px; height: 22px; min-width: 22px;
+  border-radius: 50%; border: 2px solid var(--algo-faint);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 600; color: var(--algo-muted);
+  transition: all 0.3s;
+}
+.algo-sh-step-item.done .algo-sh-step-dot { background: var(--algo-accent2); border-color: var(--algo-accent2); color: #000; }
+.algo-sh-step-item.current .algo-sh-step-dot {
+  background: var(--algo-accent); border-color: var(--algo-accent); color: #fff;
+  box-shadow: 0 0 0 4px rgba(79,156,249,0.2);
+}
+.algo-sh-step-label { font-size: 12px; color: var(--algo-muted); padding-top: 2px; }
+.algo-sh-step-item.current .algo-sh-step-label { color: var(--algo-text); font-weight: 600; }
+.algo-sh-step-item.done .algo-sh-step-label { color: var(--algo-accent2); }
+.algo-sh-connector { width: 1px; height: 10px; background: var(--algo-faint); margin: 0 0 0 10px; }
+
+.algo-sh-summary {
+  margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--algo-border);
+}
+.algo-sh-summary-title {
+  font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--algo-muted); font-weight: 600; margin-bottom: 8px;
+}
+.algo-sh-result-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 600; padding: 4px 10px;
+  border-radius: 20px; margin: 3px 2px;
+}
+.tag-red { background: rgba(248,81,73,0.15); color: var(--algo-danger); border: 1px solid rgba(248,81,73,0.3); }
+.tag-orange { background: rgba(240,136,62,0.15); color: var(--algo-warn); border: 1px solid rgba(240,136,62,0.3); }
+.tag-blue { background: rgba(79,156,249,0.15); color: var(--algo-accent); border: 1px solid rgba(79,156,249,0.3); }
+.tag-green { background: rgba(126,231,135,0.15); color: var(--algo-accent2); border: 1px solid rgba(126,231,135,0.3); }
+
+/* Question card */
+.algo-sh-qcard {
+  background: var(--algo-surface); border: 1px solid var(--algo-border);
+  border-radius: 14px; padding: 24px;
+  animation: algoSlideIn 0.3s ease;
+}
+@keyframes algoSlideIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.algo-sh-q-step { font-size: 10px; color: var(--algo-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+.algo-sh-q-title { font-size: 22px; font-weight: 600; margin-bottom: 6px; }
+.algo-sh-q-subtitle { font-size: 13px; color: var(--algo-muted); margin-bottom: 22px; line-height: 1.5; }
+
+.algo-sh-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.algo-sh-option {
+  background: var(--algo-surface2); border: 1.5px solid var(--algo-border);
+  border-radius: 10px; padding: 14px 16px; cursor: pointer;
+  text-align: left; transition: all 0.18s; color: var(--algo-text);
+  font-family: inherit; font-size: 13px;
+}
+.algo-sh-option:hover { border-color: var(--algo-accent); background: rgba(79,156,249,0.08); transform: translateY(-1px); }
+.algo-sh-option.danger:hover { border-color: var(--algo-danger); background: rgba(248,81,73,0.08); }
+.algo-sh-option.warn:hover { border-color: var(--algo-warn); background: rgba(240,136,62,0.08); }
+.algo-sh-opt-icon { font-size: 18px; margin-bottom: 6px; display: block; }
+.algo-sh-opt-title { font-weight: 600; display: block; margin-bottom: 3px; }
+.algo-sh-opt-desc { font-size: 11px; color: var(--algo-muted); display: block; }
+
+/* Result card */
+.algo-sh-result-card {
+  background: var(--algo-surface); border: 1px solid var(--algo-border);
+  border-radius: 14px; padding: 24px;
+  animation: algoSlideIn 0.3s ease;
+}
+.algo-sh-result-header {
+  display: flex; align-items: flex-start; gap: 14px;
+  margin-bottom: 20px; padding-bottom: 18px;
+  border-bottom: 1px solid var(--algo-border);
+}
+.algo-sh-result-icon {
+  width: 48px; height: 48px; min-width: 48px;
+  border-radius: 12px; display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+}
+.ri-red { background: rgba(248,81,73,0.15); }
+.ri-orange { background: rgba(240,136,62,0.15); }
+.ri-blue { background: rgba(79,156,249,0.15); }
+.ri-green { background: rgba(126,231,135,0.15); }
+.ri-purple { background: rgba(188,140,255,0.15); }
+.algo-sh-result-card h3 { font-size: 20px; font-weight: 600; margin: 0 0 4px; }
+.algo-sh-result-sub { font-size: 12px; color: var(--algo-muted); }
+
+.algo-sh-urgency {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px; border-radius: 8px; margin-bottom: 16px;
+  font-size: 12px; font-weight: 600;
+}
+.ub-red { background: rgba(248,81,73,0.12); border: 1px solid rgba(248,81,73,0.3); color: var(--algo-danger); }
+.ub-orange { background: rgba(240,136,62,0.12); border: 1px solid rgba(240,136,62,0.3); color: var(--algo-warn); }
+.ub-blue { background: rgba(79,156,249,0.12); border: 1px solid rgba(79,156,249,0.3); color: var(--algo-accent); }
+.ub-green { background: rgba(126,231,135,0.12); border: 1px solid rgba(126,231,135,0.3); color: var(--algo-accent2); }
+
+.algo-sh-result-sections { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.algo-sh-res-section {
+  background: var(--algo-surface2); border: 1px solid var(--algo-faint);
+  border-radius: 10px; padding: 14px;
+}
+.algo-sh-res-section h4 {
+  font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--algo-muted); font-weight: 600; margin: 0 0 10px;
+}
+.algo-sh-res-list { list-style: none; margin: 0; padding: 0; }
+.algo-sh-res-list li {
+  font-size: 12.5px; padding: 5px 0;
+  border-bottom: 1px solid var(--algo-faint);
+  display: flex; align-items: flex-start; gap: 8px;
+  line-height: 1.4;
+}
+.algo-sh-res-list li:last-child { border-bottom: none; }
+.algo-sh-res-list li::before { content: '→'; color: var(--algo-accent); font-size: 11px; margin-top: 2px; min-width: 12px; }
+.algo-sh-res-list.urgent li::before { content: '⚠'; color: var(--algo-danger); }
+.algo-sh-res-list.warn li::before { content: '◉'; color: var(--algo-warn); }
+
+.algo-sh-restart {
+  margin-top: 20px; padding: 10px 22px;
+  background: var(--algo-faint); border: 1px solid var(--algo-border);
+  border-radius: 8px; color: var(--algo-text);
+  font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer;
+  transition: all 0.2s;
+}
+.algo-sh-restart:hover { background: var(--algo-accent); border-color: var(--algo-accent); color: #fff; }
+
+/* ===== EXAM OBJECTIVE ===== */
+.algo-sh-exam-layout { display: grid; grid-template-columns: 240px 1fr; gap: 20px; align-items: start; }
+
+.algo-sh-exam-nav {
+  background: var(--algo-surface); border: 1px solid var(--algo-border);
+  border-radius: 12px; overflow: hidden; position: sticky; top: 80px;
+}
+.algo-sh-exam-nav-item {
+  padding: 12px 16px; font-size: 12.5px; cursor: pointer;
+  border: none; border-left: 3px solid transparent;
+  transition: all 0.15s; color: var(--algo-muted);
+  display: flex; align-items: center; gap: 10px;
+  border-bottom: 1px solid var(--algo-faint);
+  background: none; font-family: inherit; width: 100%; text-align: left;
+}
+.algo-sh-exam-nav-item:last-child { border-bottom: none; }
+.algo-sh-exam-nav-item:hover { background: var(--algo-surface2); color: var(--algo-text); }
+.algo-sh-exam-nav-item.active {
+  background: rgba(79,156,249,0.08); border-left-color: var(--algo-accent);
+  color: var(--algo-accent); font-weight: 600;
+}
+.algo-sh-exam-nav-icon { font-size: 16px; min-width: 20px; }
+
+.algo-sh-exam-content h2 { font-size: 22px; font-weight: 600; margin: 0 0 6px; }
+.algo-sh-section-desc { font-size: 13px; color: var(--algo-muted); margin: 0 0 20px; }
+
+.algo-sh-test-card {
+  background: var(--algo-surface); border: 1px solid var(--algo-border);
+  border-radius: 12px; margin-bottom: 12px; overflow: hidden;
+}
+.algo-sh-test-header {
+  padding: 14px 18px; display: flex; align-items: center;
+  justify-content: space-between; cursor: pointer;
+  user-select: none; transition: background 0.15s;
+  border: none; background: none; color: var(--algo-text);
+  font-family: inherit; font-size: inherit; width: 100; text-align: left; width: 100%;
+}
+.algo-sh-test-header:hover { background: var(--algo-surface2); }
+.algo-sh-test-header-left { display: flex; align-items: center; gap: 10px; }
+.algo-sh-test-name { font-weight: 600; font-size: 14px; }
+.algo-sh-test-struct {
+  font-size: 11px; color: var(--algo-muted);
+  background: var(--algo-faint); padding: 2px 8px; border-radius: 10px;
+}
+.algo-sh-test-toggle { font-size: 16px; color: var(--algo-muted); transition: transform 0.2s; }
+.algo-sh-test-card.open .algo-sh-test-toggle { transform: rotate(180deg); }
+
+.algo-sh-test-body {
+  padding: 0 18px 18px; border-top: 1px solid var(--algo-faint);
+}
+
+.algo-sh-test-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 14px 0 12px; }
+.algo-sh-test-stat {
+  background: var(--algo-surface2); border: 1px solid var(--algo-faint);
+  border-radius: 8px; padding: 10px 12px; text-align: center;
+}
+.algo-sh-test-stat span:first-child { font-size: 18px; font-weight: 600; display: block; margin-bottom: 2px; }
+.algo-sh-test-stat span:last-child { font-size: 10px; color: var(--algo-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.sv-sens { color: var(--algo-accent); }
+.sv-spec { color: var(--algo-accent2); }
+.sv-lr { color: var(--algo-warn); }
+
+.algo-sh-how-label {
+  font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--algo-muted); font-weight: 600; margin: 10px 0 6px;
+}
+.algo-sh-how-text { font-size: 12.5px; line-height: 1.6; }
+
+.algo-sh-observe-list { list-style: none; margin: 8px 0 0; padding: 0; }
+.algo-sh-observe-list li {
+  font-size: 12.5px; padding: 5px 0;
+  border-bottom: 1px solid var(--algo-faint);
+  display: flex; align-items: flex-start; gap: 8px; line-height: 1.4;
+}
+.algo-sh-observe-list li:last-child { border-bottom: none; }
+.algo-sh-observe-list li::before { content: '→'; color: var(--algo-accent); font-size: 11px; margin-top: 2px; min-width: 12px; }
+
+.algo-sh-positive {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; padding: 5px 10px;
+  background: rgba(240,136,62,0.1); border: 1px solid rgba(240,136,62,0.25);
+  border-radius: 6px; color: var(--algo-warn); margin-top: 8px; font-weight: 600;
+}
+.algo-sh-positive.purple {
+  background: rgba(188,140,255,0.1); border-color: rgba(188,140,255,0.3); color: var(--algo-purple);
+}
+.algo-sh-positive.danger {
+  background: rgba(248,81,73,0.1); border-color: rgba(248,81,73,0.25); color: var(--algo-danger);
+}
+
+/* ===== DDX ===== */
+.algo-sh-ddx-header { margin-bottom: 20px; }
+.algo-sh-ddx-header h2 { font-size: 24px; font-weight: 600; margin: 0 0 4px; }
+.algo-sh-ddx-header p { font-size: 13px; color: var(--algo-muted); margin: 0; }
+
+.algo-sh-ddx-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+.algo-sh-ddx-card {
+  background: var(--algo-surface); border: 1px solid var(--algo-border);
+  border-radius: 12px; padding: 18px; transition: border-color 0.2s;
+  cursor: pointer; text-align: left; color: inherit; font-family: inherit; font-size: inherit;
+  width: 100%;
+}
+.algo-sh-ddx-card:hover { border-color: var(--algo-accent); }
+.algo-sh-ddx-card.expanded { border-color: var(--algo-accent); }
+.algo-sh-ddx-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.algo-sh-ddx-icon {
+  width: 36px; height: 36px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center; font-size: 18px;
+}
+.algo-sh-ddx-title { font-weight: 600; font-size: 14px; }
+.algo-sh-ddx-subtitle { font-size: 11px; color: var(--algo-muted); margin-top: 1px; }
+.algo-sh-ddx-tags { display: flex; flex-wrap: wrap; gap: 5px; margin: 10px 0; }
+.algo-sh-ddx-tag {
+  font-size: 10px; padding: 2px 8px; border-radius: 10px; font-weight: 600;
+}
+.dt-common { background: rgba(79,156,249,0.12); color: var(--algo-accent); }
+.dt-age { background: rgba(126,231,135,0.12); color: var(--algo-accent2); }
+.dt-trauma { background: rgba(240,136,62,0.12); color: var(--algo-warn); }
+.dt-systemic { background: rgba(188,140,255,0.12); color: var(--algo-purple); }
+
+.algo-sh-ddx-body {
+  border-top: 1px solid var(--algo-faint); margin-top: 12px;
+  padding-top: 12px; animation: algoSlideIn 0.2s ease;
+}
+.algo-sh-ddx-feature {
+  font-size: 12px; padding: 5px 0;
+  display: flex; align-items: flex-start; gap: 8px;
+  border-bottom: 1px solid var(--algo-faint); line-height: 1.4;
+}
+.algo-sh-ddx-feature:last-child { border-bottom: none; }
+.algo-sh-feature-key {
+  color: var(--algo-muted); min-width: 90px;
+  font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; padding-top: 1px;
+}
+.algo-sh-feature-val { flex: 1; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .algo-sh-grid { grid-template-columns: 1fr; }
+  .algo-sh-sidebar { position: static; }
+  .algo-sh-options { grid-template-columns: 1fr; }
+  .algo-sh-result-sections { grid-template-columns: 1fr; }
+  .algo-sh-exam-layout { grid-template-columns: 1fr; }
+  .algo-sh-exam-nav { position: static; display: flex; overflow-x: auto; border-radius: 10px; }
+  .algo-sh-exam-nav-item { border-left: none; border-bottom: 2px solid transparent; white-space: nowrap; padding: 10px 14px; font-size: 12px; }
+  .algo-sh-exam-nav-item.active { border-bottom-color: var(--algo-accent); border-left-color: transparent; }
+  .algo-sh-test-grid { grid-template-columns: 1fr 1fr; }
+  .algo-sh-main { padding: 16px; }
+  .algo-sh-header { padding: 14px 16px; }
+  .algo-sh-tabs { padding: 0 12px; }
+  .algo-sh-ddx-grid { grid-template-columns: 1fr; }
+  .algo-home { padding: 20px 16px; }
+}

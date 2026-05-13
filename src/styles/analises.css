@@ -1,0 +1,208 @@
+/* ===== ANÁLISES MODULE — scoped under .ana-scope ===== */
+
+.ana-scope {
+  --ana-bg: #F5F4EF;
+  --ana-card: #FFFFFF;
+  --ana-soft: #F1EFE8;
+  --ana-text: #1F1E1C;
+  --ana-text2: #5F5E5A;
+  --ana-text3: #888780;
+  --ana-border: rgba(0,0,0,0.10);
+  --ana-border-s: rgba(0,0,0,0.18);
+  --ana-r-md: 8px;
+  --ana-r-lg: 12px;
+  --ana-info-fg: #0C447C; --ana-info-bg: #E6F1FB; --ana-info-dark: #042C53;
+  --ana-danger-fg: #A32D2D; --ana-danger-bg: #FCEBEB; --ana-danger-dark: #501313;
+  --ana-warn-fg: #854F0B; --ana-warn-bg: #FAEEDA; --ana-warn-dark: #633806;
+  --ana-ok-fg: #3B6D11; --ana-ok-bg: #EAF3DE; --ana-ok-dark: #173404;
+  --ana-crit-fg: #6B0B0B; --ana-crit-bg: #2A0606; --ana-crit-dark: #FFCCCC;
+
+  background: var(--ana-bg);
+  min-height: 100vh;
+  font-family: 'DM Sans', -apple-system, system-ui, sans-serif;
+  color: var(--ana-text);
+}
+
+.ana-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+}
+
+/* Header */
+.ana-header { margin-bottom: 16px; padding-bottom: 14px; border-bottom: 0.5px solid var(--ana-border); }
+.ana-header h2 { font-size: 22px; font-weight: 500; margin: 0 0 4px; }
+.ana-subtitle { font-size: 13px; color: var(--ana-text2); margin: 0; }
+
+.ana-how {
+  margin: 12px 0 16px; padding: 10px 14px;
+  background: var(--ana-info-bg); border-radius: var(--ana-r-md);
+  font-size: 12px; color: var(--ana-info-dark); line-height: 1.6;
+}
+.ana-how strong { font-weight: 500; }
+
+/* Context bar */
+.ana-context-bar {
+  margin-bottom: 16px; padding: 10px 12px;
+  background: var(--ana-card); border: 0.5px solid var(--ana-border);
+  border-radius: var(--ana-r-md);
+  display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+}
+.ana-ctx-label {
+  font-size: 11px; color: var(--ana-text2);
+  text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500;
+}
+.ana-context-bar input, .ana-context-bar select {
+  padding: 5px 8px; border: 0.5px solid var(--ana-border-s);
+  border-radius: 4px; font-size: 13px; background: var(--ana-card);
+  font-family: inherit;
+}
+.ana-context-bar input[type="number"] { width: 70px; }
+
+/* Search */
+.ana-search-bar {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--ana-bg); padding: 10px 0; margin-bottom: 8px;
+}
+.ana-search-wrap {
+  position: relative; display: flex; align-items: center;
+}
+.ana-search-wrap > svg {
+  position: absolute; left: 12px;
+  color: var(--ana-text3);
+}
+.ana-search-wrap input {
+  width: 100%; padding: 12px 36px 12px 40px;
+  border: 0.5px solid var(--ana-border-s); border-radius: var(--ana-r-md);
+  font-size: 15px; font-family: inherit; background: var(--ana-card);
+}
+.ana-search-wrap input:focus { outline: 2px solid var(--ana-info-bg); border-color: var(--ana-info-fg); }
+.ana-search-clear {
+  position: absolute; right: 10px;
+  background: none; border: none; font-size: 18px;
+  color: var(--ana-text3); cursor: pointer; padding: 4px;
+}
+
+/* Param grid */
+.ana-params-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 8px; margin-bottom: 16px;
+}
+.ana-param-chip {
+  padding: 10px 12px;
+  border: 0.5px solid var(--ana-border); border-left: 3px solid var(--ana-info-fg);
+  border-radius: var(--ana-r-md); background: var(--ana-card);
+  cursor: pointer; font-size: 13px; text-align: left;
+  font-family: inherit; transition: background 0.15s;
+}
+.ana-param-chip:hover { background: var(--ana-soft); }
+.ana-param-chip.active { background: var(--ana-info-bg); border-color: var(--ana-info-fg); }
+.ana-pname { font-weight: 500; display: block; }
+.ana-punit { font-size: 11px; color: var(--ana-text3); display: block; margin-top: 2px; }
+.ana-no-results { grid-column: 1 / -1; text-align: center; color: var(--ana-text3); padding: 20px; font-size: 14px; }
+
+/* Input zone */
+.ana-input-zone {
+  background: var(--ana-card); border: 0.5px solid var(--ana-border);
+  border-radius: var(--ana-r-lg); padding: 20px; margin-bottom: 16px;
+}
+.ana-iz-title { font-size: 16px; font-weight: 500; margin: 0 0 4px; }
+.ana-iz-subtitle { font-size: 12px; color: var(--ana-text2); margin: 0 0 16px; }
+
+.ana-ref-range {
+  font-size: 11px; color: var(--ana-text3);
+  padding: 6px 10px; background: var(--ana-soft);
+  border-radius: var(--ana-r-md); margin-bottom: 12px;
+}
+.ana-ref-range strong { color: var(--ana-text2); font-weight: 500; }
+
+.ana-value-input { display: flex; gap: 8px; align-items: center; margin-bottom: 12px; }
+.ana-value-input label { font-size: 13px; font-weight: 500; flex-shrink: 0; }
+.ana-value-input input {
+  flex: 1; padding: 10px 12px; font-size: 18px; font-weight: 500;
+  border: 0.5px solid var(--ana-border-s); border-radius: var(--ana-r-md);
+  background: var(--ana-card); font-family: inherit;
+}
+.ana-unit-label { font-size: 13px; color: var(--ana-text2); flex-shrink: 0; }
+
+.ana-extras {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px;
+}
+.ana-extras label {
+  display: block; font-size: 11px; color: var(--ana-text2);
+  text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500; margin-bottom: 3px;
+}
+.ana-extras input, .ana-extras select {
+  width: 100%; padding: 6px 8px; font-size: 13px;
+  border: 0.5px solid var(--ana-border-s); border-radius: 4px;
+  background: var(--ana-card); font-family: inherit;
+}
+
+/* Placeholder */
+.ana-placeholder {
+  text-align: center; padding: 60px 20px; color: var(--ana-text3);
+}
+.ana-placeholder svg { margin-bottom: 12px; }
+.ana-placeholder p { font-size: 14px; margin: 0; }
+
+/* Verdict */
+.ana-verdict {
+  padding: 14px 16px; border-radius: var(--ana-r-md);
+  border-left: 4px solid; margin-bottom: 12px;
+}
+.ana-verdict-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500; margin-bottom: 4px; }
+.ana-verdict-value { font-size: 18px; font-weight: 500; margin: 0; }
+.ana-verdict-detail { font-size: 13px; margin-top: 6px; line-height: 1.5; }
+
+.ana-verdict.normal { background: var(--ana-ok-bg); border-color: var(--ana-ok-fg); color: var(--ana-ok-dark); }
+.ana-verdict.mild { background: var(--ana-info-bg); border-color: var(--ana-info-fg); color: var(--ana-info-dark); }
+.ana-verdict.moderate { background: var(--ana-warn-bg); border-color: var(--ana-warn-fg); color: var(--ana-warn-dark); }
+.ana-verdict.severe { background: var(--ana-danger-bg); border-color: var(--ana-danger-fg); color: var(--ana-danger-dark); }
+.ana-verdict.critical { background: var(--ana-crit-bg); border-color: var(--ana-crit-fg); color: var(--ana-crit-dark); }
+
+/* Action blocks */
+.ana-action-block {
+  margin-top: 10px; padding: 12px 14px;
+  border-radius: var(--ana-r-md); background: var(--ana-card);
+  border: 0.5px solid var(--ana-border);
+}
+.ana-action-title {
+  font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;
+  font-weight: 500; color: var(--ana-text2); margin-bottom: 6px;
+  display: flex; align-items: center; gap: 6px;
+}
+.ana-action-content { font-size: 13px; line-height: 1.65; }
+.ana-action-content strong { font-weight: 500; }
+.ana-action-content ul { margin: 6px 0; padding-left: 18px; }
+.ana-action-content li { margin: 2px 0; }
+
+.ana-think { border-left: 3px solid var(--ana-info-fg); }
+.ana-do { border-left: 3px solid var(--ana-warn-fg); }
+.ana-danger { border-left: 3px solid var(--ana-danger-fg); background: var(--ana-danger-bg); }
+.ana-danger .ana-action-title { color: var(--ana-danger-dark); }
+.ana-ref { border-left: 3px solid var(--ana-text3); }
+.ana-ref-text { font-size: 12px !important; color: var(--ana-text2); }
+
+/* Reset */
+.ana-reset-btn {
+  margin-top: 12px; padding: 6px 12px;
+  background: transparent; border: 0.5px solid var(--ana-border-s);
+  border-radius: var(--ana-r-md); font-size: 12px; cursor: pointer;
+  color: var(--ana-text2); font-family: inherit;
+}
+.ana-reset-btn:hover { background: var(--ana-soft); }
+
+/* Disclaimer */
+.ana-disclaimer {
+  margin-top: 24px; padding: 12px 16px;
+  background: var(--ana-warn-bg); border-radius: var(--ana-r-md);
+  font-size: 11px; color: var(--ana-warn-dark); line-height: 1.6;
+}
+.ana-disclaimer strong { font-weight: 500; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .ana-params-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+  .ana-value-input { flex-wrap: wrap; }
+  .ana-extras { grid-template-columns: 1fr; }
+}
