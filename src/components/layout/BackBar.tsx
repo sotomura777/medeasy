@@ -9,7 +9,7 @@ export default function BackBar({ label }: BackBarProps) {
 
   return (
     <div className="back-bar">
-      <button className="back-btn" onClick={() => navigate('/')}>
+      <button className="back-btn" onClick={() => navigate('/home')}>
         ← Voltar
       </button>
       <span className="breadcrumb">

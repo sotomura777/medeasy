@@ -3,6 +3,11 @@ import { useLocation, Link } from 'react-router-dom';
 const labels: Record<string, string> = {
   '/home': 'Início',
   '/urgencia': 'Urgência',
+  '/vacinacao': 'Vacinação',
+  '/analises': 'Análises',
+  '/algoritmos': 'Algoritmos',
+  '/antibio': 'Antibioterapia',
+  '/interacoes': 'Interações',
   '/notas': 'Notas',
 };
 

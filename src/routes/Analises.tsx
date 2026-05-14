@@ -1,3 +1,4 @@
+import '../styles/analises.css';
 import BackBar from '../components/layout/BackBar';
 import AnaInterpreter from '../components/analises/AnaInterpreter';
 

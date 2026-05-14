@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import '../styles/vacinacao.css';
 import BackBar from '../components/layout/BackBar';
 import VacHome from '../components/vacinacao/VacHome';
 import VacMatrix from '../components/vacinacao/VacMatrix';

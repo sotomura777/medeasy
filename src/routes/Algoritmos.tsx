@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import '../styles/algoritmos.css';
 import BackBar from '../components/layout/BackBar';
 import AlgoHome from '../components/algoritmos/AlgoHome';
 import ShoulderAlgo from '../components/algoritmos/ShoulderAlgo';

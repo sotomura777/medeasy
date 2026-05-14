@@ -1,3 +1,4 @@
+import '../styles/interacoes.css';
 import InteracoesChecker from '../components/interacoes/InteracoesChecker';
 
 export default function Interacoes() {

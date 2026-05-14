@@ -1,31 +1,7 @@
 import { useNavigate } from 'react-router-dom';
+import ECGSoft from '../components/shared/ECGSoft';
+import Logo from '../components/shared/Logo';
 import '../styles/landing.css';
-
-// ─── ECG Soft Line ───
-function ECGSoft({ width = 600, height = 80, color = '#5FBA9A', stroke = 1.5, opacity = 1, beats = 2 }: { width?: number; height?: number; color?: string; stroke?: number; opacity?: number; beats?: number }) {
-  const beatSeg = (cx: number, h: number) =>
-    `L${cx - 12},${h / 2} L${cx - 8},${h / 2 - 4} L${cx - 4},${h / 2 + 3} L${cx},${h / 2 - 22} L${cx + 4},${h / 2 + 18} L${cx + 8},${h / 2 - 6} L${cx + 12},${h / 2}`;
-  const positions = beats === 1 ? [width / 2] : Array.from({ length: beats }, (_, i) => (width / (beats + 1)) * (i + 1));
-  let d = `M0,${height / 2}`;
-  positions.forEach(cx => { d += ` ${beatSeg(cx, height)}`; });
-  d += ` L${width},${height / 2}`;
-  return (
-    <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} style={{ display: 'block', opacity }}>
-      <path d={d} fill="none" stroke={color} strokeWidth={stroke} strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-// ─── Logo ───
-function Logo({ size = 32 }: { size?: number }) {
-  return (
-    <div style={{ width: size, height: size, borderRadius: size / 4, background: 'var(--teal-mid)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
-      <svg width={size * 0.6} height={size * 0.6} viewBox="0 0 20 20">
-        <path d="M1,10 L5,10 L7,4 L9,16 L11,10 L19,10" fill="none" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    </div>
-  );
-}
 
 // ─── Module Icons (SVG) ───
 function IconUrgencia() {

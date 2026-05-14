@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import '../styles/antibio.css';
 import { VIEW_LABELS } from '../content/antibio/data';
 import type { AntibioView } from '../content/antibio/data';
 import AntibioHome from '../components/antibio/AntibioHome';

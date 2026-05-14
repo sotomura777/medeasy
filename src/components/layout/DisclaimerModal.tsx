@@ -19,7 +19,7 @@ export default function DisclaimerModal() {
   if (!visible) return null;
 
   return (
-    <div className={`modal-overlay${visible ? ' open' : ''}`}>
+    <div className="modal-overlay open">
       <div className="modal">
         <div className="modal-hd">
           <div className="modal-title">Aviso importante</div>
