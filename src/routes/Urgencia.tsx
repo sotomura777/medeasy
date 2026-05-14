@@ -1,60 +1,52 @@
-import { useState, useMemo } from 'react';
+import { useState, useCallback, useMemo } from 'react';
+import '../styles/urgencia.css';
 import BackBar from '../components/layout/BackBar';
-import UrgenciaHeader from '../components/urgencia/UrgenciaHeader';
-import PatologiaCard from '../components/urgencia/PatologiaCard';
+import UrgenciaList from '../components/urgencia/UrgenciaList';
+import UrgenciaDetail from '../components/urgencia/UrgenciaDetail';
 import AbbrevPanel from '../components/urgencia/AbbrevPanel';
+import { useBookmarks } from '../components/urgencia/useBookmarks';
 import { patologias } from '../content/urgencia';
-import { createPatologiaSearch } from '../lib/search';
 import type { Patologia } from '../content/schema';
 
-const sorted = [...patologias].sort((a, b) =>
-  a.titulo.localeCompare(b.titulo, 'pt'),
-);
-
-const fuse = createPatologiaSearch(sorted);
-
-function groupByAlpha(list: Patologia[]) {
-  const groups: Record<string, Patologia[]> = {};
-  for (const p of list) {
-    const letter = p.titulo.charAt(0).toUpperCase();
-    if (!groups[letter]) groups[letter] = [];
-    groups[letter].push(p);
-  }
-  return Object.entries(groups).sort(([a], [b]) => a.localeCompare(b));
-}
+const patologiaById = new Map<string, Patologia>(patologias.map(p => [p.id, p]));
 
 export default function Urgencia() {
-  const [query, setQuery] = useState('');
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [theme, setTheme] = useState<'day' | 'night'>('day');
+  const [bookmarks, toggleBookmark] = useBookmarks();
 
-  const filtered = useMemo(() => {
-    if (!query.trim()) return sorted;
-    return fuse.search(query).map((r) => r.item);
-  }, [query]);
+  const selected = useMemo(
+    () => selectedId ? patologiaById.get(selectedId) ?? null : null,
+    [selectedId],
+  );
 
-  const groups = useMemo(() => groupByAlpha(filtered), [filtered]);
+  const toggleTheme = useCallback(() => {
+    setTheme(t => t === 'day' ? 'night' : 'day');
+  }, []);
+
+  const goBack = useCallback(() => setSelectedId(null), []);
 
   return (
-    <div className="urg-scope">
+    <div className="urg-scope" data-theme={theme}>
       <main className="page-main">
         <BackBar label="Urgência" />
-        <UrgenciaHeader
-          count={filtered.length}
-          query={query}
-          onSearch={setQuery}
-        />
-        <div>
-          {groups.length === 0 && (
-            <div className="empty">Nenhuma patologia encontrada.</div>
-          )}
-          {groups.map(([letter, items]) => (
-            <div key={letter} className="alpha-group">
-              <div className="alpha-label">{letter}</div>
-              {items.map((p) => (
-                <PatologiaCard key={p.id} patologia={p} />
-              ))}
-            </div>
-          ))}
-        </div>
+        {selected ? (
+          <UrgenciaDetail
+            patologia={selected}
+            bookmarked={bookmarks.has(selected.id)}
+            onToggleBookmark={() => toggleBookmark(selected.id)}
+            onBack={goBack}
+          />
+        ) : (
+          <UrgenciaList
+            patologias={patologias}
+            bookmarks={bookmarks}
+            onToggleBookmark={toggleBookmark}
+            onSelect={setSelectedId}
+            theme={theme}
+            onToggleTheme={toggleTheme}
+          />
+        )}
       </main>
       <AbbrevPanel />
     </div>
