@@ -1,7 +1,7 @@
 import { useLocation, Link } from 'react-router-dom';
 
 const labels: Record<string, string> = {
-  '/': 'Início',
+  '/home': 'Início',
   '/urgencia': 'Urgência',
   '/notas': 'Notas',
 };
@@ -12,7 +12,7 @@ export default function Nav() {
 
   return (
     <nav className="nav">
-      <Link to="/" className="nav-brand" style={{ textDecoration: 'none' }}>
+      <Link to="/home" className="nav-brand" style={{ textDecoration: 'none' }}>
         <div className="nav-logo">⚕</div>
         <div>
           <div className="nav-title">Medeasy</div>
