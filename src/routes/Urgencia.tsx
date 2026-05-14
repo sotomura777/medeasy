@@ -1,6 +1,5 @@
 import { useState, useCallback, useMemo } from 'react';
 import '../styles/urgencia.css';
-import BackBar from '../components/layout/BackBar';
 import UrgenciaList from '../components/urgencia/UrgenciaList';
 import UrgenciaDetail from '../components/urgencia/UrgenciaDetail';
 import AbbrevPanel from '../components/urgencia/AbbrevPanel';
@@ -28,26 +27,23 @@ export default function Urgencia() {
 
   return (
     <div className="urg-scope" data-theme={theme}>
-      <main className="page-main">
-        <BackBar label="Urgência" />
-        {selected ? (
-          <UrgenciaDetail
-            patologia={selected}
-            bookmarked={bookmarks.has(selected.id)}
-            onToggleBookmark={() => toggleBookmark(selected.id)}
-            onBack={goBack}
-          />
-        ) : (
-          <UrgenciaList
-            patologias={patologias}
-            bookmarks={bookmarks}
-            onToggleBookmark={toggleBookmark}
-            onSelect={setSelectedId}
-            theme={theme}
-            onToggleTheme={toggleTheme}
-          />
-        )}
-      </main>
+      {selected ? (
+        <UrgenciaDetail
+          patologia={selected}
+          bookmarked={bookmarks.has(selected.id)}
+          onToggleBookmark={() => toggleBookmark(selected.id)}
+          onBack={goBack}
+        />
+      ) : (
+        <UrgenciaList
+          patologias={patologias}
+          bookmarks={bookmarks}
+          onToggleBookmark={toggleBookmark}
+          onSelect={setSelectedId}
+          theme={theme}
+          onToggleTheme={toggleTheme}
+        />
+      )}
       <AbbrevPanel />
     </div>
   );

@@ -8,7 +8,7 @@ const ALLOWED_TAGS = [
   'div', 'span', 'p', 'br', 'b', 'strong', 'i', 'em', 'u', 'small',
   'table', 'thead', 'tbody', 'tr', 'th', 'td',
   'ul', 'ol', 'li', 'a', 'img', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
-  'sup', 'sub', 'hr',
+  'sup', 'sub', 'hr', 'code',
 ];
 const ALLOWED_ATTR = ['class', 'style', 'href', 'target', 'rel', 'src', 'alt', 'width', 'height'];
 
@@ -35,13 +35,15 @@ export default function UrgenciaDetail({ patologia, bookmarked, onToggleBookmark
 
   useEffect(() => {
     setActiveTab(0);
+    window.scrollTo({ top: 0, behavior: 'instant' });
   }, [patologia.id]);
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
-      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+      const tag = (e.target as HTMLElement).tagName?.toLowerCase();
+      if (tag === 'input' || tag === 'textarea') return;
       if (e.key === 'Escape') { goBack(); return; }
-      if (e.key === 'b' || e.key === 'B') { onToggleBookmark(); return; }
+      if (e.key === 'b' && !e.metaKey && !e.ctrlKey) { onToggleBookmark(); return; }
       const n = parseInt(e.key);
       if (n >= 1 && n <= patologia.tabs.length) {
         setActiveTab(n - 1);
@@ -52,67 +54,75 @@ export default function UrgenciaDetail({ patologia, bookmarked, onToggleBookmark
   }, [goBack, onToggleBookmark, patologia.tabs.length]);
 
   return (
-    <div className="detail-view">
-      <button className="detail-back" onClick={goBack}>
-        <IconArrowLeft size={16} /> Voltar
+    <div className="urg-page">
+      <button className="back-link" onClick={goBack}>
+        <IconArrowLeft size={16} />
+        <span>Urgência</span>
       </button>
 
-      <div className="detail-header">
-        <div className="detail-top-row">
+      <header className="detail-head">
+        <div className="detail-eyebrow">
           {spec && Icon && (
-            <span
-              className="detail-spec-badge"
-              style={{ background: `${spec.color}18`, color: spec.color, border: `1px solid ${spec.color}40` }}
-            >
-              <Icon size={14} /> {spec.label}
+            <span className="detail-spec-badge" style={{ color: spec.color }}>
+              <Icon size={14} />
+              {spec.label}
             </span>
           )}
           {meta && (
-            <span className={`pat-sev-badge sev-${meta.severidade}`}>
+            <span className={`detail-sev-pill sev-${meta.severidade}`}>
               {SEV_LABEL[meta.severidade]}
             </span>
           )}
+        </div>
+        <div className="detail-title-row">
+          <h1 className="detail-title">{patologia.titulo}</h1>
           <div className="detail-actions">
             <button
-              className={`pat-bm-btn${bookmarked ? ' active' : ''}`}
+              className={`icon-btn${bookmarked ? ' on' : ''}`}
               onClick={onToggleBookmark}
-              title={bookmarked ? 'Remover favorito' : 'Adicionar favorito'}
+              title={bookmarked ? 'Remover favorito (B)' : 'Adicionar a favoritos (B)'}
+              aria-pressed={bookmarked}
             >
               <IconBookmark size={18} filled={bookmarked} />
             </button>
           </div>
         </div>
-        <div className="detail-title">{patologia.titulo}</div>
-        {patologia.tags.length > 0 && (
-          <div className="detail-tags">
-            {patologia.tags.map(tag => (
-              <span key={tag.texto} className={`utag utag-${tag.cor}`}>{tag.texto}</span>
-            ))}
-          </div>
-        )}
-      </div>
+        <div className="detail-tags">
+          {patologia.tags.map(t => (
+            <span key={t.texto} className="detail-tag">{t.texto}</span>
+          ))}
+        </div>
+      </header>
 
-      <div className="utabs">
+      <nav className="tabs" role="tablist">
         {patologia.tabs.map((tab, i) => (
           <button
             key={tab.id}
-            className={`utab-btn${i === activeTab ? ' active' : ''}`}
+            role="tab"
+            aria-selected={i === activeTab}
+            className={`tab-btn${i === activeTab ? ' active' : ''}`}
             onClick={() => setActiveTab(i)}
           >
+            <span className="tab-kbd">{i + 1}</span>
             {tab.label}
           </button>
         ))}
-      </div>
+      </nav>
 
       {patologia.tabs.map((tab, i) => (
         <div
           key={`${patologia.id}-${tab.id}`}
-          className={`utab-pane${i === activeTab ? ' active' : ''}`}
+          className={`pane${i === activeTab ? ' active' : ''}`}
           dangerouslySetInnerHTML={{
             __html: DOMPurify.sanitize(tab.html, { ALLOWED_TAGS, ALLOWED_ATTR }),
           }}
         />
       ))}
+
+      <div className="urg-disclaimer">
+        Conteúdo educacional · revisto entre pares. Não substitui o julgamento
+        clínico. Atalhos: <span className="kbd">1</span>·<span className="kbd">2</span>·<span className="kbd">3</span> tabs · <span className="kbd">B</span> favorito · <span className="kbd">Esc</span> voltar.
+      </div>
     </div>
   );
 }
