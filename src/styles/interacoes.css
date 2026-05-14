@@ -1,0 +1,423 @@
+/* ============================================================
+   INTERAÇÕES MEDICAMENTOSAS — scoped .int-scope
+   Purple/lavender aesthetic
+   ============================================================ */
+.int-scope {
+  --int-bg: #F0EDFF;
+  --int-card: #FFFFFF;
+  --int-border: #CEC4F5;
+  --int-border-soft: #E5E0FA;
+  --int-accent: #7C6FCD;
+  --int-accent-dark: #5B4FA8;
+  --int-heading: #2D1F7A;
+  --int-text: #3A3458;
+  --int-muted: #7E78A0;
+  --int-major-bg: #FEE8E8;
+  --int-major-border: #D43F3F;
+  --int-major-text: #8B1F1F;
+  --int-mod-bg: #FFF1E0;
+  --int-mod-border: #E07A1A;
+  --int-mod-text: #8C4A0A;
+  --int-minor-bg: #FFF9D9;
+  --int-minor-border: #C9A91A;
+  --int-minor-text: #715F0A;
+
+  background: var(--int-bg);
+  min-height: 100vh;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--int-text);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.int-wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 20px 80px;
+}
+
+/* ---- Header ---- */
+.int-header-block {
+  margin-bottom: 28px;
+}
+
+.int-title {
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  color: var(--int-heading);
+  font-size: 2.1rem;
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+}
+
+.int-sub {
+  color: var(--int-muted);
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+/* ---- Permanent warning ---- */
+.int-warning-permanent {
+  background: linear-gradient(135deg, #FFF1E0 0%, #FEE8E8 100%);
+  border: 1.5px solid var(--int-mod-border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 18px;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--int-text);
+}
+
+.int-warning-permanent strong {
+  color: var(--int-mod-text);
+}
+
+/* ---- Card ---- */
+.int-card {
+  background: var(--int-card);
+  border: 1px solid var(--int-border);
+  border-radius: 14px;
+  padding: 22px;
+  margin-bottom: 18px;
+}
+
+.int-card-title {
+  font-family: 'Lora', serif;
+  color: var(--int-heading);
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0 0 14px;
+}
+
+.int-row-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.int-row-head .int-card-title {
+  margin: 0;
+}
+
+/* ---- Input / Autocomplete ---- */
+.int-input-row {
+  position: relative;
+}
+
+.int-input-row input[type="text"] {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--int-border);
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.98rem;
+  background: #FAFAFF;
+  color: var(--int-text);
+  transition: border-color 0.15s, background 0.15s;
+  box-sizing: border-box;
+}
+
+.int-input-row input[type="text"]:focus {
+  outline: none;
+  border-color: var(--int-accent);
+  background: #FFFFFF;
+}
+
+.int-input-row input[type="text"]::placeholder {
+  color: #B2ABC9;
+}
+
+.int-autocomplete {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: #FFFFFF;
+  border: 1px solid var(--int-border);
+  border-radius: 10px;
+  max-height: 240px;
+  overflow-y: auto;
+  z-index: 50;
+  box-shadow: 0 8px 24px rgba(45, 31, 122, 0.08);
+}
+
+.int-auto-item {
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 0.94rem;
+  border-bottom: 1px solid var(--int-border-soft);
+}
+
+.int-auto-item:last-child {
+  border-bottom: none;
+}
+
+.int-auto-item:hover,
+.int-auto-item.active {
+  background: var(--int-bg);
+  color: var(--int-heading);
+}
+
+.int-group {
+  font-size: 0.78rem;
+  color: var(--int-muted);
+  margin-left: 8px;
+}
+
+/* ---- Chips ---- */
+.int-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+  min-height: 8px;
+}
+
+.int-chip {
+  background: var(--int-bg);
+  border: 1px solid var(--int-border);
+  color: var(--int-heading);
+  padding: 6px 10px 6px 12px;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.int-chip.target {
+  background: #FFFFFF;
+  border-color: var(--int-accent);
+  color: var(--int-accent-dark);
+  font-weight: 500;
+}
+
+.int-chip button {
+  background: none;
+  border: none;
+  color: var(--int-muted);
+  cursor: pointer;
+  font-size: 1.05rem;
+  line-height: 1;
+  padding: 0;
+  margin-left: 2px;
+}
+
+.int-chip button:hover {
+  color: var(--int-major-border);
+}
+
+.int-empty-hint {
+  color: var(--int-muted);
+  font-size: 0.88rem;
+  font-style: italic;
+  margin: 6px 0 0;
+}
+
+/* ---- Clear button ---- */
+.int-clear-all {
+  background: none;
+  border: 1px solid var(--int-border);
+  color: var(--int-muted);
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.int-clear-all:hover {
+  color: var(--int-major-text);
+  border-color: var(--int-major-border);
+}
+
+/* ---- Results summary pills ---- */
+.int-results-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+  font-size: 0.88rem;
+}
+
+.int-pill {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: 500;
+}
+
+.int-pill.major {
+  background: var(--int-major-bg);
+  color: var(--int-major-text);
+  border: 1px solid var(--int-major-border);
+}
+
+.int-pill.moderada {
+  background: var(--int-mod-bg);
+  color: var(--int-mod-text);
+  border: 1px solid var(--int-mod-border);
+}
+
+.int-pill.minor {
+  background: var(--int-minor-bg);
+  color: var(--int-minor-text);
+  border: 1px solid var(--int-minor-border);
+}
+
+.int-pill.none {
+  background: #E9F5E9;
+  color: #2B6B2B;
+  border: 1px solid #88C088;
+}
+
+/* ---- Interaction cards ---- */
+.int-interaction {
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 12px;
+  border: 1px solid var(--int-border-soft);
+  border-left: 5px solid;
+  background: #FFFFFF;
+}
+
+.int-interaction.major {
+  border-left-color: var(--int-major-border);
+  background: linear-gradient(to right, var(--int-major-bg) 0%, #FFFFFF 35%);
+}
+
+.int-interaction.moderada {
+  border-left-color: var(--int-mod-border);
+  background: linear-gradient(to right, var(--int-mod-bg) 0%, #FFFFFF 35%);
+}
+
+.int-interaction.minor {
+  border-left-color: var(--int-minor-border);
+  background: linear-gradient(to right, var(--int-minor-bg) 0%, #FFFFFF 35%);
+}
+
+.int-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.int-pair {
+  font-family: 'Lora', serif;
+  color: var(--int-heading);
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.int-x {
+  color: var(--int-accent);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  margin: 0 6px;
+}
+
+.int-severity-tag {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.int-severity-tag.major {
+  background: var(--int-major-border);
+  color: white;
+}
+
+.int-severity-tag.moderada {
+  background: var(--int-mod-border);
+  color: white;
+}
+
+.int-severity-tag.minor {
+  background: var(--int-minor-border);
+  color: white;
+}
+
+.int-body {
+  display: grid;
+  gap: 8px;
+  font-size: 0.93rem;
+}
+
+.int-label {
+  font-weight: 600;
+  color: var(--int-heading);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-right: 6px;
+}
+
+.int-action-bar {
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: #FFFFFF;
+  border: 1px dashed var(--int-border);
+  border-radius: 8px;
+  font-weight: 500;
+  color: var(--int-heading);
+  font-size: 0.92rem;
+}
+
+.int-action-icon {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin-right: 8px;
+  vertical-align: middle;
+  background: var(--int-accent);
+}
+
+.int-no-results {
+  text-align: center;
+  padding: 24px;
+  color: var(--int-muted);
+  font-style: italic;
+}
+
+/* ---- Footer ---- */
+.int-footer-note {
+  font-size: 0.78rem;
+  color: var(--int-muted);
+  margin-top: 28px;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  border: 1px solid var(--int-border-soft);
+  line-height: 1.55;
+}
+
+.int-footer-note strong {
+  color: var(--int-heading);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 600px) {
+  .int-wrap {
+    padding: 20px 14px 60px;
+  }
+
+  .int-title {
+    font-size: 1.6rem;
+  }
+
+  .int-card {
+    padding: 16px;
+  }
+
+  .int-pair {
+    font-size: 0.98rem;
+  }
+}
