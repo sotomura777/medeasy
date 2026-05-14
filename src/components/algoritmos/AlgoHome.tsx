@@ -11,7 +11,15 @@ const ALGORITHMS = [
     title: 'Dor no Ombro',
     subtitle: 'Algoritmo Clínico — Cuidados Primários',
     desc: 'Algoritmo step-by-step com exame objetivo e diagnósticos diferenciais. Baseado em BMC Primary Care 2021 e AAFP.',
-    tags: ['5 passos', 'Exame objetivo', '8 DDx'],
+    tags: ['6 passos', 'Exame objetivo', '14 DDx'],
+  },
+  {
+    id: 'elbow' as const,
+    emoji: '💪',
+    title: 'Dor no Cotovelo',
+    subtitle: 'Algoritmo Clínico — Cuidados Primários',
+    desc: 'Algoritmo interativo para cotovelo com testes clínicos e diagnósticos diferenciais. Baseado em UpToDate, AAFP e BMJ Best Practice.',
+    tags: ['5 passos', 'Exame objetivo', '13 DDx'],
   },
 ];
 

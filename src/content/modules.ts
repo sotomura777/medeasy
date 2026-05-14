@@ -42,6 +42,14 @@ export const modules: AppModule[] = [
     rota: '/antibio',
   },
   {
+    id: 'interacoes',
+    nome: 'Interações',
+    emoji: '⚡',
+    descricao: 'Verificador de interações medicamentosas — base offline com ~160 fármacos e ~90 regras',
+    status: 'available',
+    rota: '/interacoes',
+  },
+  {
     id: 'notas',
     nome: 'Notas & Dívidas',
     emoji: '📝',

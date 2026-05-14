@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { DDX_DATA, DDX_GROUP_ORDER } from '../../content/algoritmos/shoulder-data';
-import type { DdxApproach } from '../../content/algoritmos/shoulder-data';
+import { DDX_DATA, DDX_GROUP_ORDER } from '../../content/algoritmos/elbow-data';
+import type { DdxApproach } from '../../content/algoritmos/elbow-data';
 
 const APPROACH_LABELS: { key: keyof DdxApproach; icon: string; title: string }[] = [
   { key: 'immediate', icon: '🩺', title: 'Primeira abordagem' },
@@ -10,7 +10,7 @@ const APPROACH_LABELS: { key: keyof DdxApproach; icon: string; title: string }[]
   { key: 'benign', icon: '🔎', title: 'Diagnósticos a não esquecer' },
 ];
 
-export default function ShoulderDdx() {
+export default function ElbowDdx() {
   const [expanded, setExpanded] = useState<string | null>(null);
 
   const toggle = (id: string) => setExpanded(prev => prev === id ? null : id);
@@ -25,7 +25,7 @@ export default function ShoulderDdx() {
     <div>
       <div className="algo-sh-ddx-header">
         <h2>Diagnósticos Diferenciais</h2>
-        <p>Clicar em cada diagnóstico para expandir testes clínicos e abordagem. 14 diagnósticos agrupados por frequência e gravidade.</p>
+        <p>Clicar em cada diagnóstico para expandir testes clínicos e abordagem. 13 diagnósticos agrupados por frequência e gravidade.</p>
       </div>
 
       {DDX_GROUP_ORDER.map(group => {

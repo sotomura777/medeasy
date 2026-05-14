@@ -9,6 +9,7 @@ const Vacinacao = lazy(() => import('./routes/Vacinacao'));
 const Analises = lazy(() => import('./routes/Analises'));
 const Algoritmos = lazy(() => import('./routes/Algoritmos'));
 const Antibio = lazy(() => import('./routes/Antibio'));
+const Interacoes = lazy(() => import('./routes/Interacoes'));
 const Notas = lazy(() => import('./routes/Notas'));
 
 export default function App() {
@@ -23,6 +24,7 @@ export default function App() {
           <Route path="/analises" element={<Analises />} />
           <Route path="/algoritmos" element={<Algoritmos />} />
           <Route path="/antibio" element={<Antibio />} />
+          <Route path="/interacoes" element={<Interacoes />} />
           <Route path="/notas" element={<Notas />} />
         </Routes>
       </Suspense>

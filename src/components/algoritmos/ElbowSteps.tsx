@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
-import { STEPS, SIDEBAR_LABELS, DDX_DATA, buildShoulderResult } from '../../content/algoritmos/shoulder-data';
-import type { ShoulderResultData, DdxApproach } from '../../content/algoritmos/shoulder-data';
+import { STEPS, SIDEBAR_LABELS, DDX_DATA, buildElbowResult } from '../../content/algoritmos/elbow-data';
+import type { ElbowResultData, DdxApproach } from '../../content/algoritmos/elbow-data';
 
 const APPROACH_LABELS: { key: keyof DdxApproach; icon: string; title: string }[] = [
   { key: 'immediate', icon: '🩺', title: 'Primeira abordagem' },
@@ -29,10 +29,10 @@ function ApproachPanel({ approach }: { approach: DdxApproach }) {
   );
 }
 
-export default function ShoulderSteps() {
+export default function ElbowSteps() {
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Record<number, string>>({});
-  const [resultData, setResultData] = useState<ShoulderResultData | null>(null);
+  const [resultData, setResultData] = useState<ElbowResultData | null>(null);
   const [expandedHyp, setExpandedHyp] = useState<number | null>(null);
 
   const handleAnswer = useCallback((action: string, currentStep: number) => {
@@ -40,13 +40,13 @@ export default function ShoulderSteps() {
     setAnswers(newAnswers);
 
     if (action === 'redflag') {
-      setResultData(buildShoulderResult(newAnswers));
+      setResultData(buildElbowResult(newAnswers));
       setStep(STEPS.length);
       return;
     }
 
     if (currentStep + 1 >= STEPS.length) {
-      setResultData(buildShoulderResult(newAnswers));
+      setResultData(buildElbowResult(newAnswers));
       setStep(STEPS.length);
     } else {
       setStep(currentStep + 1);

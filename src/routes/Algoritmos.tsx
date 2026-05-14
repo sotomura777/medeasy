@@ -2,8 +2,9 @@ import { useState, useCallback } from 'react';
 import BackBar from '../components/layout/BackBar';
 import AlgoHome from '../components/algoritmos/AlgoHome';
 import ShoulderAlgo from '../components/algoritmos/ShoulderAlgo';
+import ElbowAlgo from '../components/algoritmos/ElbowAlgo';
 
-export type AlgoView = 'home' | 'shoulder';
+export type AlgoView = 'home' | 'shoulder' | 'elbow';
 
 export default function Algoritmos() {
   const [view, setView] = useState<AlgoView>('home');
@@ -19,6 +20,7 @@ export default function Algoritmos() {
 
       {view === 'home' && <AlgoHome goTo={goTo} />}
       {view === 'shoulder' && <ShoulderAlgo onBack={() => goTo('home')} />}
+      {view === 'elbow' && <ElbowAlgo onBack={() => goTo('home')} />}
     </div>
   );
 }

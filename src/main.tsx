@@ -7,6 +7,7 @@ import './styles/vacinacao.css';
 import './styles/analises.css';
 import './styles/algoritmos.css';
 import './styles/antibio.css';
+import './styles/interacoes.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
