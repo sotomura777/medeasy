@@ -189,6 +189,8 @@ const PRICING_FEATURES = [
 
 export default function Landing() {
   const navigate = useNavigate();
+  const goLogin = () => navigate('/login');
+  const goRegister = () => navigate('/register');
   const goApp = () => navigate('/home');
 
   const testimonialTrack = [...TESTIMONIALS, ...TESTIMONIALS];
@@ -221,8 +223,8 @@ export default function Landing() {
           </div>
         </div>
         <div className="lp-nav-right">
-          <button className="lp-nav-login" onClick={goApp}>Entrar</button>
-          <button className="lp-btn lp-btn--primary lp-btn--sm" onClick={goApp}>Começar grátis</button>
+          <button className="lp-nav-login" onClick={goLogin}>Entrar</button>
+          <button className="lp-btn lp-btn--primary lp-btn--sm" onClick={goRegister}>Começar grátis</button>
         </div>
       </nav>
 
@@ -248,7 +250,7 @@ export default function Landing() {
               Urgência, vacinação, antibioterapia, algoritmos e as tuas notas — organizados em cartões. Para estudantes de medicina e médicos.
             </p>
             <div className="lp-hero-actions">
-              <button className="lp-btn lp-btn--primary" onClick={goApp} style={{ boxShadow: '0 4px 20px rgba(18,138,114,0.25)' }}>
+              <button className="lp-btn lp-btn--primary" onClick={goRegister} style={{ boxShadow: '0 4px 20px rgba(18,138,114,0.25)' }}>
                 Começar 7 dias grátis →
               </button>
               <button className="lp-btn lp-btn--outline" onClick={() => document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' })}>
@@ -795,7 +797,7 @@ export default function Landing() {
               <div className="lp-pricing-features">
                 {PRICING_FEATURES.map((f, j) => <div key={j} className="lp-pricing-feature">{f}</div>)}
               </div>
-              <button className="lp-btn lp-btn--outline" onClick={goApp}>Começar mensal</button>
+              <button className="lp-btn lp-btn--outline" onClick={goRegister}>Começar mensal</button>
             </div>
 
             {/* Anual — featured */}
@@ -815,7 +817,7 @@ export default function Landing() {
               <div className="lp-pricing-features">
                 {[...PRICING_FEATURES, 'Suporte prioritário', 'Exporta notas em PDF'].map((f, j) => <div key={j} className="lp-pricing-feature">{f}</div>)}
               </div>
-              <button className="lp-btn lp-btn--primary" onClick={goApp} style={{ boxShadow: '0 4px 14px rgba(18,138,114,0.3)' }}>Começar anual →</button>
+              <button className="lp-btn lp-btn--primary" onClick={goRegister} style={{ boxShadow: '0 4px 14px rgba(18,138,114,0.3)' }}>Começar anual →</button>
             </div>
 
             {/* Pro — coming soon */}
@@ -899,7 +901,7 @@ export default function Landing() {
             <span>Tem boa companhia.</span>
           </h2>
           <p className="lp-cta-subtitle">7 dias grátis. Sem cartão. Cancela em 2 cliques.</p>
-          <button className="lp-btn lp-btn--lg" onClick={goApp} style={{ background: '#5FBA9A', color: 'var(--navy)', border: 'none', fontWeight: 700, boxShadow: '0 8px 24px rgba(95,186,154,0.4)' }}>
+          <button className="lp-btn lp-btn--lg" onClick={goRegister} style={{ background: '#5FBA9A', color: 'var(--navy)', border: 'none', fontWeight: 700, boxShadow: '0 8px 24px rgba(95,186,154,0.4)' }}>
             Criar conta grátis →
           </button>
           <div style={{ marginTop: 16, fontSize: 12, color: 'rgba(255,255,255,0.5)' }}>Auxiliar de estudo · Não constitui dispositivo médico</div>
