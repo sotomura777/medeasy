@@ -97,6 +97,108 @@
 }
 .urg-theme-btn:hover { color: var(--ink); border-color: var(--ink-3); }
 
+/* ── Sugestão do dia ── */
+.sug-card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  padding: 20px 22px;
+  margin-bottom: 22px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.sug-card:hover {
+  border-color: var(--teal-mid);
+  box-shadow: var(--shadow-card);
+}
+.sug-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--teal-mid);
+}
+.sug-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.sug-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--teal-mid);
+}
+.sug-date {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-3);
+}
+.sug-body {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.sug-ico {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.sug-content { flex: 1; min-width: 0; }
+.sug-title {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+.sug-summary {
+  font-size: 13px;
+  color: var(--ink-2);
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.sug-tags {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+.sug-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--bg-2);
+  color: var(--ink-2);
+  border: 1px solid var(--rule);
+}
+.sug-arrow {
+  color: var(--ink-3);
+  flex-shrink: 0;
+  transition: transform 0.15s;
+}
+.sug-card:hover .sug-arrow { transform: translateX(3px); }
+@media (max-width: 700px) {
+  .sug-card { padding: 16px; }
+  .sug-title { font-size: 16px; }
+  .sug-ico { width: 36px; height: 36px; border-radius: 10px; }
+}
+
 /* ── List header ── */
 .list-head {
   display: flex;

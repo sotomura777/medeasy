@@ -2,8 +2,18 @@ import { useState, useMemo, useEffect, useRef } from 'react';
 import type { Patologia } from '../../content/schema';
 import type { SpecialityId } from './icons';
 import { IconSearch, IconClose, IconBookmark, IconChevronRight, IconSun, IconMoon } from './icons';
-import { SpecialityIcon, SPECIALITIES } from './icons';
+import { SpecialityIcon, SPECIALITIES, SPEC_BY_ID } from './icons';
 import { PATOLOGIA_META } from './patologia-meta';
+
+function getDailySuggestionIndex(total: number): number {
+  const d = new Date();
+  const seed = d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate();
+  let h = seed;
+  h = ((h >>> 16) ^ h) * 0x45d9f3b;
+  h = ((h >>> 16) ^ h) * 0x45d9f3b;
+  h = (h >>> 16) ^ h;
+  return Math.abs(h) % total;
+}
 
 interface Props {
   patologias: Patologia[];
@@ -80,6 +90,18 @@ export default function UrgenciaList({
     return () => window.removeEventListener('keydown', onKey);
   }, []);
 
+  const suggestion = useMemo(() => {
+    if (sorted.length === 0) return null;
+    const idx = getDailySuggestionIndex(sorted.length);
+    return sorted[idx];
+  }, [sorted]);
+
+  const sugMeta = suggestion ? PATOLOGIA_META[suggestion.id] : null;
+  const SugIcon = sugMeta ? SpecialityIcon[sugMeta.especialidade] : null;
+  const sugSpec = sugMeta ? SPEC_BY_ID[sugMeta.especialidade] : null;
+
+  const today = new Date().toLocaleDateString('pt-PT', { day: 'numeric', month: 'long' });
+
   return (
     <div className="urg-page">
       <div className="list-head">
@@ -103,6 +125,33 @@ export default function UrgenciaList({
             </div>
           </div>
         </div>
+
+        {suggestion && sugMeta && SugIcon && sugSpec && (
+          <div className="sug-card" onClick={() => onSelect(suggestion.id)}>
+            <div className="sug-eyebrow">
+              <span className="sug-label">Sugestão do dia</span>
+              <span className="sug-date">{today}</span>
+            </div>
+            <div className="sug-body">
+              <div
+                className="sug-ico"
+                style={{ background: `${sugSpec.color}15`, color: sugSpec.color }}
+              >
+                <SugIcon size={22} />
+              </div>
+              <div className="sug-content">
+                <div className="sug-title">{suggestion.titulo}</div>
+                <div className="sug-summary">{sugMeta.summary}</div>
+                <div className="sug-tags">
+                  {suggestion.tags.slice(0, 3).map(t => (
+                    <span key={t.texto} className="sug-tag">{t.texto}</span>
+                  ))}
+                </div>
+              </div>
+              <IconChevronRight size={20} className="sug-arrow" />
+            </div>
+          </div>
+        )}
 
         <div className="search-wrap">
           <IconSearch size={18} />
